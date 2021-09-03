@@ -6,7 +6,7 @@ const IconWrapper = styled.div`
 `;
 const MainWrapper = styled.div`
   height: 60px;
- 
+//   margin-bttom: 150px;
   position: fixed;
   top: 0;
   display: flex;

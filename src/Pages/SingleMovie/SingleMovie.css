@@ -23,7 +23,10 @@
   color: white;
   border: 0 !important;
   border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   position: relative;
+  top: 50px;
   font-family: "Montserrat", sans-serif;
 }
 .movie:hover {

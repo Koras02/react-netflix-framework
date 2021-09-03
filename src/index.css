@@ -7,6 +7,10 @@
   --added: #ffff29;
   --remove: #f81313;
   --white: #f2ff4d;
+  --secondary: #21d07a;
+  --added: #ffff29;
+  --remove: #f81313;
+  --white: #f2ff4d;
 }
 
 * {
@@ -48,6 +52,8 @@ body {
   line-height: 1;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
+  background-color: #282c34;
+
   -webkit-text-size-adjust: 100%;
 }
 
