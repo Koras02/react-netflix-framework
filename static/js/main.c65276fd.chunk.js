@@ -1,2 +1,0 @@
-(this["webpackJsonpmovie-netflix-framework"]=this["webpackJsonpmovie-netflix-framework"]||[]).push([[0],{11:function(e,n,t){"use strict";t.r(n);var r=t(1),c=t.n(r),a=t(3),i=t.n(a),s=(t(8),t(9),t(0));var o=function(){return Object(s.jsx)("div",{className:"App",children:Object(s.jsx)("header",{className:"App-header",children:"adwadwa"})})};i.a.render(Object(s.jsx)(c.a.StrictMode,{children:Object(s.jsx)(o,{})}),document.getElementById("root"))},8:function(e,n,t){},9:function(e,n,t){}},[[11,1,2]]]);
-//# sourceMappingURL=main.c65276fd.chunk.js.map
