@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+.movie {
+}
+.content__container {
+  object-fit: contain;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  background-color: #39445a;
+  color: #fff;
+}
+/* хром, сафари */
+.content__container::-webkit-scrollbar {
+  width: 0;
+}
+/* ie 10+ */
+.content__container {
+  -ms-overflow-style: none;
+}
+/* фф (свойство больше не работает, других способов тоже нет)*/
+.content__container {
+  overflow: -moz-scrollbars-none;
+}
+
+.content__poster {
+  border-radius: 10px;
+  position: relative;
+  /*padding: 0 0 150px 0;*/
+  display: flex;
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+.back__poster {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  /*justify-self: flex-start;*/
+  /*align-self: start;*/
+  border-radius: 10px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  /*width: 100%;*/
+
+  /*object-fit: cover;*/
+}
+
+.content__about {
+  padding: 10px 5px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.content__title {
+  /*display: inline-block;*/
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 0.75px;
+}
+
+.content__tag {
+  padding: 5px 5px;
+}
+.content__tagline {
+  align-self: center;
+  padding-bottom: 10px;
+}
+
+.content__description {
+  padding: 5px 5px;
+  /*flex: 1 1 auto;*/
+  /*box-shadow: inset 0 0 2.5px #000000;*/
+  text-align: justify;
+  border-radius: 10px;
+}
+.content__carusel {
+}
