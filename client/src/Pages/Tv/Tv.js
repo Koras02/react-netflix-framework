@@ -29,8 +29,6 @@ const Tv = () => {
            <span className="tv_container">
               TV 프로그램
            </span>
-
-
            <div className="movies">
                {movies.length > 0 && movies.map((movie, index) => (
                    <SingleMovie key={movie.id} media_type={'tv'} movie={movie} {...movie} /

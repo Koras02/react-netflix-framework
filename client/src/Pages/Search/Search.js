@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useState, useEffect} from "react";
 import Nav from "../Nav/";
 import TextField  from "@material-ui/core/TextField";
@@ -37,7 +38,7 @@ const Search = () => {
     function getMovies(page) {
         axios({
            method: "GET",
-           url: `https://api.themoviedb.org/3/search/${type?'tv':'movie'}?api_key=${process.env.REACT_APP_API_KEY}&language=ko-KR&query=${searchText}&page=${page}`
+           url: `https://api.themoviedb.org/3/search/${type?'tv':'movie'}?api_key=${process.env.REACT_APP_API_KEY}&language=ko-KR&query=${searchText}&page=1`
 
         }).then(response => {
             setMovies(response.data.results ?? [])
@@ -52,7 +53,7 @@ const Search = () => {
 
     useEffect(() => {
         getMovies(page)
-    },[type, page, getMovies]);
+    },[type, page]);
 
     return (
         <>

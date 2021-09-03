@@ -21,6 +21,8 @@ let watchedMovie = watched?.find(o => o.id === movie.id) ? true : false ?? false
 return (
     <>
        <div className="handler">
+            
+            <ContentFocus media_type={media_type} id={id}>
            {!watchedMovie ?
             
                <i className={'fa-fw far fa-eye single_movie__icon watch_page__icon'} 
@@ -36,8 +38,6 @@ return (
                         : <i className={"fa fa-bookmark single_movie__icon"}
                              onClick={() => (remove_from_watched(id))} />
                     : <></>}
-            
-            <ContentFocus media_type={media_type} id={id}>
                <Badge className={'beadg__handler'} badgeContent={vote_average} color={
                  (vote_average >= 7 ? 'primary' : (vote_average >= 5 && vote_average < 7) ? 'secondary' : 'error')
                }/>

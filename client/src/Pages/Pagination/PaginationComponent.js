@@ -1,10 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from "@material-ui/lab/Pagination";
-import Typography from '@material-ui/core/Typography';
-import {ThemeProvider} from "@material-ui/styles";
-
-
+ 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",

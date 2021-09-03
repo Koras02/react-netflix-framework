@@ -29,7 +29,12 @@ const StyledMenuBtn = styled.button`
   display: none;
   @media (max-width: 800px) {
     display: inline-block;
+    position:absolute;
+    left:85%;
+    bottom:0px;
   }
+
+
 `;
 const CollapseableMenu = styled.div`
 display: flex;
@@ -101,9 +106,9 @@ line-height:1rem;
 }
 
 @media screen and (max-width: 890px) {
-  padding 1.4rem 2px;
-  font-size:1.4rem;
-  margin-left:70px;
+  padding 2.4rem 2px;
+  font-size:1.9rem;
+  margin-left:0px;
 }
 
 

@@ -25,7 +25,7 @@ const Trending = () => {
 
     return (
         <>
-            <span className="page__title">새로운 영화</span>
+
             <div className="movies">
                 {movies.length > 0 && movies.map((movie,index) => (
                     <React.Fragment key={movie.id}>
