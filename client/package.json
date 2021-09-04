@@ -1,7 +1,7 @@
 {
   "name": "movie-netflix-framework",
   "version": "0.1.0",
-  "homepage": "http://Koras02.github.io/react-netflix-framework/",
+  "homepage": "http://Koras02.github.io/react-netflix-framework",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
