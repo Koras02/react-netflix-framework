@@ -31,17 +31,14 @@ export default function App() {
         <SignUp />
         </IsUserRedirect>
 
-
+{/* 
         <IsUserRedirect
           user={user}
           loggedInPath={ROUTES.BROWSE}
           path={ROUTES.SIGN_IN}
           >
              <SignIn />
-          </IsUserRedirect>
-
-
-        
+          </IsUserRedirect> */}
        </Switch>
     </Router>
   );
