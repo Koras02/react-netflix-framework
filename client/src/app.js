@@ -1,11 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Home } from './pages';
+import { Home, SignIn, SignUp} from './pages';
 import * as ROUTES  from "./constants/routes";
 import { useAuthListener } from './hooks';
 import { IsUserRedirect } from './helpers/routes';
  
-
 export default function App() {
   // 처음엔 useAuth로 연습 
    const { user } = useAuthListener();
@@ -18,18 +17,31 @@ export default function App() {
          user={user} 
          loggedInPath={ROUTES.BROWSE} 
          path={ROUTES.HOME}
+         exact
          >
           <Home />
         </IsUserRedirect>
-       
-         {/* <IsUserRedirect 
-           user={user} 
+
+
+        <IsUserRedirect
+           user={user}
            loggedInPath={ROUTES.BROWSE}
-           path={ROUTES.SIGN_IN}
+           path={ROUTES.SIGN_UP}
+        > 
+        <SignUp />
+        </IsUserRedirect>
+
+
+        <IsUserRedirect
+          user={user}
+          loggedInPath={ROUTES.BROWSE}
+          path={ROUTES.SIGN_IN}
           >
-             <SignIn/>
-         </IsUserRedirect>
-          */}
+             <SignIn />
+          </IsUserRedirect>
+
+
+        
        </Switch>
     </Router>
   );

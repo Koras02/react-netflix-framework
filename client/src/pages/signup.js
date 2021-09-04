@@ -4,21 +4,22 @@ import { Form } from "../components";
 import { FirebaseContext } from '../context/firebase';
 import { useHistory } from 'react-router';
 import * as ROUTES from '../constants/routes';
+import { FooterContainer } from '../containers/footer';
 
 
-export default function  SignIn() {
-
-    // 이메일 주소 비밀 번호 
-    const history = useHistory();
+export default function  SignUp() {
     const { firebase } = useContext(FirebaseContext);
+    const history = useHistory();
+    
+    // 이메일 주소 비밀 번호 
+    const [firstName, setFirstName] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+ 
 
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
-    const isInvalid = password === '' || emailAddress === '' 
+    const isInvalid = firstName == '' || emailAddress === '' || password === ''
 
     async function handleSignIn (e)  {
        e.preventDefault();
@@ -29,14 +30,22 @@ export default function  SignIn() {
          .auth()
          .signInWithEmailAndPassword(emailAddress,password)
         //  .signInPhoneNumber(phoneNumber.password)
-         .then(() => {
-             history.push(ROUTES.BROWSE);
+         .then(result => {
+             result.user.updateProfile({
+                 displayName: firstName,
+                 photoURL: Math.floor(Math.random() * 5 + 1)
+             })
          })
+
+         .then(() => {
+             history.push(ROUTES.BROWSE)
+         })
+
          .catch((error) => {
              setError(error.massage);
              // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
+             setFirstName('')
              setEmailAddress('');
-             setPhoneNumber('');
              setPassword('');
              setError(error.message);
          });        
@@ -47,35 +56,41 @@ export default function  SignIn() {
        <>
          <HeaderContainer>
             <Form>
-              <Form.Title>로그인</Form.Title>
+              <Form.Title>회원 가입</Form.Title>
               {/* 로그인 실패시 에러 */}
-              {error && <Form.Error data-testid="error">죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을수 없습니다. 다시 시도하시거나 
-              <Form.Link>새로운 계정을 등록</Form.Link>
-              
-              하세요.</Form.Error>}
+              {error && <Form.Error data-testid="error">현재 사용중인 이메일이거나 비밀번호 오류입니다.
+              </Form.Error>}
           
-              <Form.Base onSubmit={handleSignIn}>
+              <Form.Base onSubmit={handleSignIn} method="POST">
+              <Form.Input 
+                    placeholder="이메일 주소 또는 전화 번호"  
+                    type="email"
+                    value={emailAddress}
+                    onChange={(e) => setEmailAddress(e.target.value)} 
+                     
+         
+                />
+
                  <Form.Input 
                     placeholder="이메일 주소 또는 전화 번호"  
                     type="email"
                     value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)} 
                    
-                    enabled={isInvalid}
+               
                 />
 
                 <Form.Input 
-                   placeholder="비밀번호"
                    type="password"
+                   placeholder="비밀번호"
+                   autoComplate='off'
                    value={password}
                    onChange={(e) => setPassword(e.target.value)}
-                   autoComplete="false"
-                   enabled={isInvalid}
-              
+             
                 />
 
-                <Form.Submit type="submit" disabled={isInvalid}>
-                    로그인
+                <Form.Submit type="submit" disabled={isInvalid} data-testid="sign-up">
+                   회원가입
                 </Form.Submit>
               </Form.Base>
               <Form.Text>
@@ -86,6 +101,7 @@ export default function  SignIn() {
               </Form.Text>
             </Form>
          </HeaderContainer>
+            <FooterContainer/>
        </>  
     )
 }
