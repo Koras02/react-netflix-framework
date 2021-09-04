@@ -1,6 +1,0 @@
-.movies {
-  display: grid;
-  gap: 15px;
-  margin: 12.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 0.3fr));
-}
