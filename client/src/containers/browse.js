@@ -1,10 +1,10 @@
 import React, {useState, useContext, useEffect} from 'react'
-import Fuse from "fuse.js";
+// import Fuse from "fuse.js";
 import {FirebaseContext } from '../context/firebase';
-import { Header, Loading, Card, Player } from '../components';
-import * as ROUTES from '../constants/routes';
+import {  Loading } from '../components';
+// import * as ROUTES from '../constants/routes';
 import { SelectProfileContainer } from './profiles';
-import { FooterContainer } from './footer';
+// import { FooterContainer } from './footer';
 
  
 export function BrowseContainer({ slides }) {
@@ -13,7 +13,7 @@ export function BrowseContainer({ slides }) {
 
     const [profile, setProfile] = useState([]);
     const [loading,setLoading] = useState(true);
-    const [slideRows, setSlideRows] = useState([]);
+    // const [slideRows] = useState([]);
 
 
     useEffect(() => {
@@ -22,10 +22,10 @@ export function BrowseContainer({ slides }) {
         }, 3000)
     }, [profile.displayName]);
   
-    useEffect(() => {
-        const fuse = new Fuse(slideRows, { 
-            keys: ['data.title', 'data.description', 'data.genre'] });
-    })
+    // useEffect(() => {
+    //     const fuse = new Fuse(slideRows, { 
+    //         keys: ['data.title', 'data.description', 'data.genre'] });
+    // })
 
    
     
