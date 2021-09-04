@@ -1,27 +1,28 @@
+
 import React, { useContext, useState } from 'react';
-import { HeaderContainer } from '../containers/header';
-import { Form } from "../components";
+import { useHistory } from 'react-router-dom';
 import { FirebaseContext } from '../context/firebase';
-import { useHistory } from 'react-router';
-import * as ROUTES from '../constants/routes';
+import { Form } from "../components";
+import { HeaderContainer } from '../containers/header';
 import { FooterContainer } from '../containers/footer';
+import * as ROUTES from '../constants/routes';
 
 
 export default function  SignUp() {
+  const history = useHistory();
     const { firebase } = useContext(FirebaseContext);
-    const history = useHistory();
     
     // 이메일 주소 비밀 번호 
-    const [firstName, setFirstName] = useState('');
+   
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
  
 
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
-    const isInvalid = firstName === '' || emailAddress === '' || password === ''
+    const isInvalid = emailAddress === '' || password === '';
 
-    async function handleSignIn (e)  {
+    async function handleSignUp (e)  {
        e.preventDefault();
 
        // 로그인 방식 auth 접속후 Email과 Password 입력 
@@ -29,26 +30,22 @@ export default function  SignUp() {
        firebase
          .auth()
          .signInWithEmailAndPassword(emailAddress,password)
-        //  .signInPhoneNumber(phoneNumber.password)
          .then(result => {
-             result.user.updateProfile({
-                 displayName: firstName,
-                 photoURL: Math.floor(Math.random() * 5 + 1)
-             })
+            result.user.updateProfile({
+               displayName: emailAddress,
+               photoURL: Math.floor(Math.random() * 5 + 1)
+            })
          })
-
          .then(() => {
              history.push(ROUTES.BROWSE)
          })
 
-         .catch((error) => {
-             setError(error.massage);
+         .catch((error) => { 
              // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
-             setFirstName('')
              setEmailAddress('');
              setPassword('');
              setError(error.message);
-         });        
+            });        
     };
 
     // 로그인 구현 
@@ -61,12 +58,9 @@ export default function  SignUp() {
               {error && <Form.Error data-testid="error">현재 사용중인 이메일이거나 비밀번호 오류입니다.
               </Form.Error>}
           
-              <Form.Base onSubmit={handleSignIn} method="POST">
-                <Form.Input
-                placeholder='First name'
-                value={firstName}
-                onChange={({ target }) => setFirstName(target.value)}
-                />
+              <Form.Base onSubmit={handleSignUp} method="POST">
+       
+
                  <Form.Input 
                     placeholder="이메일 주소 또는 전화 번호"  
                     type="email"
@@ -75,13 +69,14 @@ export default function  SignUp() {
                    
                
                 />
+
                 <Form.Input 
                    type="password"
                    placeholder="비밀번호"
                    autoComplate='off'
                    value={password}
                    onChange={(e) => setPassword(e.target.value)}
-             
+                   autoComplete="false"
                 />
 
                 <Form.Submit type="submit" disabled={isInvalid} data-testid="sign-up">

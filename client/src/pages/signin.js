@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { HeaderContainer } from '../containers/header';
 import { Form } from "../components";
 import { FirebaseContext } from '../context/firebase';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import { FooterContainer } from '../containers/footer';
 
@@ -19,7 +19,7 @@ export default function  SignIn() {
  
 
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
-    const isInvalid = password === '' || emailAddress === '' 
+    const isInvalid = password === '' || emailAddress === ''; 
 
     async function handleSignIn (e)  {
        e.preventDefault();
@@ -29,16 +29,16 @@ export default function  SignIn() {
        firebase
          .auth()
          .signInWithEmailAndPassword(emailAddress,password)
- 
          .then(() => {
              history.push(ROUTES.BROWSE);
-         })
+         },3000)
          .catch((error) => {
              setError(error.massage);
              // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
              setEmailAddress('');
+  
              setPassword('');
-             setError(error.message);
+             
          });        
     };
 
@@ -56,7 +56,7 @@ export default function  SignIn() {
           
               <Form.Base onSubmit={handleSignIn}>
                  <Form.Input 
-                    placeholder="이메일 주소 또는 전화 번호"  
+                    placeholder="이메일 주소"  
                     type="email"
                     value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)} 
@@ -90,5 +90,3 @@ export default function  SignIn() {
        </>  
     )
 }
-
- 
