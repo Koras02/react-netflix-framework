@@ -17,12 +17,11 @@ export default function App() {
          user={user} 
          loggedInPath={ROUTES.BROWSE} 
          path={ROUTES.HOME}
-     
+         exact
          >
           <Home />
         </IsUserRedirect>
 
-{/* 
         <IsUserRedirect
            user={user}
            loggedInPath={ROUTES.BROWSE}
@@ -38,7 +37,7 @@ export default function App() {
           path={ROUTES.SIGN_IN}
           >
              <SignIn />
-          </IsUserRedirect> */}
+          </IsUserRedirect> 
        </Switch>
     </Router>
   );
