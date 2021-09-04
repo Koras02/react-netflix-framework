@@ -4,6 +4,7 @@ import { Form } from "../components";
 import { FirebaseContext } from '../context/firebase';
 import { useHistory } from 'react-router';
 import * as ROUTES from '../constants/routes';
+import { FooterContainer } from '../containers/footer';
 
 
 export default function  SignIn() {
@@ -86,6 +87,7 @@ export default function  SignIn() {
               </Form.Text>
             </Form>
          </HeaderContainer>
+         <FooterContainer />
        </>  
     )
 }

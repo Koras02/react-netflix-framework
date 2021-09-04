@@ -62,15 +62,11 @@ export default function  SignUp() {
               </Form.Error>}
           
               <Form.Base onSubmit={handleSignIn} method="POST">
-              <Form.Input 
-                    placeholder="이메일 주소 또는 전화 번호"  
-                    type="email"
-                    value={emailAddress}
-                    onChange={(e) => setEmailAddress(e.target.value)} 
-                     
-         
+                <Form.Input
+                placeholder='First name'
+                value={firstName}
+                onChange={({ target }) => setFirstName(target.value)}
                 />
-
                  <Form.Input 
                     placeholder="이메일 주소 또는 전화 번호"  
                     type="email"
@@ -79,7 +75,6 @@ export default function  SignUp() {
                    
                
                 />
-
                 <Form.Input 
                    type="password"
                    placeholder="비밀번호"
