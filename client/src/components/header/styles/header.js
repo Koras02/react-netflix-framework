@@ -219,3 +219,6 @@ export const PlayButton = styled.button`
     color: white;
   }
 `;
+
+
+export const TextLink = styled.div``;

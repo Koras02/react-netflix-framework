@@ -1,4 +1,4 @@
- import React, {useState} from "react";
+ import React from "react";
  import {Link as ReachRouteLink } from "react-router-dom";
 import { 
     Background,
@@ -6,7 +6,6 @@ import {
     Logo,
     ButtonLink,
     Group,
-    TextLink,
     Link
 } from "./styles/header";
  

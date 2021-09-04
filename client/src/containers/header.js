@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import Switch from "react-bootstrap/esm/Switch";
+import React from "react";
+ 
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes';
 import Images from "../logo.svg";

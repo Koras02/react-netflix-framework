@@ -19,7 +19,7 @@ export default function  SignUp() {
  
 
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
-    const isInvalid = firstName == '' || emailAddress === '' || password === ''
+    const isInvalid = firstName === '' || emailAddress === '' || password === ''
 
     async function handleSignIn (e)  {
        e.preventDefault();

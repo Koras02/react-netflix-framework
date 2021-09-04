@@ -13,10 +13,10 @@ export default function  SignIn() {
     const history = useHistory();
     const { firebase } = useContext(FirebaseContext);
     const [emailAddress, setEmailAddress] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+   
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+ 
 
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
     const isInvalid = password === '' || emailAddress === '' 
@@ -29,7 +29,7 @@ export default function  SignIn() {
        firebase
          .auth()
          .signInWithEmailAndPassword(emailAddress,password)
-        //  .signInPhoneNumber(phoneNumber.password)
+ 
          .then(() => {
              history.push(ROUTES.BROWSE);
          })
@@ -37,7 +37,6 @@ export default function  SignIn() {
              setError(error.massage);
              // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
              setEmailAddress('');
-             setPhoneNumber('');
              setPassword('');
              setError(error.message);
          });        
