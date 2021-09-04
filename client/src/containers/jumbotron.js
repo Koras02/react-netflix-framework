@@ -17,5 +17,5 @@ export function JumbotronContainer() {
              </Jumbotron>
          ))}
         </Jumbotron.Container>
-    )
+    );
 }

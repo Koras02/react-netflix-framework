@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "header": "넷플릭스란 무엇인가요?",
+      "body": "넷플릭스는 각종 수상 경력에 빛나는 TV 프로그램, 영화, 애니메이션, 다큐멘터리 등 다양한 콘텐츠를 인터넷 연결이 가능한 수천 종의 디바이스에서 시청할 수 있는 스트리밍 서비스입니다.저렴한 월 요금으로 일체의 광고 없이 원하는 시간에 원하는 만큼 즐길 수 있습니다.무궁무진한 콘텐츠가 준비되어 있으며 매주 새로운 TV 프로그램과 영화가 제공됩니다."
+    
+    },
+    {
+      "id": 2,
+      "header": "넷플릭스 요금은 얼마인가요?",
+      "body": "Watch Netflix on your smartphone, tablet, smart TV, laptop or streaming device, all for one low fixed monthly fee. Plans start from £5.99 a month. No extra costs or contracts."
+    },
+    {
+      "id": 3,
+      "header": "어디에서 시청할 수 있나요?",
+      "body": "Watch anywhere, anytime, on an unlimited number of devices. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.\n\nYou can also download your favourite programmes with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere."
+    },
+    {
+      "id": 4,
+      "header": "맴버십을 해지하려면 어떻하나요?",
+      "body": "Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account at any time."
+    },
+    {
+      "id": 5,
+      "header": "넷플릭스에서 어떤 콘텐츠를 시청할 수 있나요?",
+      "body": "Netflix has an extensive library of feature films, documentaries, TV programmes, anime, award-winning Netflix originals, and more. Watch as much as you want, any time you want."
+    },
+    {
+        "id": 6,
+        "header": "아이들이 넷플릭스를 봐도 좋을까요?",
+        "body": "Netflix has an extensive library of feature films, documentaries, TV programmes, anime, award-winning Netflix originals, and more. Watch as much as you want, any time you want."
+    }
+  ]
