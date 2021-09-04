@@ -4,8 +4,8 @@ import { render } from 'react-dom';
 import 'normalize.css';
 import App  from "./app";
 import { GlobalStyles } from './global-styles';
-import { firebase } from './lib/firebase.prod'
 import { FirebaseContext } from './context/firebase';
+import { firebase } from './lib/firebase.prod'
  
 
 // 현재 어디서 랜더링할줄 모르기 때문에 

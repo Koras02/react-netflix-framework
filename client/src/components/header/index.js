@@ -5,13 +5,15 @@ import {
     Container,
     Logo,
     ButtonLink,
-    Group
+    Group,
+    TextLink,
+    Link
 } from "./styles/header";
  
 // Header의 배경화면
 export default function Header({ bg = true, children, ...restProps }) {
     return bg ? (
-      <Background data-testid="header-bg" {...restProps}>
+      <Background {...restProps} data-testid="header-bg">
         {children}
       </Background>
     ) : (
@@ -37,7 +39,17 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
     )
 }
 
+
+
+// 로그인 버튼 링크
 Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>
 }
 
+Header.Group = function HeaderGroup({ children, ...restProps}) {
+  return <Group {...restProps}>{children}</Group>
+}
+
+Header.TextLink = function HeaderTextLink({ children, ...restProps}) {
+  return <Link {...restProps}>{children}</Link>
+}
