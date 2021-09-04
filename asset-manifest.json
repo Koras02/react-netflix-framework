@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.js": "/react-netflix-framework/static/js/main.c00198aa.chunk.js",
-    "main.js.map": "/react-netflix-framework/static/js/main.c00198aa.chunk.js.map",
+    "main.js": "/react-netflix-framework/static/js/main.0946aeda.chunk.js",
+    "main.js.map": "/react-netflix-framework/static/js/main.0946aeda.chunk.js.map",
     "runtime-main.js": "/react-netflix-framework/static/js/runtime-main.6997196a.js",
     "runtime-main.js.map": "/react-netflix-framework/static/js/runtime-main.6997196a.js.map",
     "static/css/2.679831fc.chunk.css": "/react-netflix-framework/static/css/2.679831fc.chunk.css",
-    "static/js/2.65ec9c05.chunk.js": "/react-netflix-framework/static/js/2.65ec9c05.chunk.js",
-    "static/js/2.65ec9c05.chunk.js.map": "/react-netflix-framework/static/js/2.65ec9c05.chunk.js.map",
+    "static/js/2.36f54219.chunk.js": "/react-netflix-framework/static/js/2.36f54219.chunk.js",
+    "static/js/2.36f54219.chunk.js.map": "/react-netflix-framework/static/js/2.36f54219.chunk.js.map",
     "index.html": "/react-netflix-framework/index.html",
     "static/css/2.679831fc.chunk.css.map": "/react-netflix-framework/static/css/2.679831fc.chunk.css.map",
-    "static/js/2.65ec9c05.chunk.js.LICENSE.txt": "/react-netflix-framework/static/js/2.65ec9c05.chunk.js.LICENSE.txt",
+    "static/js/2.36f54219.chunk.js.LICENSE.txt": "/react-netflix-framework/static/js/2.36f54219.chunk.js.LICENSE.txt",
     "static/media/images.095427b5.jpg": "/react-netflix-framework/static/media/images.095427b5.jpg",
+    "static/media/loading.95117db4.gif": "/react-netflix-framework/static/media/loading.95117db4.gif",
     "static/media/logo.5787551b.svg": "/react-netflix-framework/static/media/logo.5787551b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.6997196a.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.65ec9c05.chunk.js",
-    "static/js/main.c00198aa.chunk.js"
+    "static/js/2.36f54219.chunk.js",
+    "static/js/main.0946aeda.chunk.js"
   ]
 }
