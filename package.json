@@ -30,7 +30,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "client": "cd client && yarn start",
+    "client": "react-scripts start",
     "server": "cd server && nodemon server",
     "serve": "cd server && node server.js",
     "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
