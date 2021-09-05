@@ -1,12 +1,13 @@
 import styled from 'styled-components/macro';
 import { Link as ReachRouterLink } from 'react-router-dom';
-import Images from './images.jpg'
-
+ 
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)),
-    url(${({ src }) => (src ? `imag` : `${Images}`)}) top left / cover no-repeat;
+  url(${({src}) => (src ? `${process.env.PUBLIC_URL}/images/misc/home-bg.jpg` : '/images/misc/home-bg.jpg')}) top left / cover no-repeat;
+    // url(${({ src }) => (src ? process.env.PUBLIC_URL + `../images/misc/${src}.jpg` : `../images/misc/home-bg.jpg`)}) top left / cover no-repeat;
+
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
   }
@@ -65,33 +66,33 @@ export const SearchInput = styled.input`
 `;
 
 export const Search = styled.div`
-  display: flex;
-  align-items: center;
-  svg {
-    color: white;
-    cursor: pointer;
-  }
-  @media (max-width: 700px) {
-    display: none;
-  }
+display: flex;
+align-items: center;
+svg {
+  color: white;
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  display: none;
+}
 `;
 
 export const SearchIcon = styled.button`
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  height: 32px;
-  width: 32px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+cursor: pointer;
+background-color: transparent;
+border: 0;
+outline: 0;
+height: 32px;
+width: 32px;
+padding: 0;
+display: flex;
+align-items: center;
+justify-content: center;
 
-  img {
-    filter: brightness(0) invert(1);
-    width: 16px;
-  }
+img {
+  filter: brightness(0) invert(1);
+  width: 16px;
+}
 `;
 
 export const ButtonLink = styled(ReachRouterLink)`
@@ -151,17 +152,17 @@ export const Dropdown = styled.div`
 `;
 
 export const Profile = styled.div`
+display: flex;
+align-items: center;
+margin-left: 20px;
+position: relative;
+button {
+  cursor: pointer;
+}
+&:hover > ${Dropdown} {
   display: flex;
-  align-items: center;
-  margin-left: 20px;
-  position: relative;
-  button {
-    cursor: pointer;
-  }
-  &:hover > ${Dropdown} {
-    display: flex;
-    flex-direction: column;
-  }
+  flex-direction: column;
+}
 `;
 
 export const Feature = styled(Container)`

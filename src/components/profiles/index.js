@@ -1,8 +1,6 @@
 import React from 'react';
 import { Container, Title, List, Item, Picture, Name } from './styles/profiles';
-import loading from './images/loading.gif';
-import Image from './images/users/2.png'
-
+ 
 
 export default function Profiles({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
@@ -21,7 +19,7 @@ Profiles.User = function ProfilesUser({ children, ...restProps }) {
 };
 
 Profiles.Picture = function ProfilesPicture({ src, ...restProps }) {
-  return <Picture {...restProps} src={src ? `${Image}` : `${loading}`} />;
+  return <Picture {...restProps} src={src ? process.env.PUBLIC_URL + `/images/users/${src}.png` : `/images/users/${src}.png` } />;
 };
 
 Profiles.Name = function ProfilesName({ children, ...restProps }) {

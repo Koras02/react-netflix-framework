@@ -18,8 +18,11 @@ export function SelectProfileContainer({ user, setProfile }) {
                   <Profiles.Title>시청하실 프로필을 선택해주세요</Profiles.Title>
                   <Profiles.List>
                       <Profiles.User
-                        onClick={() => setProfile({ displayName: user.displayName, photoURL: user.photoURL})}
                         data-testid="user-profile"
+                        onClick={() => setProfile({ 
+                            displayName: user.displayName, 
+                            photoURL: user.photoURL
+                        })}
                     >
                            <Profiles.Picture src={user.photoURL} />
                           <Profiles.Name>{user.displayName}</Profiles.Name>

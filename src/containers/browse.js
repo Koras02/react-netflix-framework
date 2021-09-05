@@ -63,11 +63,11 @@ export function BrowseContainer({ slides }) {
                          홈
                          </Header.TextLink>
                          <Header.TextLink
-                           active={category === 'films' ?  'true' : 'false'}>
+                           active={category === 'films' ?  'true' : 'false'} onClick={() => setCategory('series')}>
                           TV프로그램       
                         </Header.TextLink>
                         <Header.TextLink
-                           active={category === 'films' ?  'true' : 'false'}>
+                           active={category === 'films' ?  'true' : 'false'} onClick={() => setCategory('films')}>
                           영화 
                         </Header.TextLink>
                         <Header.TextLink
@@ -121,8 +121,6 @@ export function BrowseContainer({ slides }) {
             <Card.Entities>
               {slideItem.data.map((item) => (
                 <Card.Item key={item.docId} item={item}>
-                  <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
-
                   <Card.Meta>
                     <Card.SubTitle>{item.title}</Card.SubTitle>
                     <Card.Text>{item.description}</Card.Text>

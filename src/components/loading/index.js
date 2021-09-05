@@ -1,13 +1,15 @@
 import React from "react";
+ 
 // import { Spinner } from "react-bootstrap";
 import { LockBody, ReleaseBody, Spinner, Picture} from './styles/loading'
-
+ 
 
 export default function Loading({ src, ...restProps }) {
     return (
         <Spinner {...restProps}>
             <LockBody />
-            <Picture src={`/images/users/${src}.png`} data-testid="loading-picture" />
+            <Picture src={src ? process.env.PUBLIC_URL + `/images/users/1.png` : `/images/users/1.png` }  data-testid="loading-picture"/>
+          
         </Spinner>
     );
 }
@@ -16,3 +18,5 @@ export default function Loading({ src, ...restProps }) {
 Loading.ReleaseBody = function LoadingReleaseBody() {
     return <ReleaseBody />;
 }
+
+ 
