@@ -15,7 +15,7 @@ const config = {
   storageBucket: "netflix-react-api.appspot.com",
   messagingSenderId: "587294626140",
   appId: "1:587294626140:web:03c8db3b130d9612707199",
-  measurementId: "G-51W5KGF7NQ",
+  measurementId: "G-51W5KGF7NQ"
 };
 
 const firebase = Firebase.initializeApp(config);

@@ -15,6 +15,7 @@ import {
     Feature,
     FeatureCallOut,
     Text,
+    SearchInput,
 
 } from "./styles/header";
 import Images from '../../images/users/1.png'
@@ -49,7 +50,7 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
     )
 }
 
-Header.Search = function HeaderSearch({ children, ...restProps}) {  
+Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps}) {  
   const [searchActive, setSearchActive] = useState(false);
 
   return (
@@ -57,6 +58,13 @@ Header.Search = function HeaderSearch({ children, ...restProps}) {
         <SearchIcon onClick={() => setSearchActive(!searchActive)}>
            <FaSearch alt="search" data-testid="search-click" />
          </SearchIcon>
+         <SearchInput 
+            value={searchTerm}
+            onChange={({ target }) => setSearchTerm(target.value)}
+            placeholder="검색할 영화 드라마 제목을 입력하세요"
+            active={searchActive}
+            data-testid="search-input"
+          />
     </Search>
 
   )
