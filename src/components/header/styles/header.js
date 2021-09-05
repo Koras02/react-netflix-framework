@@ -1,11 +1,12 @@
 import styled from 'styled-components/macro';
 import { Link as ReachRouterLink } from 'react-router-dom';
+import Images from './images.jpg'
 
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)),
-    url(${({ src }) => (src ? `/images/misc/${src}.jpg` : '/images/misc/home-bg.jpg')}) top left / cover no-repeat;
+    url(${({ src }) => (src ? `imag` : `${Images}`)}) top left / cover no-repeat;
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
   }
@@ -37,11 +38,6 @@ export const Link = styled.p`
   &:last-of-type {
     margin-right: 0;
   }
-
-  @media screen and (max-width:860px) {
-    font-size:10px;
-    margin-right:10px;
-  }
 `;
 
 export const Group = styled.div`
@@ -62,8 +58,6 @@ export const SearchInput = styled.input`
   padding: ${({ active }) => (active === true ? '0 10px' : '0')};
   opacity: ${({ active }) => (active === true ? '1' : '0')};
   width: ${({ active }) => (active === true ? '200px' : '0px')};
-  position:relative;
-  right:10px;
 
   &:focus {
     background-color: rgba(0, 0, 0, 0.8);

@@ -16,6 +16,7 @@ import {
     FeatureCallOut,
     Text,
     SearchInput,
+    PlayButton
 
 } from "./styles/header";
 import Images from '../../images/users/1.png'
@@ -96,7 +97,7 @@ Header.TextLink = function HeaderTextLink({ children, ...restProps}) {
 }
 
 Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
-  return <this.PlayButton {...restProps}>{children}</this.PlayButton>
+  return <PlayButton {...restProps}>{children}</PlayButton>
 }
 
 Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }){
