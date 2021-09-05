@@ -8,39 +8,37 @@ import { FooterContainer } from '../containers/footer';
 
 
 export default function  SignIn() {
+  const { firebase } = useContext(FirebaseContext);
 
     // 이메일 주소 비밀 번호 
     const history = useHistory();
-    const { firebase } = useContext(FirebaseContext);
-    const [emailAddress, setEmailAddress] = useState('');
-   
+    
+    const [emailAdress, setEmailAdress] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
  
 
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
-    const isInvalid = password === '' || emailAddress === ''; 
+    const isInvalid = password === '' || emailAdress === ''; 
 
-    async function handleSignIn (e)  {
-       e.preventDefault();
+    const handleSignIn = (event) =>  {
+      event.preventDefault()
 
        // 로그인 방식 auth 접속후 Email과 Password 입력 
        // 입력완료시 history 로 Router가 설정된 Browse 사이트로 이동
        firebase
          .auth()
-         .signInWithEmailAndPassword(emailAddress,password)
+         .signInWithEmailAndPassword(emailAdress,password)
          .then(() => {
-             history.push(ROUTES.BROWSE);
-         },3000)
+             history.push(ROUTES.BROWSE)
+         })
          .catch((error) => {
-             setError(error.massage);
-             // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
-             setEmailAddress('');
-  
-             setPassword('');
-             
-         });        
-    };
+           // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
+           setEmailAdress('')
+           setPassword('')
+           setError(error.massage)
+         })        
+    }
 
     // 로그인 구현 
     return (
@@ -58,20 +56,19 @@ export default function  SignIn() {
                  <Form.Input 
                     placeholder="이메일 주소"  
                     type="email"
-                    value={emailAddress}
-                    onChange={(e) => setEmailAddress(e.target.value)} 
+                    value={emailAdress}
+                    onChange={({target}) => setEmailAdress(target.value)} 
                    
                     enabled={isInvalid}
                 />
 
                 <Form.Input 
-                   placeholder="비밀번호"
                    type="password"
+                   placeholder="비밀번호"
+                   autoComplete="off"
                    value={password}
-                   onChange={(e) => setPassword(e.target.value)}
-                   autoComplete="false"
+                   onChange={({target}) => setPassword(target.value)}
                    enabled={isInvalid}
-              
                 />
 
                 <Form.Submit type="submit" disabled={isInvalid}>

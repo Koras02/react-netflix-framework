@@ -1,4 +1,4 @@
- import React from "react";
+ import React, { useState } from "react";
  import {Link as ReachRouteLink } from "react-router-dom";
 import { 
     Background,
@@ -6,8 +6,19 @@ import {
     Logo,
     ButtonLink,
     Group,
-    Link
+    Link,
+    Profile,
+    Search,
+    SearchIcon,
+    Picture,
+    Dropdown,
+    Feature,
+    FeatureCallOut,
+    Text,
+
 } from "./styles/header";
+import Images from '../../images/users/1.png'
+import { FaSearch } from "react-icons/fa";
  
 // Header의 배경화면
 export default function Header({ bg = true, children, ...restProps }) {
@@ -25,9 +36,9 @@ Header.Frame = function HeaderFrame({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>;
 }
 
-Header.Grop = function HeaderGroup({ children, ...restProps }) {
-  return <Group {...restProps}>{children}</Group>
-}
+Header.Group = function HeaderGroup({ children, ...restProps }) {
+  return <Group {...restProps}>{children}</Group>;
+};
 
 // 로고 자식요소들
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
@@ -38,6 +49,56 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
     )
 }
 
+Header.Search = function HeaderSearch({ children, ...restProps}) {  
+  const [searchActive, setSearchActive] = useState(false);
+
+  return (
+    <Search {...restProps}>
+        <SearchIcon onClick={() => setSearchActive(!searchActive)}>
+           <FaSearch alt="search" data-testid="search-click" />
+         </SearchIcon>
+    </Search>
+
+  )
+}
+Header.Profile = function HeaderProfile({ children, ...restProps }) {
+  return <Profile {...restProps}>{children}</Profile>
+}
+
+
+Header.Feature = function HeaderFeature({ children, ...restProps }) 
+{
+  return <Feature {...restProps}>{children}</Feature>
+}
+
+Header.Picture = function HeaderPicture ({ src,...restProps}) 
+{
+  return <Picture {...restProps} src={`${Images}` } />
+
+}
+
+Header.Dropdown = function HeaderDropdown({ children, ...restProps }) 
+{
+  return <Dropdown {...restProps}>{children}</Dropdown>
+}
+
+
+Header.TextLink = function HeaderTextLink({ children, ...restProps}) {
+  return <Link {...restProps}>{children}</Link>
+}
+
+Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
+  return <this.PlayButton {...restProps}>{children}</this.PlayButton>
+}
+
+Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }){
+  return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>
+}
+
+
+Header.Text = function HeaderText({ children, ...restProps}) {
+  return <Text {...restProps}>{children}</Text>
+}
 
 
 // 로그인 버튼 링크
@@ -45,10 +106,8 @@ Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>
 }
 
-Header.Group = function HeaderGroup({ children, ...restProps}) {
-  return <Group {...restProps}>{children}</Group>
-}
 
-Header.TextLink = function HeaderTextLink({ children, ...restProps}) {
-  return <Link {...restProps}>{children}</Link>
-}
+
+
+
+ 

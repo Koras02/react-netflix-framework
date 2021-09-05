@@ -35,8 +35,8 @@
     "serve": "cd server && node server.js",
     "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "predeploy": "npm run build",
-    "deploy": "cd client && gh-pages -d build",
-    "build": "cd client && react-scripts build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

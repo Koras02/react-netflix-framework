@@ -11,7 +11,7 @@ export function HeaderContainer({ children }) {
             <Header.Frame>
                 <Header.Logo to={ROUTES.HOME} src={Images} alt="Netflix"  />
                 <Header.ButtonLink to={ROUTES.SIGN_IN}>로그인</Header.ButtonLink>
-             
+                 
                 </Header.Frame>
             {/* Header 첫 구간 children 항목 Header이라는 components들을 자식 항목 으로 받아온다. */}
             {children}

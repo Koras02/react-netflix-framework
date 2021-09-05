@@ -1,17 +1,15 @@
 import styled from 'styled-components/macro';
 import { Link as ReachRouterLink } from 'react-router-dom';
-import Image from "./images.jpg";
-
 
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
-  background:url(${Image})  top left/ cover no-repeat;
-
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)),
+    url(${({ src }) => (src ? `/images/misc/${src}.jpg` : '/images/misc/home-bg.jpg')}) top left / cover no-repeat;
+  @media (max-width: 1100px) {
+    ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
+  }
 `;
-
-
 
 export const Container = styled.div`
   display: flex;
@@ -219,6 +217,3 @@ export const PlayButton = styled.button`
     color: white;
   }
 `;
-
-
-export const TextLink = styled.div``;
