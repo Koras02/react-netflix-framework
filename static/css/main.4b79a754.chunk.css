@@ -1,0 +1,2 @@
+.home-story-show{position:relative;max-width:513px;height:395px}.home-story-show>*{position:absolute;left:0;top:0;width:100%;height:100%}.home-story-show img{z-index:2}.home-story-show video{z-index:1;width:100%;height:400px;top:-20px;margin-left:20px}@media screen and (max-width:1200px){.home-story-show video{position:absolute;width:100%;height:380px;top:-20px}}@media screen and (max-width:640px){.home-story-show img{position:absolute;width:100%;height:359px;top:0}}
+/*# sourceMappingURL=main.4b79a754.chunk.css.map */
