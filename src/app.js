@@ -7,6 +7,7 @@ import { IsUserRedirect, ProtectedRoute } from './helpers/routes';
  
 export default function App() {
   console.log("노드 제외");
+  console.log("현재 버전 2.0")
   console.log("제외된 폴더 노드")
   // 처음엔 useAuth로 연습 
    const { user } = useAuthListener();
