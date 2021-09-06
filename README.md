@@ -1,4 +1,5 @@
 참고한 사이트
 
 Karl Haldwen - React Netflix Clone
-# 1
+
+# node_mdoules 삭제 완료?
