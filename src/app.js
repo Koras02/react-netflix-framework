@@ -6,6 +6,7 @@ import { useAuthListener } from './hooks';
 import { IsUserRedirect, ProtectedRoute } from './helpers/routes';
  
 export default function App() {
+  console.log("노드 제외")
   // 처음엔 useAuth로 연습 
    const { user } = useAuthListener();
 
