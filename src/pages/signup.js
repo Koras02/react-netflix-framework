@@ -65,7 +65,8 @@ export default function  SignUp() {
              setFirstName('');
              setEmailAddress('');
              setPassword('');
-
+ 
+             // 회원가입시
             if (error.code === 'auth/email-already-in-use') {
                // 사용중인 이메일 일때
                setEmailErrorMessage('현재 사용중인 이메일 주소입니다. 다른 이메일 주소를 입력해 주세요');

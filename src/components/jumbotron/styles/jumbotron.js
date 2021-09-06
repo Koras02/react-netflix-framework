@@ -42,6 +42,16 @@ export const Container = styled.div`
 
 export const Pane = styled.div`
    width: 50%;
+   height: 100%;
+
+
+   img {
+       z-index:2;
+   }
+
+   video {
+       z-index:1;
+   }
 
    @media (max-width: 1000px) {
        width: 100%;
@@ -64,4 +74,46 @@ export const SubTitle = styled.div`
 export const Image = styled.img`
    max-width: 100%;
    height: auto;
+   z-index:2;
+
+   
 `;
+
+
+export const Video = styled.div`
+   z-index = 1;
+   
+`;
+
+export const VideoSource = styled.source`
+    left: 96px;
+    top:43px;
+    width: 320px;
+    height: auto;
+`;
+
+
+
+
+export const Show = styled.div`
+   position:relative;
+   width: 513px;
+   height: 385px;
+
+   * {
+       position:absolute;
+       left: 0;
+       top: 0;
+       width: 100%;
+       height: 100%;
+   }
+
+   img {
+       z-index: 2;
+   }
+
+   video {
+       z-index: 1;
+   }
+`;
+

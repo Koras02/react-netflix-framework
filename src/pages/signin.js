@@ -41,6 +41,7 @@ export default function  SignIn() {
              setPassword("");
              history.push(ROUTES.BROWSE)
          })
+         // 로그인시
          // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
          .catch((error) => {
            if (error.code === 'auth/invalid-email') {

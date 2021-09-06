@@ -6,7 +6,9 @@ import {
     Pane,
     Title,
     Image,
-    SubTitle
+    SubTitle,
+    Video,
+    Show
 
 } from "./styles/jumbotron";
 
@@ -38,4 +40,29 @@ Jumbotron.SubTitle = function JumbotronSubTitle({ children, ...restProps }) {
 
 Jumbotron.Image = function JumbotronImage ({children , ...restProps }) {
     return <Image {...restProps}></Image>
+}
+
+Jumbotron.Video = function JumboVideo ({ tpye, children, ...restProps }) {
+    return (
+    <Video></Video>
+    )
+}
+
+Jumbotron.Videos = function JumboVideos ({ type, children, ...restProps}) {
+    return (
+        <Video
+        {...restProps}
+        type='video/mkv' 
+        autoPlay="true" 
+        loop="true"
+        muted
+        playsInline=""
+        >
+
+        </Video>
+    )
+}
+
+Jumbotron.Show = function JumboShow ({ type, children, ...restProps}) {
+    return <Show {...restProps}></Show>
 }
