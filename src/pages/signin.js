@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useCallback} from 'react';
 import { HeaderContainer } from '../containers/header';
 import { Form } from "../components";
 import { FirebaseContext } from '../context/firebase';
@@ -8,37 +8,59 @@ import { FooterContainer } from '../containers/footer';
 
 
 export default function  SignIn() {
+  // 이메일 주소 비밀 번호 
+  const history = useHistory();
+  
   const { firebase } = useContext(FirebaseContext);
 
-    // 이메일 주소 비밀 번호 
-    const history = useHistory();
-    
-    const [emailAdress, setEmailAdress] = useState('');
+  //  const PASSWORD = 'password';
+
+    const [emailAddress, setEmailAddress] = useState('');
+    // const [passwordType, setPasswordType] = useState(PASSWORD);
+    const [errorMessage, setErrorMessage] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
- 
+  
+    
 
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
-    const isInvalid = password === '' || emailAdress === ''; 
+    // const isInvalid = password === '' || emailAddress === ''; 
 
-    const handleSignIn = (event) =>  {
-      event.preventDefault()
+    // 로그인 방식 설정 == form 방식 
+    
+    const handleSignin = (event) =>  {
+      event.preventDefault();
 
        // 로그인 방식 auth 접속후 Email과 Password 입력 
        // 입력완료시 history 로 Router가 설정된 Browse 사이트로 이동
        firebase
          .auth()
-         .signInWithEmailAndPassword(emailAdress,password)
+         .signInWithEmailAndPassword(emailAddress,password)
          .then(() => {
+             setEmailAddress("");
+             setPassword("");
              history.push(ROUTES.BROWSE)
          })
+         // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
          .catch((error) => {
-           // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
-           setEmailAdress('')
-           setPassword('')
-           setError(error.massage)
-         })        
+           if (error.code === 'auth/invalid-email') {
+             setErrorMessage('올바른 이메일 주소를 입력해 주세요');
+           } else if (error.code === 'auth/user-disabled') {
+             setErrorMessage('해당 계정은 규약위반으로 정지되셨습니다.') 
+             
+           } else if (error.code === 'auth/user-not-found') {
+              setErrorMessage('가입되어 있지 않는 이메일 주소입니다.');
+           } else if (error.code === 'auth/wrong-password') {
+              setErrorMessage('비밀번호를 잘못 입력하셨습니다. 다시 입력해주세요');
+           }
+          setError(error.message);
+        });     
     }
+
+  
+    
+
+
 
     // 로그인 구현 
     return (
@@ -46,32 +68,28 @@ export default function  SignIn() {
          <HeaderContainer>
             <Form>
               <Form.Title>로그인</Form.Title>
-              {/* 로그인 실패시 에러 */}
-              {error && <Form.Error data-testid="error">죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을수 없습니다. 다시 시도하시거나 
-              <Form.Link>새로운 계정을 등록</Form.Link>
+      
+              {errorMessage && <Form.Error data-testid="error">{errorMessage}</Form.Error>}
               
-              하세요.</Form.Error>}
-          
-              <Form.Base onSubmit={handleSignIn}>
+              <Form.Base onSubmit={handleSignin} method="POST">
                  <Form.Input 
                     placeholder="이메일 주소"  
-                    type="email"
-                    value={emailAdress}
-                    onChange={({target}) => setEmailAdress(target.value)} 
-                   
-                    enabled={isInvalid}
+                    type="text"
+                    value={emailAddress}
+                    onChange={({target}) => setEmailAddress(target.value)} 
+     
                 />
 
                 <Form.Input 
                    type="password"
-                   placeholder="비밀번호"
-                   autoComplete="off"
                    value={password}
+                   autoComplete="off"
+                   placeholder="비밀번호"
                    onChange={({target}) => setPassword(target.value)}
-                   enabled={isInvalid}
+                   
                 />
 
-                <Form.Submit type="submit" disabled={isInvalid}>
+                <Form.Submit type="submit" data-testid="sign-in" >
                     로그인
                 </Form.Submit>
               </Form.Base>

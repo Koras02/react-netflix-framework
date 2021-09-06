@@ -1,11 +1,12 @@
 import styled from 'styled-components/macro';
 import { Link as ReachRouterLink } from 'react-router-dom';
- 
+import Images from "./images.jpg" 
+
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)),
-  url(${({src}) => (src ? `${process.env.PUBLIC_URL}/images/misc/home-bg.jpg` : '/images/misc/home-bg.jpg')}) top left / cover no-repeat;
+  url(${({src}) => (src ? `${process.env.PUBLIC_URL}/images/misc/home-bg.jpg` : `${Images}`)}) top left / cover no-repeat;
     // url(${({ src }) => (src ? process.env.PUBLIC_URL + `../images/misc/${src}.jpg` : `../images/misc/home-bg.jpg`)}) top left / cover no-repeat;
 
   @media (max-width: 1100px) {

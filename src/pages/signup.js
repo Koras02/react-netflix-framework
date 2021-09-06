@@ -16,16 +16,32 @@ export default function  SignUp() {
    
 
     const [firstName, setFirstName] = useState('');
+
+    // 이메일 입력칸
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+
+    // 이메일 에러 발생시 이벤트
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
+    
+    // 비밀번호 6자 이하
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   
-    const isInvalid = firstName === '' || password === '' || emailAddress === '';
+
   
     // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
    //  const isInvalid = emailAdress === '' || password === '';
  
+    const handleEmailChange = (event) => {
+       setEmailErrorMessage('');
+        setEmailAddress(event.target.value);
+    }
+    const handlePasswordChange = (event) => {
 
+      setPasswordErrorMessage('');
+       setPassword(event.target.value);
+    }
+    
     const handleSignup = (event) => {
        event.preventDefault();
 
@@ -49,9 +65,22 @@ export default function  SignUp() {
              setFirstName('');
              setEmailAddress('');
              setPassword('');
-             setError(error.message)
+
+            if (error.code === 'auth/email-already-in-use') {
+               // 사용중인 이메일 일때
+               setEmailErrorMessage('현재 사용중인 이메일 주소입니다. 다른 이메일 주소를 입력해 주세요');
+            } else if (error.code === 'auth/invalid-email') {
+               // 이메일주소가 틀릴때 이벤트
+               setEmailErrorMessage('올바른 이메일 주소를 입력해 주세요.');
+            } else if (error.code === 'auth/weak-password') {
+               // 6자 미만 비밀번호 입력시
+               setPasswordErrorMessage('비밀번호는 6자 이상이어야 합니다.');
+            }
          })        
+   
     }
+
+    
 
     // 로그인 구현 
     return (
@@ -60,29 +89,38 @@ export default function  SignUp() {
             <Form>
               <Form.Title>회원 가입</Form.Title>
               {/* 로그인 실패시 에러 */}
-              {error && <Form.Error data-testid="error">현재 사용중인 이메일이거나 비밀번호 오류입니다.
-              </Form.Error>}
        
+              {/* {passwordErrorMessage && <Form.Error data-testid="error">
+                 {passwordErrorMessage}
+              </Form.Error>} */}
+
               <Form.Base onSubmit={handleSignup} method="POST">
-                  <Form.Input
+                  {/* <Form.Input
                   placeholder="사용자 이름"
                   value={firstName}
                   onChange={({ target }) => setFirstName(target.value)}
-                  />
-                     
+               
+                  /> */}
+              
                  <Form.Input 
                     placeholder="이메일 주소 또는 전화 번호"  
                     value={emailAddress}
-                    onChange={({ target }) => setEmailAddress(target.value)} 
-                />
+                    onChange={handleEmailChange}
+                    hasError={emailErrorMessage}
+                  //   onChange={({ target }) => setEmailAddress(target.value)} 
+                    />
+               {emailErrorMessage && <Form.Error>{emailErrorMessage}</Form.Error>}
                 <Form.Input 
                    type="password"
                    value={password}
+                   onChange={handlePasswordChange}
+                   hasError={passwordErrorMessage}
                    autoComplate='off'
                    placeholder="비밀번호"
-                   onChange={({ target }) => setPassword(target.value)}
-                />
-                <Form.Submit type="submit" disabled={isInvalid} data-testid="sign-up">
+                  //  onChange={({ target }) => setPassword(target.value)}
+                  /> 
+              {passwordErrorMessage && <Form.Error>{passwordErrorMessage}</Form.Error>}
+                <Form.Submit type="submit"   data-testid="sign-up">
                    회원가입
                 </Form.Submit>
               </Form.Base>

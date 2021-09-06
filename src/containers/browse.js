@@ -7,19 +7,37 @@ import { Header, Loading, Card, Player } from '../components';
 import logo from '../logo.svg';
 import * as ROUTES from '../constants/routes';
 import { FooterContainer } from './footer';
- 
+import axios from "axios";
 
  
 export function BrowseContainer({ slides }) {
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
 
+    // 프로필 == 메인 이동시 로딩구현 
     const [profile, setProfile] = useState([]);
     const [loading,setLoading] = useState(true);
 
+    // 검색 부분 
     const [searchTerm, setSearchTerm] = useState('');
     const [category,setCategory] = useState('series');
     const [slideRows, setSlideRows] = useState([]);
+
+    // 메인홈
+    const [movies, setMovies] = useState([]);
+    
+
+    // TV
+    function getTrending() {
+      // eslint-disable-next-line no-undef
+      axios({
+         method: "GET",
+         url: `http://api.themovie.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&language=ko`
+      }).then(response => {
+         setMovies(response.data.results ?? [])
+      })
+    }
+    
 
     useEffect(() => {
         setTimeout(() => {
@@ -30,6 +48,10 @@ export function BrowseContainer({ slides }) {
      useEffect(() => {
          setSlideRows(slides[category]);
      }, [slides, category]);
+
+     useEffect(() => {
+       getTrending();
+     }, [])
 
      useEffect(() => {
          const fuse = new Fuse(slideRows, { 
@@ -118,22 +140,28 @@ export function BrowseContainer({ slides }) {
         {slideRows.map((slideItem) => (
           <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
+            <div className="movies">
+              {slideItem.length > 0 && movies.map((movie, index) => (
+                <div key={movie.id} id={movie.id} media_type={movie.category} movie={movie} {...movie} />
+               ))} 
+               </div>
             <Card.Entities>
-              {slideItem.data.map((item) => (
+              {/* {slideItem.data.map((src ,item) => (
                 <Card.Item key={item.docId} item={item}>
+                  <Card.Image src={src ? process.env.PUBLIC_URL + `/images/${category}/${item.genre}/${item.slug}/small.jpg` : `/images'/users/${item.genre}`} />
                   <Card.Meta>
                     <Card.SubTitle>{item.title}</Card.SubTitle>
                     <Card.Text>{item.description}</Card.Text>
                   </Card.Meta>
                 </Card.Item>
-              ))}
+              ))} */}
             </Card.Entities>
-            <Card.Feature category={category}>
+            {/* <Card.Feature category={category}>
               <Player>
                 <Player.Button />
                 <Player.Video src="./videos/bunny.mp4" />
               </Player>
-            </Card.Feature>
+            </Card.Feature> */}
           </Card>
         ))}
       </Card.Group>
