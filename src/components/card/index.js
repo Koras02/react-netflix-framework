@@ -1,6 +1,7 @@
 import React, {useState, useContext, createContext} from "react";
 import { FaClosedCaptioning } from "react-icons/fa";
-
+// import { img_300, unavailable, unavaliable } from "../config/config";
+import Row from "./Row/Row";
 import {
     Container,
     Group,
@@ -18,6 +19,8 @@ import {
     Item,
     Image,
 } from './styled/card';
+// import Badge from "@material-ui/core/Badge";
+import requests from "../../utils/requests";
 
 
 export const FeatureContext = createContext();
@@ -84,7 +87,7 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
     const { showFeature, itemFeature, setShowFeature} = useContext(FeatureContext);
 
     return showFeature ?(
-        <Feature {...restProps} src={`/images/${category}/${itemFeature.gener}/${itemFeature.slug}/large.jpg`}>
+        <Feature>
             <Content>
                 <FeatureTitle>{itemFeature.title}</FeatureTitle>
                 <FeatureText>{itemFeature.description}</FeatureText>
@@ -105,3 +108,23 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
         </Feature>
     ) : null;
 }; 
+
+
+Card.SingleMovie = function CardSingleMovie() {
+     const { urls } = requests;
+
+      return (
+          <>
+           <Row
+              title="넷플릭스 오리지널"
+              fetchUrl={urls.weeklytrendingShows}
+              type="series"
+           />  
+           <Row 
+             title="Trending Movies"
+             fetchUrl={urls.weeklytrendingMovies}
+             type="Movies"
+           />
+           </>
+      )
+}

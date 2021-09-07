@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { HeaderContainer } from '../containers/header'
 import { JumbotronContainer } from '../containers/jumbotron';
 import { FaqsContainer } from "../containers/accordion";
 import { FooterContainer } from "../containers/footer";
 import { Feature, OptForm } from '../components';
 
-export default function Home() {
+export default function Home() { 
+ 
+
     return (
         <>
             <HeaderContainer>
@@ -16,7 +18,8 @@ export default function Home() {
                     <OptForm.Text>
                     시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.
                     </OptForm.Text>
-                    <OptForm.Input placeholder="이메일 주소" />
+                    <OptForm.Input placeholder="이메일 주소" htmlFor="email_input"/>
+                    
                     <OptForm.Button>시작하기</OptForm.Button>
                  </OptForm>
                 </Feature>

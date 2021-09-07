@@ -39,7 +39,7 @@ export const Input = styled.input`
    box-sizing: border-box;
 `;
 
-export const Button = styled.button`
+export const Button = styled.a`
    min-width: 74px;
    display:flex;
    align-items: center;

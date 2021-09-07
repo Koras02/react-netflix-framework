@@ -1,44 +1,48 @@
+/* eslint-disable no-restricted-globals */
 import React, {useState, useContext, useEffect} from 'react'
 import Fuse from "fuse.js";
 import {FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
-import { Header, Loading, Card, Player } from '../components';
+import { Header, Loading, Card } from '../components';
 // import { useAuthListener } from 'hooks';
 import logo from '../logo.svg';
 import * as ROUTES from '../constants/routes';
 import { FooterContainer } from './footer';
-import axios from "axios";
+ 
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+
+
+export function BrowseContainer({ slides }) {
+  const { firebase } = useContext(FirebaseContext);
+  const user = firebase.auth().currentUser || {};
+  
+  // 프로필 == 메인 이동시 로딩구현 
+  const [profile, setProfile] = useState([]);
+  const [loading,setLoading] = useState(true);
+  
+  // 검색 부분 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [category,setCategory] = useState('series');
+  const [slideRows, setSlideRows] = useState([]);
+  
+  // 메인홈
+  const [movies, setMovies] = useState([]);
+  const [value, setValue] = React.useState(0);
+  const [page,setPage] = useState(1);
+ 
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (value===0) history.push('/browse') 
+    else if (value===1) history.push('homes')
+    else if (value===2) history.push('tv')
+    else if (value===3) history.push('movies')
+  },[value,history]);
 
  
-export function BrowseContainer({ slides }) {
-    const { firebase } = useContext(FirebaseContext);
-    const user = firebase.auth().currentUser || {};
-
-    // 프로필 == 메인 이동시 로딩구현 
-    const [profile, setProfile] = useState([]);
-    const [loading,setLoading] = useState(true);
-
-    // 검색 부분 
-    const [searchTerm, setSearchTerm] = useState('');
-    const [category,setCategory] = useState('series');
-    const [slideRows, setSlideRows] = useState([]);
-
-    // 메인홈
-    const [movies, setMovies] = useState([]);
-    
-
-    // TV
-    function getTrending() {
-      // eslint-disable-next-line no-undef
-      axios({
-         method: "GET",
-         url: `http://api.themovie.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&language=ko`
-      }).then(response => {
-         setMovies(response.data.results ?? [])
-      })
-    }
-    
-
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
@@ -49,9 +53,24 @@ export function BrowseContainer({ slides }) {
          setSlideRows(slides[category]);
      }, [slides, category]);
 
-     useEffect(() => {
-       getTrending();
-     }, [])
+      
+    function getTrending(page) {
+      axios({
+        method:"GET",
+        url: `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&l&page=${page}`
+      }).then(response => {
+          setMovies(response.data.results ?? [])
+          // setPage(response.data.total_pages)
+          // console.log(response.data.results)
+      })
+    }
+    
+    
+    useEffect(() => {
+    getTrending(page);
+    },[page])
+
+
 
      useEffect(() => {
          const fuse = new Fuse(slideRows, { 
@@ -80,24 +99,27 @@ export function BrowseContainer({ slides }) {
                     <Header.Group>
                       <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"/>
                       <Header.TextLink
-                         active={category === 'series' ? 'ture' : 'false'}
-                         onClick={() => setCategory('series')}>
+                        onClick={()=>{history.push('/browse')}}
+                      >
                          홈
-                         </Header.TextLink>
+                      </Header.TextLink>
                          <Header.TextLink
-                           active={category === 'films' ?  'true' : 'false'} onClick={() => setCategory('series')}>
+                          onClick={()=>{history.push('/tv')}}
+                         >
                           TV프로그램       
                         </Header.TextLink>
                         <Header.TextLink
-                           active={category === 'films' ?  'true' : 'false'} onClick={() => setCategory('films')}>
+                           onClick={()=>{history.push('/movies')}}
+                        >
                           영화 
                         </Header.TextLink>
                         <Header.TextLink
-                           active={category === 'films' ?  'true' : 'false'}>
+                          onClick={() => history.push('/')}
+                        >
                           최신 콘텐츠       
                         </Header.TextLink>
-                        <Header.TextLink
-                           active={category === 'films' ?  'true' : 'false'}>
+                        <Header.TextLink>
+              
                           내가찜한 콘텐츠       
                         </Header.TextLink>
                     </Header.Group>
@@ -125,7 +147,7 @@ export function BrowseContainer({ slides }) {
                 </Header.Frame>
                 
                 {/* 메인 광고창 */}
-                <Header.Feature>
+                {/* <Header.Feature>
                      <Header.FeatureCallOut>조커</Header.FeatureCallOut>
                    <Header.Text>
                         Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
@@ -133,37 +155,11 @@ export function BrowseContainer({ slides }) {
                         futile attempt to feel like he's part of the world around him.
                    </Header.Text>
                    <Header.PlayButton>플레이</Header.PlayButton>
-                </Header.Feature>
+                </Header.Feature> */}
           </Header>       
 
           <Card.Group>
-        {slideRows.map((slideItem) => (
-          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
-            <Card.Title>{slideItem.title}</Card.Title>
-            <div className="movies">
-              {slideItem.length > 0 && movies.map((movie, index) => (
-                <div key={movie.id} id={movie.id} media_type={movie.category} movie={movie} {...movie} />
-               ))} 
-               </div>
-            <Card.Entities>
-              {/* {slideItem.data.map((src ,item) => (
-                <Card.Item key={item.docId} item={item}>
-                  <Card.Image src={src ? process.env.PUBLIC_URL + `/images/${category}/${item.genre}/${item.slug}/small.jpg` : `/images'/users/${item.genre}`} />
-                  <Card.Meta>
-                    <Card.SubTitle>{item.title}</Card.SubTitle>
-                    <Card.Text>{item.description}</Card.Text>
-                  </Card.Meta>
-                </Card.Item>
-              ))} */}
-            </Card.Entities>
-            {/* <Card.Feature category={category}>
-              <Player>
-                <Player.Button />
-                <Player.Video src="./videos/bunny.mp4" />
-              </Player>
-            </Card.Feature> */}
-          </Card>
-        ))}
+             <Card.SingleMovie/>
       </Card.Group>
 
         <FooterContainer />

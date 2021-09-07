@@ -3,9 +3,17 @@
     "id": 2,
     "title": "즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요.",
     "subTitle": "간편하게 저장하고 빈틈없이 즐겨보세요.",
-    "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg",
+    "image": "https://i.esdrop.com/d/mjql4oykk6mq/LblGNNhuDp.gif",
     "alt": "Watch on mobile",
     "direction": "row-reverse"
+  },
+  {
+    "id": 3,
+    "title": "즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요.",
+    "subTitle": "간편하게 저장하고 빈틈없이 즐겨보세요.",
+    "image": "https://i.esdrop.com/d/mjql4oykk6mq/d5PX5HXIG5.gif",
+    "alt": "Watch on mobile",
+    "direction": "row"
   },
  
   {

@@ -4,6 +4,10 @@ import Firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
+// firbase 데이터 베이스 시드 
+// import { seedDatabase } from '../seed';
+
+
 
 // 1) when seeding the database you'll have to uncomment this!
 // import { seedDatabase } from '../seed';
@@ -14,8 +18,8 @@ const config = {
   projectId: "netflix-react-api",
   storageBucket: "netflix-react-api.appspot.com",
   messagingSenderId: "587294626140",
-  appId: "1:587294626140:web:03c8db3b130d9612707199",
-  measurementId: "G-51W5KGF7NQ"
+  appId: "1:587294626140:web:0eee8e1846770fce707199",
+  measurementId: "G-9V2GVHCBHS"
 };
 
 const firebase = Firebase.initializeApp(config);
@@ -23,7 +27,13 @@ const firebase = Firebase.initializeApp(config);
 // seedDatabase(firebase);
 // 3) once you have populated the database (only run once!), re-comment this so you don't get duplicate data
 
+
+// firebase 로 영화 DataBase 
+// seedDatabase(firebase);
+
 export { firebase };
+
+
 
 /* ------------------------------------------------------ 앱 초기화 부분 끝 ----------------------------------------------------*/
 

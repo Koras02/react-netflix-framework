@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container
     ,Text,
      Input,
@@ -21,7 +21,18 @@ OptForm.Text = function OptFormText({ children, ...restProps}) {
 }
 
 OptForm.Input = function OptFormInput({ children, ...restProps}) {
-    return <Input {...restProps}>{children}</Input>
+ 
+
+
+    return (
+    <>
+    
+    <Input {...restProps}
+    >
+        {children}   
+    </Input>
+    </>
+    );
 }
 
 OptForm.Button = function OptFormButton({ children, ...restProps}) {
