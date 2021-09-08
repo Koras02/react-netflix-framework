@@ -10,7 +10,7 @@ import {
   signinRequest,
   signinSuccess,
   signinFail,
-  signinPasswordError
+ 
 } from '../reducers/slices/userLoginSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {auth} from '../lib/firebase.prod';
@@ -62,7 +62,7 @@ export default function  SignIn() {
               <Form.Title>로그인</Form.Title>
               <Form.Base onSubmit={handleSubmit(handleSubmitonClick)}>  
                {error && <Form.Error>죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을 수 없습니다. 다시 시도하시거나 새로운 계정을 등록하세요.</Form.Error>}
-              {errors.wrongPassword && <Form.Error>죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을 수 없습니다. 다시 시도하시거나 새로운 계정을 등록하세요.</Form.Error>}
+              
  
                  <Input 
                     type="text"
@@ -71,6 +71,7 @@ export default function  SignIn() {
 
                       // 이메일 주소 입력 방식
                       pattern: {
+                        // 정규 표현식사용 = Regex
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                         message: '정확한 이메일 주소를 입력해 주세요',
                       }

@@ -1,8 +1,21 @@
-참고한 사이트
+## Netflix Clone 포트폴리오
 
-Karl Haldwen - React Netflix Clone
+## 링크
 
-Netflix_front = chaminhye
-https://github.com/chaminhye/Naflex_front
+## [Demo 버전 (github)](https://koras02.github.io/react-netflix-framework/)
 
-# node_mdoules 삭제 완료?
+## 사용 라이브러리
+
+- React \* Redux
+
+  - web Client & server management
+
+- Node.js + NodeExpress
+
+  - web Server & test
+
+- React Redux & toolkit
+
+  - Login & Register Actions
+
+  ## 구현 목록
