@@ -1,14 +1,16 @@
 .tv img {
-  width: 160px;
+  width: 190px;
+  height: 300px;
   object-fit: contain;
 }
 
 .tv {
   margin: 16px;
-  margin-left: 32px;
+  margin-left: 1px;
   transition: transform 0.2 ease-out;
 }
 
 .tv:hover {
   transform: scale(1.08);
+  transition: 1.5s;
 }

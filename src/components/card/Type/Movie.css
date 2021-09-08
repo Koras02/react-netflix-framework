@@ -1,5 +1,5 @@
 .movie img {
-  width: 160px;
+  width: 190px;
   object-fit: contain;
 }
 .movie {
@@ -10,5 +10,6 @@
 
 .movie:hover {
   transform: scale(1.08);
+  transition: 3s;
   cursor: pointer;
 }

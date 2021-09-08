@@ -159,7 +159,7 @@ export function BrowseContainer({ slides }) {
           </Header>       
 
           <Card.Group>
-             <Card.SingleMovie/>
+            
       </Card.Group>
 
         <FooterContainer />

@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import values from "../../../utils/values";
-import "./Series.css";
+import "./Series.css"
 
 function Series({ data }) {
     const dummy_poster =

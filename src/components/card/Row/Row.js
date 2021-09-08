@@ -26,19 +26,9 @@ function Row({ title, fetchUrl,localUrl, type }) {
 
     return (
         <div className="row">
-            <h2>{title}</h2>
+            <h2 class="row__title">{title}</h2>
             <div className="row__movies">
-                {loaded && 
-                  movies.map((movie) => {
-                    // type 중에 영화 tpye이라면 Movie 컴포넌트로 
-                    // type 중에 TV type 이라면 Tv 시리즈를 보여줌
-                      return type == "movies" ? (
-                          <Movie data={movie} key={movie.id}/>
-                      ) : (
-                          <Series data={movie} key={movie.id} />
-                      )
-                  })
-                }
+     
             </div>
         </div>
     )

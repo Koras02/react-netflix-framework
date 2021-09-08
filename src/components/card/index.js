@@ -86,7 +86,7 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
    
     const { showFeature, itemFeature, setShowFeature} = useContext(FeatureContext);
 
-    return showFeature ?(
+    return showFeature ? (
         <Feature>
             <Content>
                 <FeatureTitle>{itemFeature.title}</FeatureTitle>
@@ -110,21 +110,4 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
 }; 
 
 
-Card.SingleMovie = function CardSingleMovie() {
-     const { urls } = requests;
-
-      return (
-          <>
-           <Row
-              title="넷플릭스 오리지널"
-              fetchUrl={urls.weeklytrendingShows}
-              type="series"
-           />  
-           <Row 
-             title="Trending Movies"
-             fetchUrl={urls.weeklytrendingMovies}
-             type="Movies"
-           />
-           </>
-      )
-}
+ 

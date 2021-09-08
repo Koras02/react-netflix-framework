@@ -2,10 +2,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import values from '../../../utils/values';
-import "./Movie.css"
+import "./Movie.css";
 
 
-function Movie({ data }) {
+function Tv({ data }) {
     const dummy_poster = "https://keep-calm.net/images/keep-calm-and-netflix-and-chill-600-800.jpg";
  
     return (
@@ -24,4 +24,4 @@ function Movie({ data }) {
     );
 }
 
-export default Movie;
+export default Tv;
