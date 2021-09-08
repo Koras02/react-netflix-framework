@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {auth} from '../lib/firebase.prod';
 import { Input } from '../components/form/styles/form'; 
 import { ImSpinner, ImSpinner2 } from 'react-icons/im';
+import { SignInHeaderContainer } from '../containers/Form/SignInHeader';
  
  
 
@@ -57,13 +58,11 @@ export default function  SignIn() {
     // 로그인 구현 
     return (
        <>
-         <HeaderContainer>
+         <SignInHeaderContainer>
             <Form login>
               <Form.Title>로그인</Form.Title>
               <Form.Base onSubmit={handleSubmit(handleSubmitonClick)}>  
                {error && <Form.Error>죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을 수 없습니다. 다시 시도하시거나 새로운 계정을 등록하세요.</Form.Error>}
-              
- 
                  <Input 
                     type="text"
                     {...register('email', {
@@ -71,7 +70,7 @@ export default function  SignIn() {
 
                       // 이메일 주소 입력 방식
                       pattern: {
-                        // 정규 표현식사용 = Regex
+                        // 정규 표현식사용 = ㄱ
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                         message: '정확한 이메일 주소를 입력해 주세요',
                       }
@@ -125,13 +124,13 @@ export default function  SignIn() {
            )}
               </Form.Base>
               <Form.Text>
-                Netflix 회원이 아닌가요? <Form.Link to="/signup">지금 가입하세요</Form.Link>
+                Netflix 회원이 아닌가요? <Form.Link to={ROUTES.HOME}>지금 가입하세요</Form.Link>
               </Form.Text>
               <Form.Text>
                   이 페이지는 Google reCAPTCHA의 보호를 받아 사용자가 로봇이 아님을 확인합니다. <Form.AboutLink href="">자세히 알아보기</Form.AboutLink>
               </Form.Text>
             </Form>
-         </HeaderContainer>
+         </SignInHeaderContainer>
          <FooterContainer signin />
        </>  
     )

@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {auth} from '../lib/firebase.prod';
 import { Input } from '../components/form/styles/form';
 import {ImSpinner} from "react-icons/im";
+import { SignInHeaderContainer } from '../containers/Form/SignInHeader';
 
 
 export default function  SignUp() {
@@ -59,7 +60,7 @@ export default function  SignUp() {
     // 로그인 구현 
     return (
        <>
-         <HeaderContainer>
+         <SignInHeaderContainer>
             <Form login>
               <Form.Title>회원 가입</Form.Title>
               {/* 로그인 실패시 에러 */}
@@ -123,14 +124,14 @@ export default function  SignUp() {
 
                
               </Form.Base>
-              <Form.Text>
+              {/* <Form.Text>
                 Netflix 회원이 아닌가요? <Form.Link to={ROUTES.SIGN_UP}>지금 가입하세요</Form.Link>
-              </Form.Text>
+              </Form.Text> */}
               <Form.Text>
                   이 페이지는 Google reCAPTCHA의 보호를 받아 사용자가 로봇이 아님을 확인합니다. <Form.AboutLink href="">자세히 알아보기</Form.AboutLink>
               </Form.Text>
             </Form>
-         </HeaderContainer>
+         </SignInHeaderContainer>
             <FooterContainer/>
        </>  
     )
