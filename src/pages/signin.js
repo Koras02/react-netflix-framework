@@ -1,98 +1,127 @@
-import React, { useContext, useState,useCallback} from 'react';
-import { HeaderContainer } from '../containers/header';
+import React, { useContext, useState} from 'react';
+import { useHistory,useParams } from 'react-router-dom';
 import { Form } from "../components";
-import { FirebaseContext } from '../context/firebase';
-import { useHistory } from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
+import { HeaderContainer } from '../containers/header';
 import { FooterContainer } from '../containers/footer';
-
+import { FirebaseContext } from '../context/firebase';
+import * as ROUTES from '../constants/routes';
+import { useForm } from "react-hook-form";
+import {
+  signinRequest,
+  signinSuccess,
+  signinFail,
+  signinPasswordError
+} from '../reducers/slices/userLoginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {auth} from '../lib/firebase.prod';
+import { Input } from '../components/form/styles/form'; 
+import { ImSpinner, ImSpinner2 } from 'react-icons/im';
+ 
+ 
 
 export default function  SignIn() {
   // 이메일 주소 비밀 번호 
   const history = useHistory();
-  
-  const { firebase } = useContext(FirebaseContext);
 
-  //  const PASSWORD = 'password';
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.userLogin);
 
-    const [emailAddress, setEmailAddress] = useState('');
-    // const [passwordType, setPasswordType] = useState(PASSWORD);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-  
+  const { email } = useParams();
+ 
+
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+    watch,
+    reset,
+  } = useForm();
+
+
+  const handleSubmitonClick = async(data) => {
+      dispatch(signinRequest());
+      try {
+        const response = await auth.signInWithEmailAndPassword(
+              data.email,
+              data.password
+        );
+ 
+        dispatch(signinSuccess(JSON.stringify(response.user)));
+          history.push(ROUTES.BROWSE);
+      } catch(error) {
+            dispatch(signinFail(error.message));
     
-
-    // 핸드폰 번호 이메일 && 핸드폰번호 비밀번호 입력 방식 
-    // const isInvalid = password === '' || emailAddress === ''; 
-
-    // 로그인 방식 설정 == form 방식 
-    
-    const handleSignin = (event) =>  {
-      event.preventDefault();
-
-       // 로그인 방식 auth 접속후 Email과 Password 입력 
-       // 입력완료시 history 로 Router가 설정된 Browse 사이트로 이동
-       firebase
-         .auth()
-         .signInWithEmailAndPassword(emailAddress,password)
-         .then(() => {
-             setEmailAddress("");
-             setPassword("");
-             history.push(ROUTES.BROWSE)
-         })
-         // 로그인시
-         // 패스워드와 이메일 주소를 입력하지않거나 맞지 않을 경우 오류
-         .catch((error) => {
-           if (error.code === 'auth/invalid-email') {
-             setErrorMessage('올바른 이메일 주소를 입력해 주세요');
-           } else if (error.code === 'auth/user-disabled') {
-             setErrorMessage('해당 계정은 규약위반으로 정지되셨습니다.') 
-             
-           } else if (error.code === 'auth/user-not-found') {
-              setErrorMessage('가입되어 있지 않는 이메일 주소입니다.');
-           } else if (error.code === 'auth/wrong-password') {
-              setErrorMessage('비밀번호를 잘못 입력하셨습니다. 다시 입력해주세요');
-           }
-          setError(error.message);
-        });     
-    }
-
-  
-    
-
-
+      }
+  }; 
 
     // 로그인 구현 
     return (
        <>
          <HeaderContainer>
-            <Form>
+            <Form login>
               <Form.Title>로그인</Form.Title>
-      
-              {errorMessage && <Form.Error data-testid="error">{errorMessage}</Form.Error>}
-              
-              <Form.Base onSubmit={handleSignin} method="POST">
-                 <Form.Input 
-                    placeholder="이메일 주소"  
+              <Form.Base onSubmit={handleSubmit(handleSubmitonClick)}>  
+               {error && <Form.Error>죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을 수 없습니다. 다시 시도하시거나 새로운 계정을 등록하세요.</Form.Error>}
+              {errors.wrongPassword && <Form.Error>죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을 수 없습니다. 다시 시도하시거나 새로운 계정을 등록하세요.</Form.Error>}
+ 
+                 <Input 
                     type="text"
-                    value={emailAddress}
-                    onChange={({target}) => setEmailAddress(target.value)} 
-     
-                />
+                    {...register('email', {
+                      required: '',
 
-                <Form.Input 
-                   type="password"
-                   value={password}
-                   autoComplete="off"
+                      // 이메일 주소 입력 방식
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: '정확한 이메일 주소를 입력해 주세요',
+                      }
+                    })}
+                    id='email'
+                    defaultValue={email ? email: ''}
+                    placeholder='이메일 주소'
+                />
+                {/* 이메일 입력 사항을 위반했을때 */}
+                {errors.email && <span>{errors.email.message}</span>}
+
+               {/* 비밀번호 입력 규약 최소 4~10글자 입력 이 이상 입력시 에러 */}
+                <Input 
+                  type="password"
+                   {...register('password', {
+                     required: 
+                       '비밀번호는 최소 4~10글자 이상 입력하셔야 합니다..',
+                      
+                       minLength: {
+                        value: 4,
+                        message:
+                            '비밀번호는 최소 4-10글자 이상 입력하셔야 합니다.',
+                    },
+                    // 비밀번호 최대 수 15글자 이상 입력시 에러 발생
+                    maxLength: {
+                        value: 15,
+                        message:
+                            '최대 허용 비밀번호 수를 초과했습니다.',
+                    },
+                   // 비밀번호 틀릴때
+                    wrongPassword: {
+                        value:'password',
+                        message: '잘못된 비밀번호 입니다.'
+                    }
+                   })}
+                   id='password'
                    placeholder="비밀번호"
-                   onChange={({target}) => setPassword(target.value)}
-                   
                 />
-
-                <Form.Submit type="submit" data-testid="sign-in" >
+                 {errors.password && <span>{errors.password.message}</span>}
+            
+              {loading ? (
+                <Form.Submit>
+                    <ImSpinner/>
+                  </Form.Submit>
+              ): (
+                <Form.Submit 
+                type="submit" 
+                data-testid="sign-in" >
                     로그인
                 </Form.Submit>
+           )}
               </Form.Base>
               <Form.Text>
                 Netflix 회원이 아닌가요? <Form.Link to="/signup">지금 가입하세요</Form.Link>
@@ -102,7 +131,7 @@ export default function  SignIn() {
               </Form.Text>
             </Form>
          </HeaderContainer>
-         <FooterContainer />
+         <FooterContainer signin />
        </>  
     )
 }

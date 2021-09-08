@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 
@@ -43,6 +43,17 @@ export const Base = styled.form`
    flex-direction: column;
    max-width; 450px;
    width: 100%;
+
+
+   p {
+      font-size: 16px;
+   }
+
+   span {
+      font-size: 13px;
+      color:#ff9210;
+      margin-bottom: 20px;
+   }
 
 `;
 
@@ -100,6 +111,31 @@ export const Input = styled.input`
  
 `;
 
+export const Input2 = styled.input`
+   background: #333;
+   broder-radius: 4px;
+   border: 0;
+   color: #fff;
+   height: 50px;
+   line-height: 50px;
+   padding: 5px 20px;
+   margin-bottom: 20px;
+   outline:none;
+
+
+ 
+
+   &:focus {
+      border-bottom:1px solid red;
+      transition: 0.5s;
+   
+      
+    }
+  
+   
+ 
+`;
+
 
 export const Submit = styled.button`
    background: #e50914;
@@ -123,5 +159,20 @@ export const AboutLink = styled.a`
 
 `;
 
+const rotate = keyframes`
+   from {
+      transform: ratate(0deg);
+   } 
+   to {
+      transform: rotate(360deg);
+   }
+ `
 
 
+export const Loading = styled.div`
+    display:flex;
+    justfiy-content: center;
+    animation: ${rotate} 1s linear infinite;
+    z-index: 1;
+    
+`;
