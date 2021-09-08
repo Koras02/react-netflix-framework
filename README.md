@@ -32,4 +32,4 @@
 
 ## 구현할 구조
 
-![netflix](./넷플릭스 클론 구성.drawio.png)
+![넷플릭스 클론 구성 drawio](https://user-images.githubusercontent.com/67436032/132532908-acd42c39-dde5-4600-9c64-57f09e46896c.png)
