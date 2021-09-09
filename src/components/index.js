@@ -13,3 +13,4 @@ export { default as Player } from './player';
 export { default as PassWordFooter } from './footer/PasswordReset';
 export { default as PassWordForm } from './passwordForm';
 export { default as PassWordHeader } from './passwordHeader';
+export { default as Banner } from './Banner';

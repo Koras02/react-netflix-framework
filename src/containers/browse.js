@@ -3,21 +3,15 @@ import React, {useState, useContext, useEffect} from 'react'
 import Fuse from "fuse.js";
 import {FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
-import { Header, Loading, Card } from '../components';
+import { Header, Loading, Banner } from '../components';
 // import { useAuthListener } from 'hooks';
 import logo from '../logo.svg';
 import * as ROUTES from '../constants/routes';
 import { FooterContainer } from './footer';
  
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-
-
-import { requests } from '../utils/requests';
-
-import { useParams } from 'react-router';
-
-import { turncate } from '../utils/turncate';
+ 
+// import Banner from '.';
 
  
 
@@ -35,15 +29,11 @@ export function BrowseContainer({ slides }) {
   const [slideRows, setSlideRows] = useState([]);
   
   // 메인홈
-  const [movies, setMovies] = useState([]);
-  const [value, setValue] = React.useState(0);
-  const [page,setPage] = useState(1);
+ 
  
 
   const history = useHistory();
-
-  const { param } = useParams();
-
+ 
  
  
     useEffect(() => {
@@ -57,23 +47,10 @@ export function BrowseContainer({ slides }) {
      }, [slides, category]);
 
       
-    function getTrending(page) {
-      axios({
-        method:"GET",
-        url: `https://api.themoviedb.org/3/trending/week/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=ko`
-      }).then(response => {
-          setMovies(response.data.results ?? [])
-          // setPage(response.data.total_pages)
-          // console.log(response.data.results)
-      })
-    }
+ 
     
     
-    useEffect(() => {
-    getTrending(page);
-    },[page])
-
-
+   
 
      useEffect(() => {
          const fuse = new Fuse(slideRows, { keys: ['data.description','data.title', 'data.genre'] });
@@ -101,16 +78,18 @@ export function BrowseContainer({ slides }) {
                       
                        홈
                       </Header.TextLink>
-                         <Header.TextLink>
+                         <Header.TextLink
+                          onClick={() => history.push(ROUTES.BROWSETV)}
+                         >
                           TV프로그램       
                         </Header.TextLink>
                         <Header.TextLink 
-                          onClick={() => history.push(ROUTES.MOVIES)}
+                          onClick={() => history.push(ROUTES.BROWSEMOVIES)}
                         >
                           영화 
                         </Header.TextLink>
                         <Header.TextLink
-                          onClick={() => history.push('/')}
+                          onClick={() => history.push(ROUTES.BROWSELATEST)}
                         >
                           최신 콘텐츠       
                         </Header.TextLink>
@@ -146,7 +125,8 @@ export function BrowseContainer({ slides }) {
         {/* 헤더 끝 */}
 
         {/* Rows 부분 */}
-        
+         {/* 배너 */}
+         <Banner />
 
         <FooterContainer />      
         </>
