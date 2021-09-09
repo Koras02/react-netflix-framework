@@ -20,7 +20,7 @@ import {
   Logo,
 } from './styles/header';
 
-export default function Header({ bg = true, children, ...restProps }) {
+export default function PasswordHeader({ bg = true, children, ...restProps }) {
   return bg ? (
     <Background data-testid="header-bg" {...restProps}>
       {children}
@@ -30,15 +30,15 @@ export default function Header({ bg = true, children, ...restProps }) {
   );
 }
 
-Header.Frame = function HeaderFrame({ children, ...restProps }) {
+PasswordHeader.Frame = function HeaderFrame({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 };
 
-Header.Group = function HeaderGroup({ children, ...restProps }) {
+PasswordHeader.Group = function HeaderGroup({ children, ...restProps }) {
   return <Group {...restProps}>{children}</Group>;
 };
 
-Header.Logo = function HeaderLogo({ to, ...restProps }) {
+PasswordHeader.Logo = function HeaderLogo({ to, ...restProps }) {
   return (
     <ReachRouterLink to={to}>
       <Logo {...restProps} />
@@ -46,7 +46,7 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
   );
 };
 
-Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps }) {
+PasswordHeader.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps }) {
   const [searchActive, setSearchActive] = useState(false);
 
   return (
@@ -65,40 +65,41 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
   );
 };
 
-Header.Profile = function HeaderProfile({ children, ...restProps }) {
+PasswordHeader.Profile = function HeaderProfile({ children, ...restProps }) {
   return <Profile {...restProps}>{children}</Profile>;
 };
 
-Header.Feature = function HeaderFeature({ children, ...restProps }) {
+PasswordHeader.Feature = function HeaderFeature({ children, ...restProps }) {
   return <Feature>{children}</Feature>;
 };
 
-Header.Picture = function HeaderPicture({ src, ...restProps }) {
+PasswordHeader.Picture = function HeaderPicture({ src, ...restProps }) {
   return <Picture {...restProps} src={src ? process.env.PUBLIC_URL + `/images/users/${src}.png` : `/images/users/${src}.png`} />;
 };
 
-Header.Dropdown = function HeaderDropdown({ children, ...restProps }) {
+PasswordHeader.Dropdown = function HeaderDropdown({ children, ...restProps }) {
   return <Dropdown {...restProps}>{children}</Dropdown>;
 };
 
-Header.TextLink = function HeaderTextLink({ children, ...restProps }) {
+PasswordHeader.TextLink = function HeaderTextLink({ children, ...restProps }) {
   return <Link {...restProps}>{children}</Link>;
 };
 
-Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
+PasswordHeader.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
   return <PlayButton {...restProps}>{children}</PlayButton>;
 };
 
-Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {
+PasswordHeader.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {
   return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
 };
 
-Header.Text = function HeaderText({ children, ...restProps }) {
+PasswordHeader.Text = function HeaderText({ children, ...restProps }) {
   return <Text {...restProps}>{children}</Text>;
 };
 
-Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
+PasswordHeader.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>;
 };
 
  
+

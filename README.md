@@ -16,6 +16,10 @@
 
 - https://github.com/woochul2/netflix-clone
 
+- ranjafunc/ netflix_clone
+
+- https://github.com/ranjafunc/netflix_clone
+
 ## 사용 라이브러리
 
 - React \* Redux
@@ -29,6 +33,9 @@
 - React Redux & toolkit
 
   - Login & Register Actions
+
+- React firbase
+  - Login - Register Tool
 
 ## 구현할 구조
 

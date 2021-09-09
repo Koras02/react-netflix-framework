@@ -4,6 +4,7 @@ import { Home,Browse ,SignIn, SignUp} from './pages';
 import * as ROUTES  from "./constants/routes";
 import { useAuthListener } from './hooks';
 import { IsUserRedirect, ProtectedRoute } from './helpers/routes';
+import LoginHelp from './pages/LoginHelp';
  
 export default function App() {
   console.log("노드 제외");
@@ -39,6 +40,14 @@ export default function App() {
           path={ROUTES.SIGN_IN}
           >
           <SignIn />
+          </IsUserRedirect> 
+
+          <IsUserRedirect
+          user={user}
+          loggedInPath={ROUTES.BROWSE}
+          path={ROUTES.LOGIN_HELP}
+          >
+          <LoginHelp />
           </IsUserRedirect> 
 
 

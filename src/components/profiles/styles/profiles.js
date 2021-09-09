@@ -34,6 +34,16 @@ export const Picture = styled.img`
    cursor: pointer;
 `;
 
+export const Logo = styled.img`
+   widht: 100%;
+   max-width: 150px;
+   height: auto;
+   border: 3px solid black;
+   cursor: pointer;
+`;
+
+
+
 export const Name = styled.p`
     color: #808080;
     font-size: 16px;

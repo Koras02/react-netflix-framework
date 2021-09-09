@@ -2,7 +2,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form } from "../components";
-import { HeaderContainer } from '../containers/header';
+ 
 import { FooterContainer } from '../containers/footer';
 import * as ROUTES from '../constants/routes';
 import {useForm} from 'react-hook-form'
@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form'
      registerFail,
  } from '../reducers/slices/userRegisterSlice';
 import { useDispatch, useSelector } from 'react-redux';
-// import auth from 'registry-auth-token'
+ 
 import {auth} from '../lib/firebase.prod';
 import { Input } from '../components/form/styles/form';
 import {ImSpinner} from "react-icons/im";
@@ -21,18 +21,10 @@ import { SignInHeaderContainer } from '../containers/Form/SignInHeader';
 
 export default function  SignUp() {
    const history = useHistory();
- 
    const dispatch = useDispatch();
    const { loading, error } = useSelector((state) => state.userRegister);
    const { user } = useSelector((state) => state.userLogin);
-
-   const {
-      register,
-      handleSubmit,
-      formState: {errors},
-      watch,
-      reset
-   } = useForm();
+   const {register,handleSubmit,formState: {errors},} = useForm();
 
 
  

@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add @material-ui
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add react-hook-PasswordForm
 
 PATH: 
   /home/kim/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -14,8 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@material-ui: Request "https://registry.yarnpkg.com/@material-ui" returned a 405
-      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66997:18)
+  Error: https://registry.yarnpkg.com/react-hook-PasswordForm: Not found
+      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/usr/share/yarn/lib/cli.js:140749:22)
       at Request.emit (node:events:394:28)
       at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141721:10)
@@ -36,6 +36,7 @@ npm manifest:
       "@material-ui/core": "^4.12.3",
       "@material-ui/icons": "^4.11.2",
       "@material-ui/lab": "^4.0.0-alpha.60",
+      "@reduxjs/toolkit": "^1.6.1",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
       "@testing-library/user-event": "^12.1.10",
@@ -49,12 +50,14 @@ npm manifest:
       "normalize.css": "^8.0.1",
       "react": "^17.0.2",
       "react-alice-carousel": "^2.5.1",
-      "react-bootstrap": "^1.6.1",
+      "react-bootstrap": "^1.6.3",
       "react-dom": "^17.0.2",
+      "react-hook-form": "^7.15.1",
       "react-icons": "^4.2.0",
-      "react-redux": "^7.2.4",
+      "react-redux": "^7.2.5",
       "react-router-dom": "^5.2.1",
       "react-scripts": "4.0.3",
+      "redux": "^4.1.1",
       "styled-components": "^5.3.1",
       "web-vitals": "^1.0.1"
     },
@@ -2192,6 +2195,16 @@ Lockfile:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
     integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
+  
+  "@reduxjs/toolkit@^1.6.1":
+    version "1.6.1"
+    resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-1.6.1.tgz#7bc83b47352a663bf28db01e79d17ba54b98ade9"
+    integrity sha512-pa3nqclCJaZPAyBhruQtiRwtTjottRrVJqziVZcWzI73i6L3miLTtUyWfauwv08HWtiXLx1xGyGt+yLFfW/d0A==
+    dependencies:
+      immer "^9.0.1"
+      redux "^4.1.0"
+      redux-thunk "^2.3.0"
+      reselect "^4.0.0"
   
   "@restart/context@^2.1.4":
     version "2.1.4"
@@ -6896,6 +6909,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
     integrity sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA==
   
+  immer@^9.0.1:
+    version "9.0.6"
+    resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.6.tgz#7a96bf2674d06c8143e327cbf73539388ddf1a73"
+    integrity sha512-G95ivKpy+EvVAnAab4fVa4YGYn24J1SpEktnJX7JJ45Bd7xqME/SCplFzYFmTbrkwZbQ4xJK1xMTUYBkN6pWsQ==
+  
   import-cwd@^2.0.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -10540,10 +10558,10 @@ Lockfile:
       regenerator-runtime "^0.13.7"
       whatwg-fetch "^3.4.1"
   
-  react-bootstrap@^1.6.1:
-    version "1.6.1"
-    resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.6.1.tgz#c5493c028ede885826b72eb31e66f6f0a52ab007"
-    integrity sha512-ojEPQ6OtyIMdLg0Smofk+85PKN6MLKQX3bU0Vwmok/4yNa8DQ2vCGhO2IgHJvT+ERQZ4X+gAQcdn6msAHSwLBg==
+  react-bootstrap@^1.6.3:
+    version "1.6.3"
+    resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.6.3.tgz#6c2b27ed320b95a690ac416ddbb11983de1f954d"
+    integrity sha512-zsd4l0g68pusOmJ/R5LhTfofT+9RniCwcZsMMNFGJo97d1vT1H2nGlbhLWp/j/pfeXXj9zzR8ugUtKkadcoWnA==
     dependencies:
       "@babel/runtime" "^7.14.0"
       "@restart/context" "^2.1.4"
@@ -10558,7 +10576,7 @@ Lockfile:
       invariant "^2.2.4"
       prop-types "^15.7.2"
       prop-types-extra "^1.1.0"
-      react-overlays "^5.0.1"
+      react-overlays "^5.1.1"
       react-transition-group "^4.4.1"
       uncontrollable "^7.2.1"
       warning "^4.0.3"
@@ -10607,6 +10625,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
     integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
   
+  react-hook-form@^7.15.1:
+    version "7.15.1"
+    resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.15.1.tgz#445003b9b653a4fe09971390ca1cb088e59a0519"
+    integrity sha512-+f4T2dXWE9mJFq+b4J91yQ7cTD/2974O8J2TMGIgVjuz+fb3DdT+8vPx7SHzoCE0ZanfZ95mL0Fan7zxdeGSNA==
+  
   react-icons@^4.2.0:
     version "4.2.0"
     resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
@@ -10632,7 +10655,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   
-  react-overlays@^5.0.1:
+  react-overlays@^5.1.1:
     version "5.1.1"
     resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-5.1.1.tgz#2e7cf49744b56537c7828ccb94cfc63dd778ae4f"
     integrity sha512-eCN2s2/+GVZzpnId4XVWtvDPYYBD2EtOGP74hE+8yDskPzFy9+pV1H3ZZihxuRdEbQzzacySaaDkR7xE0ydl4Q==
@@ -10646,10 +10669,10 @@ Lockfile:
       uncontrollable "^7.2.1"
       warning "^4.0.3"
   
-  react-redux@^7.2.4:
-    version "7.2.4"
-    resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.4.tgz#1ebb474032b72d806de2e0519cd07761e222e225"
-    integrity sha512-hOQ5eOSkEJEXdpIKbnRyl04LhaWabkDPV+Ix97wqQX3T3d2NQ8DUblNXXtNMavc7DpswyQM6xfaN4HQDKNY2JA==
+  react-redux@^7.2.5:
+    version "7.2.5"
+    resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.5.tgz#213c1b05aa1187d9c940ddfc0b29450957f6a3b8"
+    integrity sha512-Dt29bNyBsbQaysp6s/dN0gUodcq+dVKKER8Qv82UrpeygwYeX1raTtil7O/fftw/rFqzaf6gJhDZRkkZnn6bjg==
     dependencies:
       "@babel/runtime" "^7.12.1"
       "@types/react-redux" "^7.1.16"
@@ -10872,7 +10895,12 @@ Lockfile:
       indent-string "^4.0.0"
       strip-indent "^3.0.0"
   
-  redux@^4.0.0:
+  redux-thunk@^2.3.0:
+    version "2.3.0"
+    resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+    integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
+  
+  redux@^4.0.0, redux@^4.1.0, redux@^4.1.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/redux/-/redux-4.1.1.tgz#76f1c439bb42043f985fbd9bf21990e60bd67f47"
     integrity sha512-hZQZdDEM25UY2P493kPYuKqviVwZ58lEmGQNeQ+gXa+U0gYPUBf7NKYazbe3m+bs/DzM/ahN12DbF+NG8i0CWw==
@@ -11064,6 +11092,11 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
     integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+  
+  reselect@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
+    integrity sha512-qUgANli03jjAyGlnbYVAV5vvnOmJnODyABz51RdBN7M4WaVu8mecZWgyQNkG8Yqe3KRGRt0l4K4B3XVEULC4CA==
   
   resolve-cwd@^2.0.0:
     version "2.0.0"

@@ -7,6 +7,8 @@ export const userLoginSlice = createSlice({
         user: '',
         password:'',
         error: '',
+      
+
     },
     reducers: {
         // 로그인 요청 보내기

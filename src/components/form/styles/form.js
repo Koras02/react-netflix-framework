@@ -17,6 +17,13 @@ export const Container = styled.div`
 
    @media screen and (max-width:640px) {
       // padding: 100px 0px 100px;
+      max-width:600px;
+      min-height: 660px;
+      padding: 60px 68px 40px;
+      margin-bottom: -100px;
+      border-bottom:2px solid gray;
+      position:relative;
+      bottom:100px;
    }
 `;
 
@@ -62,6 +69,10 @@ export const Title = styled.h1`
    font-size: 32px;
    font-weight: bold;
    margin-bottom: 28px;
+
+   @media screen and (max-width: 640px) {
+      margin-top: 50px;
+   }
 `;
 
 export const Text = styled.p`
@@ -88,20 +99,23 @@ export const Link = styled(ReactRouterLink)`
 
 export const Input = styled.input`
    background: #333;
-   broder-radius: 4px;
+   // broder-radius: 100%;
+   // border-spacing: 10%;
    border: 0;
    color: #fff;
+   border-radius: 10px 10px 10px 10px;
    height: 50px;
    line-height: 50px;
    padding: 5px 20px;
    margin-bottom: 20px;
    outline:none;
 
+   
 
  
 
    &:focus {
-      border-bottom:1px solid red;
+      border-bottom:1px solid orange;
       transition: 0.5s;
    
       
@@ -175,4 +189,18 @@ export const Loading = styled.div`
     animation: ${rotate} 1s linear infinite;
     z-index: 1;
     
+`;
+
+export const Button = styled.button`
+cursor: pointer;
+position: absolute;
+top: 50%;
+right: 0;
+transform: translateY(-50%);
+background: none;
+border: none;
+color: var(--gray);
+&:focus:not(:focus-visible) {
+  outline: 0;
+}
 `;

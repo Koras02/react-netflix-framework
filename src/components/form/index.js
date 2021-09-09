@@ -12,7 +12,8 @@ import {
     Input,
  
     Submit,
-    Loading
+    Loading,
+    Button
 } from './styles/form';
 
 
@@ -69,4 +70,8 @@ Form.Submit = function FormSubmit({ children, ...restProps }) {
 
 Form.Loader = function FormLoader({ children, ...restProps }) {
     return <Loading {...restProps}>{children}</Loading>
+}
+
+Form.ToggleButton = function FormToggleButton({children, ...restProps}) {
+    return <Button {...restProps}>{children}</Button>
 }
