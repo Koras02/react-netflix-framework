@@ -8,7 +8,7 @@ export default function Loading({ src, ...restProps }) {
     return (
         <Spinner {...restProps}>
             <LockBody />
-            <Picture src={src ? process.env.PUBLIC_URL + `/images/users/1.png` : `/images/users/1.png` }  data-testid="loading-picture"/>
+            <Picture src={src ? process.env.PUBLIC_URL + `/images/users/${src}.png` : `/images/users/${src}.png` }  data-testid="loading-picture"/>
           
         </Spinner>
     );

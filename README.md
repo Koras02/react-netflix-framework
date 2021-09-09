@@ -20,6 +20,10 @@
 
 - https://github.com/ranjafunc/netflix_clone
 
+- jinkycho / netflix-clone
+
+- https://github.com/jinkycho/netflix-clone
+
 ## 사용 라이브러리
 
 - React \* Redux

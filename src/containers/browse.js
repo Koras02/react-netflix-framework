@@ -13,6 +13,13 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
+import { requests } from '../utils/requests';
+
+import { useParams } from 'react-router';
+
+import { turncate } from '../utils/turncate';
+
+ 
 
 export function BrowseContainer({ slides }) {
   const { firebase } = useContext(FirebaseContext);
@@ -35,13 +42,9 @@ export function BrowseContainer({ slides }) {
 
   const history = useHistory();
 
-  useEffect(() => {
-    if (value===0) history.push('/browse') 
-    else if (value===1) history.push('homes')
-    else if (value===2) history.push('tv')
-    else if (value===3) history.push('movies')
-  },[value,history]);
+  const { param } = useParams();
 
+ 
  
     useEffect(() => {
         setTimeout(() => {
@@ -57,7 +60,7 @@ export function BrowseContainer({ slides }) {
     function getTrending(page) {
       axios({
         method:"GET",
-        url: `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&l&page=${page}`
+        url: `https://api.themoviedb.org/3/trending/week/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=ko`
       }).then(response => {
           setMovies(response.data.results ?? [])
           // setPage(response.data.total_pages)
@@ -73,8 +76,7 @@ export function BrowseContainer({ slides }) {
 
 
      useEffect(() => {
-         const fuse = new Fuse(slideRows, { 
-             keys: ['data.description','data.title', 'data.genre'] });
+         const fuse = new Fuse(slideRows, { keys: ['data.description','data.title', 'data.genre'] });
         const results = fuse.search(searchTerm).map(({ item }) => item);
 
         if(slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
@@ -88,28 +90,22 @@ export function BrowseContainer({ slides }) {
 
     return profile.displayName ? (
         <>
-            {loading ? (
-                <Loading src={Loading} />
-            ) : (<Loading.ReleaseBody />)}
-
-
+            {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
+          
           <Header src="joker">
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
                     <Header.Group>
                       <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"/>
-                      <Header.TextLink
-                        onClick={()=>{history.push('/browse')}}
-                      >
-                         홈
+                      <Header.TextLink to={ROUTES.HOME}>
+                      
+                       홈
                       </Header.TextLink>
-                         <Header.TextLink
-                          onClick={()=>{history.push('/tv')}}
-                         >
+                         <Header.TextLink>
                           TV프로그램       
                         </Header.TextLink>
-                        <Header.TextLink
-                           onClick={()=>{history.push('/movies')}}
+                        <Header.TextLink 
+                          onClick={() => history.push(ROUTES.MOVIES)}
                         >
                           영화 
                         </Header.TextLink>
@@ -125,7 +121,7 @@ export function BrowseContainer({ slides }) {
                     </Header.Group>
 
                     {/* 메인 Nav메뉴 부분 */}
-
+                     {/* 프로필 창 */}
                     <Header.Group>
                         <Header.Profile>
                             <Header.Search
@@ -145,24 +141,14 @@ export function BrowseContainer({ slides }) {
                         </Header.Profile>
                     </Header.Group>
                 </Header.Frame>
-                
-                {/* 메인 광고창 */}
-                {/* <Header.Feature>
-                     <Header.FeatureCallOut>조커</Header.FeatureCallOut>
-                   <Header.Text>
-                        Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
-                        City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
-                        futile attempt to feel like he's part of the world around him.
-                   </Header.Text>
-                   <Header.PlayButton>플레이</Header.PlayButton>
-                </Header.Feature> */}
           </Header>       
+      
+        {/* 헤더 끝 */}
 
-          <Card.Group>
-            
-      </Card.Group>
+        {/* Rows 부분 */}
+        
 
-        <FooterContainer />
+        <FooterContainer />      
         </>
     ) : (
       <SelectProfileContainer user={user} setProfile={setProfile} />

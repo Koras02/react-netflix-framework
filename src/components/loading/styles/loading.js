@@ -12,6 +12,8 @@ export const ReleaseBody = createGlobalStyle`
  }
 `;
 
+export const Body = styled.div``;
+
 
 export const Spinner = styled.div`
    position: fixed;

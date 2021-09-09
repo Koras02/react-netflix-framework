@@ -14,7 +14,7 @@ export default function App() {
    const { user } = useAuthListener();
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
        <Switch>
          {/* 입력받을 유저와 로그인 경로를 불러옴 최종적으로 로그인 경로는 Browse로 가고 시작점은 SignIn 이다.*/}
          <IsUserRedirect 
@@ -41,7 +41,6 @@ export default function App() {
           >
           <SignIn />
           </IsUserRedirect> 
-
           <IsUserRedirect
           user={user}
           loggedInPath={ROUTES.BROWSE}
@@ -49,14 +48,14 @@ export default function App() {
           >
           <LoginHelp />
           </IsUserRedirect> 
-
-
         <ProtectedRoute 
         user={user} 
         path={ROUTES.BROWSE}
         >
           <Browse />
-        </ProtectedRoute>          
+        </ProtectedRoute>    
+
+         
        </Switch>
     </Router>
   );

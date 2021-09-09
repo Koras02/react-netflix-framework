@@ -1,7 +1,7 @@
 import React, {useState, useContext, createContext} from "react";
 import { FaClosedCaptioning } from "react-icons/fa";
 // import { img_300, unavailable, unavaliable } from "../config/config";
-import Row from "./Row/Row";
+ 
 import {
     Container,
     Group,
@@ -20,8 +20,7 @@ import {
     Image,
 } from './styled/card';
 // import Badge from "@material-ui/core/Badge";
-import requests from "../../utils/requests";
-
+ 
 
 export const FeatureContext = createContext();
 
@@ -111,3 +110,28 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
 
 
  
+Card.Landing = function CardLanding({ children, ...restProps }) {
+        return (   
+            <div clssName="main-container">
+                 asdsa
+            </div>
+        )
+}
+
+Card.Row = function CardRow ({children, ...restProps}) {
+
+    const base_url = "https://image.tmdb.org/t/p/original/";
+
+    const [movies, setMovies] = useState([]);
+    const [movieDetail,setMovieDetail] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [cardOpen, setCardOpen] = useState();
+
+
+
+    return (
+        <div className="row">
+           영화
+        </div>
+    )
+}
