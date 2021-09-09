@@ -10,5 +10,6 @@ export { default as Profiles } from './profiles';
 export { default as Loading } from './loading';
 export { default as Card } from './card';
 export { default as Player } from './player';
-export { default as PasswordHeader } from './PasswordHeader';
- 
+export { default as PassWordFooter } from './footer/PasswordReset';
+export { default as PassWordForm } from './passwordForm';
+export { default as PassWordHeader } from './passwordHeader';

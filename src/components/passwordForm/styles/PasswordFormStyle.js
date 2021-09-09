@@ -115,7 +115,7 @@ export const Input = styled.input`
  
 
    &:focus {
-      border-bottom:3px solid orange;
+      border-bottom:1px solid orange;
       transition: 0.5s;
    
       
