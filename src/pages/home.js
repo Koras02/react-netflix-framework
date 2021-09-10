@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React  from 'react'
 import { HeaderContainer } from '../containers/header'
 import { JumbotronContainer } from '../containers/jumbotron';
 import { FaqsContainer } from "../containers/accordion";
@@ -6,8 +6,6 @@ import { FooterContainer } from "../containers/footer";
 import { Feature, OptForm } from '../components';
 
 export default function Home() { 
- 
-
     return (
         <>
             <HeaderContainer>

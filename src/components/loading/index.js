@@ -9,7 +9,7 @@ export default function Loading({ src, ...restProps }) {
         <Spinner {...restProps}>
             <LockBody />
             <Picture src={src ? process.env.PUBLIC_URL + `/images/users/${src}.png` : `/images/users/${src}.png` }  data-testid="loading-picture"/>
-          
+             
         </Spinner>
     );
 }

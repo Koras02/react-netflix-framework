@@ -6,7 +6,7 @@ import { Link as ReactRouterLink } from "react-router-dom";
 export const Container = styled.div`
    display:flex;
    flex-direction: column;
-   min-height: 660px;
+   min-height: 550px;
    background-color: rgba(0,0,0,0.75);
    border-radius:5px;
    width: 100%;
@@ -14,6 +14,9 @@ export const Container = styled.div`
    max-width: 450px;
    padding: 60px 68px 40px;
    margin-bottom: 100px;
+   // color:#000;
+   background:#fff;
+   // color:#000;
 
    @media screen and (max-width:640px) {
       // padding: 100px 0px 100px;
@@ -62,13 +65,25 @@ export const Base = styled.form`
       margin-bottom: 20px;
    }
 
-`;
+   `;
+   export const Description = styled.div`
+   color: #fff;
+   font-size: 12px;
+   // font-weight: 
+   margin-bottom: 28px;
+   color:#000;
+   
+   @media screen and (max-width: 640px) {
+      margin-top: 10px;
+   }
+   `;
 
 export const Title = styled.h1`
    color: #fff;
-   font-size: 32px;
-   font-weight: bold;
+   font-size: 22px;
+   // font-weight: 
    margin-bottom: 28px;
+   color:#000;
 
    @media screen and (max-width: 640px) {
       margin-top: 50px;
@@ -95,10 +110,10 @@ export const Link = styled(ReactRouterLink)`
    &:hover {
       text-decoration: underline;
    }
-`;
-
-export const Input = styled.input`
-   background: #333;
+   `;
+   
+   export const Input = styled.input`
+   background: #fff;
    // broder-radius: 100%;
    // border-spacing: 10%;
    border: 0;
@@ -113,7 +128,7 @@ export const Input = styled.input`
    
 
  
-
+   
    &:focus {
       border-bottom:1px solid orange;
       transition: 0.5s;
@@ -126,7 +141,7 @@ export const Input = styled.input`
 `;
 
 export const Input2 = styled.input`
-   background: #333;
+   background: #fff;
    broder-radius: 4px;
    border: 0;
    color: #fff;
@@ -152,7 +167,7 @@ export const Input2 = styled.input`
 
 
 export const Submit = styled.button`
-   background: #e50914;
+   background: #0080ff;
    border-radius: 4px;
    font-size: 16px;
    font-weight: bold;
@@ -168,7 +183,7 @@ export const Submit = styled.button`
 
 `;
 
-export const AboutLink = styled.a`
+export const AboutLink = styled.div`
   text-decoration: none;
 
 `;

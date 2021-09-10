@@ -2,27 +2,35 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   display:flex;
-  padding: 70px 0;
+  padding: 70px 10px 10px 55px;
   margin: auto;
   max-width: 1000px;
+  position:relative;
+  left: 10px;
   flex-direction: column;
-
+  
   @media (max-width: 1000px) {
       padding: 70px 30px;
+      position:relative;
+      left: 0px;
   }
 `;
 
 export const Row = styled.div`
   display: flex;
   flex-direction:column;
-  text-align:left;
+ 
+  @media (max-width:640px) {
+    text-align:center;
+    
+  }
 `;
 
 
 export const Column = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  grid-gap: 15px;
+  grid-gap: 5px;
 
   @media (max-width: 1000px) {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -34,18 +42,28 @@ export const Link = styled.a`
    margin-bottom: 20px;
    font-size: 14px;
    text-decoration: none;
+
+   @media screen and (max-width:640px) {
+   }
 `;
 
 export const Title = styled.div`
   font-size:16px;
   color: #757575;
   margin-bottom: 40px;  
+
+  @media screen and (max-width:640px) {}
 `;
 
 export const Text = styled.div`
   font-size: 13px;
   color:#757575;
   margin-bottom: 40px;
+
+  @media screen and (max-width:640px) {
+    text-align:right;
+    margin-right: 50px;
+  }
 `;
 
 export const Break = styled.div`

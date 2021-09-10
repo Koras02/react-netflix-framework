@@ -30,16 +30,16 @@ export function FooterContainer() {
                 >
                         계정
                 </Footer.Link>
-                <Footer.Link href="#" onClick={(e) => e.preventDefault()}>
+                <Footer.Link href="https://media.netflix.com/" onClick={(e) => e.preventDefault()}>
                        미디어 센터
                 </Footer.Link>
                 </Footer.Column>
 
                 <Footer.Column>
-                <Footer.Link href="#" onClick={(e) => e.preventDefault()}>
+                <Footer.Link href="http://ir.netflix.com/" onClick={(e) => e.preventDefault()}>
                          투자정보 (IR)
                 </Footer.Link>
-                <Footer.Link href="#" onClick={(e) => e.preventDefault()}>
+                <Footer.Link href="https://jobs.netflix.com/jobs" onClick={(e) => e.preventDefault()}>
                          입사 정보
                 </Footer.Link>
                 <Footer.Link href="#" onClick={(e) => e.preventDefault()}>
@@ -54,7 +54,7 @@ export function FooterContainer() {
                 <Footer.Link href="#" onClick={(e) => e.preventDefault()}>
                         계정
                 </Footer.Link>
-                <Footer.Link href="#" onClick={(e) => e.preventDefault()}>
+                <Footer.Link href="https://www.netflix.com/watch" onClick={(e) => e.preventDefault()}>
                         넷플릭스 지원 디바이스
                 </Footer.Link>
                 <Footer.Link href="#" onClick={(e) => e.preventDefault()}>

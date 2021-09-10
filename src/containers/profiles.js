@@ -12,10 +12,9 @@ export function SelectProfileContainer({ user, setProfile }) {
                   <Header.Logo to={ROUTES.HOME} src={logo} alt="넷플릭스" />
               </Header.Frame>
             </Header>
- 
 
               <Profiles>
-                  <Profiles.Title>시청하실 프로필을 선택해주세요</Profiles.Title>
+                  <Profiles.Title>Netflix를 시청할 프로필을 선택해주세요</Profiles.Title>
                   <Profiles.List>
                       <Profiles.User
                         data-testid="user-profile"

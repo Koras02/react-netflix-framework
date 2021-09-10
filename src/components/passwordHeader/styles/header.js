@@ -109,6 +109,7 @@ export const ButtonLink = styled(ReachRouterLink)`
   color: white;
   border: 0;
   font-size: 1rem;
+  z-index:1;
   border-radius: 3px;
   padding: 8px 17px;
   cursor: pointer;
@@ -200,6 +201,7 @@ export const Text = styled.p`
 export const Logo = styled.img`
   height: 36px;
   width: 134px;
+  z-index:1;
   margin-right: 40px;
   @media (min-width: 1449px) {
     height: 45px;
@@ -209,7 +211,7 @@ export const Logo = styled.img`
 
 export const PlayButton = styled.button`
   box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
-  background-color: #e6e6e6;
+  background-color: blue;
   color: #000;
   border-width: 0;
   padding: 10px 20px;

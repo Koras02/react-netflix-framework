@@ -126,16 +126,16 @@ export const Input = styled.input`
 `;
 
 export const Input2 = styled.input`
-   background: #333;
+   background: #fff;
    broder-radius: 4px;
    border: 0;
-   color: #fff;
+   border:1px solid #000;
    height: 50px;
    line-height: 50px;
    padding: 5px 20px;
    margin-bottom: 20px;
    outline:none;
-
+   color:#000;
 
  
 

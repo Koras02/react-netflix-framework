@@ -16,10 +16,9 @@ ReactDOM.render(
   <>
   <React.StrictMode>
     <FirebaseContext.Provider value={{ firebase }}>
-
       <GlobalStyles />
       <Provider store={store}>
-      <App />
+         <App />
        </Provider>
     </FirebaseContext.Provider>
     </React.StrictMode>

@@ -196,6 +196,7 @@ export const Logo = styled.img`
   height: 36px;
   width: 134px;
   margin-right: 40px;
+  z-index:1;
   @media (min-width: 1449px) {
     height: 45px;
     width: 167px;

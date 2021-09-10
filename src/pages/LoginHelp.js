@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React  from 'react';
 import { useHistory,useParams } from 'react-router-dom';
  
 // import { FooterContainer } from '../containers/footer';
@@ -68,7 +68,7 @@ export default function  LogInHelp() {
                  <Input 
                     type="text"
                     {...register('email', {
-                      required: '',
+                      required: '정확한 이메일 주소를 입력해 주세요 ',
                       // 이메일 주소 입력 방식
                       pattern: {
                         // 정규 표현식사용 = ㄱ

@@ -5,11 +5,9 @@ export const SIGN_IN = '/signin';
 export const LOGIN_HELP = '/LoginHelp';
 export const MOVIES = "/movies";
 
-
-export const BROWSETV  = '/browse/tv';
-
-export const BROWSEMOVIES = '/browse/movies';
-
-export const BROWSELATEST = '/browse/latest';
-
+// 영화 
+export const BRWSEHOME = "/browse"
+export const BROWSETV  = '/tv';
+export const BROWSEMOVIES = '/movies';
+export const BROWSELATEST = '/latest';
 export const MYLIST = '/mylist';

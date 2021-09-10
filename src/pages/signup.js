@@ -30,8 +30,7 @@ export default function  SignUp() {
       register,
       handleSubmit,
       formState: {errors},
-      watch,
-      reset
+     
    } = useForm();
 
 
