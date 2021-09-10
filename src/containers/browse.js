@@ -57,16 +57,13 @@ export function BrowseContainer({ slides }) {
         }, 3000)
     }, [profile.displayName]);
 
-
     useEffect(() => {
       setTimeout(() => {
         setOpning(false)
       }, 6000)
-    }, [profile.displayName]);
+    }, [profile.displayName])
   
-    
-    
-    useEffect(() => {
+     useEffect(() => {
          setSlideRows(slides[category]);
      }, [slides, category]);
 
@@ -95,7 +92,12 @@ export function BrowseContainer({ slides }) {
                 {/* 메인 Nav메뉴 부분 */}
                     <Header.Group>
                       <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"/>
-                      <Header.TextLink to={ROUTES.HOME}>   
+                      
+                     
+      
+                      <Header.TextLink to={ROUTES.HOME}
+                      
+                      >   
                        홈
                       </Header.TextLink>
                          <Header.TextLink
@@ -134,26 +136,34 @@ export function BrowseContainer({ slides }) {
                     {/* 메인 Nav메뉴 부분 */}
                      {/* 프로필 창 */}
                     <Header.Group>
-                        <Header.Profile>
+                      <Header.SearchComponent>
                             <Header.Search
                               searchTerm={searchTerm}
                               setSearchTerm={setSearchTerm}
                             />
+                          
+                        </Header.SearchComponent>
+                        <Header.Profile>
                             <Header.Picture src={user.photoURL} />
                             <Header.Dropdown>
                                 <Header.Group>
-                                    <Header.Picture src={user.photoURL} />
-                                    <Header.TextLink>{user.displayName}</Header.TextLink>
+                                    {/* <Header.Picture src={user.photoURL} /> */}
+                                    
                                 </Header.Group>
-                                <Header.Group>
-                                    <Header.TextLink onClick={() => firebase.auth().signOut()}>로그 아웃</Header.TextLink>
-                                </Header.Group>
+                                <Header.ButtonGroup>
+                                    <Header.TextLinks onClick={() => firebase.auth().signOut()}>프로필 관리</Header.TextLinks>
+                                    <Header.TextLinks onClick={() => firebase.auth().signOut()}>설정</Header.TextLinks>
+                                    <Header.TextLinks onClick={() => firebase.auth().signOut()}>계정</Header.TextLinks>
+                                    <Header.TextLinks onClick={() => firebase.auth().signOut()}>고객센터</Header.TextLinks>
+                                    <Header.TextLinks onClick={() => firebase.auth().signOut()}>로그 아웃</Header.TextLinks>
+                              </Header.ButtonGroup>
+                                
                             </Header.Dropdown>
                         </Header.Profile>
                     </Header.Group>
                 </Header.Frame>
           </Header>       
-        
+      
         <FooterContainer />      
         </>
     ) : (

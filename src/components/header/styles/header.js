@@ -53,6 +53,7 @@ export const SearchInput = styled.input`
   border: 1px solid white;
   transition: width 0.5s;
   height: 30px;
+  border:none;
   font-size: 14px;
   border-radius: 4px;
   outline: 0;
@@ -64,6 +65,13 @@ export const SearchInput = styled.input`
   &:focus {
     background-color: rgba(0, 0, 0, 0.8);
   }
+`;
+
+export const SearchComponent = styled.div`
+ color:#fff;
+ position:absolute;
+ right:150px;
+
 `;
 
 export const Search = styled.div`
@@ -196,7 +204,6 @@ export const Logo = styled.img`
   height: 36px;
   width: 134px;
   margin-right: 40px;
-  z-index:1;
   @media (min-width: 1449px) {
     height: 45px;
     width: 167px;
@@ -220,4 +227,37 @@ export const PlayButton = styled.button`
     background-color: #ff1e1e;
     color: white;
   }
+`;
+
+
+export const ButtonGroup = styled.div`
+ 
+   width:100px;
+   margin-right:20px;
+   overflow:hidden;
+   font-size:12px;
+
+   &:hover {
+     color:red;
+   }
+`;
+
+export const TextLink = styled.p`
+ color:#fff;
+ padding:10px;
+  
+ &:hover {
+   color:#fcfcfc;
+  }
+  `;
+  
+  export const TextLinks = styled.p`
+  color:#fff;
+  padding:10px 10px;
+  font:bold 18px/24px arial;
+ 
+  
+ &:hover {
+   color:#fcfcfc;
+ }
 `;

@@ -18,6 +18,10 @@ import {
   Text,
   Feature,
   Logo,
+  ButtonGroup,
+  TextLink,
+  TextLinks,
+  SearchComponent
 } from './styles/header';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -52,17 +56,22 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
   return (
     <Search {...restProps}>
       <SearchIcon onClick={() => setSearchActive((searchActive) => !searchActive)} data-testid="search-click">
-        <FaSearch alt="Search" />
+      검색
+        <FaSearch alt="Search"    />
       </SearchIcon>
       <SearchInput
         value={searchTerm}
         onChange={({ target }) => setSearchTerm(target.value)}
-        placeholder="Search films and series"
+        placeholder="제목을 입력해주세요"
         active={searchActive}
         data-testid="search-input"
       />
     </Search>
   );
+};
+
+Header.SearchComponent = function HeaderSearchComponent({ children, ...restProps }) {
+    return <SearchComponent {...restProps}>{children}</SearchComponent>
 };
 
 Header.Profile = function HeaderProfile({ children, ...restProps }) {
@@ -102,3 +111,14 @@ Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
 };
 
  
+Header.ButtonGroup = function HeaderButtonGroup({ children, ...restProps }) {
+  return <ButtonGroup {...restProps}>{children}</ButtonGroup>;
+};
+
+Header.TextLink = function HeaderTextLink({ children, ...restProps }) {
+  return <TextLink {...restProps}>{children}</TextLink>
+}
+Header.TextLinks = function HeaderTextLinks({ children, ...restProps }) {
+  return <TextLinks {...restProps}>{children}</TextLinks>
+}
+
