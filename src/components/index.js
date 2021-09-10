@@ -14,3 +14,4 @@ export { default as PassWordFooter } from './footer/PasswordReset';
 export { default as PassWordForm } from './passwordForm';
 export { default as PassWordHeader } from './passwordHeader';
 export { default as Row } from './Row';
+export { default as Browse } from "./Browse";

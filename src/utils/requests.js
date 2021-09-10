@@ -2,9 +2,30 @@
 // ======================== API 이미지 주소 모음 ============================//
 export const API_KEY = process.env.REACT_APP_API_KEY;
 // 이미지 BASE주소 
-export const BASE_URL = "https://image.tmdb.org/t/p/original";
+export const BASE_URL = "https://image.tmdb.org/t/p/original/";
 // 언어 기본 설정
 export const Language = "ko-KR"
+
+export const URL = "https://api.themoviedb.org/3";
+
+//image sizes for tmdb
+export const img_300 = "https://image.tmdb.org/t/p/w300";
+export const img_1000 = "https://image.tmdb.org/t/p/w800";
+export const img_original = 'https://image.tmdb.org/t/p/original';
+
+// contentModal and singleContent
+export const unvaliable =
+  "https://www.movienewz.com/img/films/poster-holder.jpg";
+
+// contentModal
+export const unavailableLandscape =
+  "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
+
+// For Carousel
+export const noPicture =
+  "https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg";
+
+
 
 // 검색 국가
 export const Ko = "ko"
@@ -70,4 +91,4 @@ export const requests = {
 
 
 
- 
+ export default requests;

@@ -5,6 +5,7 @@ import * as ROUTES  from "./constants/routes";
 import { useAuthListener } from './hooks';
 import { IsUserRedirect, ProtectedRoute } from './helpers/routes';
 import LoginHelp from './pages/LoginHelp';
+import TV from './pages/TV';
  
 export default function App() {
   console.log("노드 제외");
@@ -48,6 +49,15 @@ export default function App() {
           >
           <LoginHelp />
           </IsUserRedirect> 
+
+      {/* -------------  넷플릭스 부분 ----------------------------  */}
+        <ProtectedRoute 
+        user={user} 
+        path={ROUTES.BROWSETV}
+        >
+          <TV />
+        </ProtectedRoute>    
+
         <ProtectedRoute 
         user={user} 
         path={ROUTES.BROWSE}
@@ -55,6 +65,8 @@ export default function App() {
           <Browse />
         </ProtectedRoute>    
 
+
+         
          
        </Switch>
     </Router>

@@ -56,8 +56,8 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
   return (
     <Search {...restProps}>
       <SearchIcon onClick={() => setSearchActive((searchActive) => !searchActive)} data-testid="search-click">
-      검색
-        <FaSearch alt="Search"    />
+ 
+        <FaSearch />
       </SearchIcon>
       <SearchInput
         value={searchTerm}
@@ -122,3 +122,6 @@ Header.TextLinks = function HeaderTextLinks({ children, ...restProps }) {
   return <TextLinks {...restProps}>{children}</TextLinks>
 }
 
+
+
+ 

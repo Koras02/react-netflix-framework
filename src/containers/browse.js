@@ -8,6 +8,8 @@ import logo from '../logo.svg';
 import * as ROUTES from '../constants/routes';
 import { useHistory } from 'react-router-dom';
 import { FooterContainer } from '../containers/footer';
+import {makeStyles} from '@material-ui/core/styles';
+import Browse from '../components/Browse';
  
  
 export function BrowseContainer({ slides }) {
@@ -26,7 +28,17 @@ export function BrowseContainer({ slides }) {
 
   
   // 메인홈
+ 
   const history = useHistory();
+  const [value, setValue] = React.useState(0);
+ 
+  
+  useEffect(() => {
+    if (value === 0) history.push('/browse');
+    if (value === 1) history.push('tv');
+    if (value === 2) history.push('movies');
+
+  }, [value,history])
 
   const [show,handleShow] = useState(false);
  
@@ -87,26 +99,23 @@ export function BrowseContainer({ slides }) {
     return profile.displayName ? (
         <>
             {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
-          <Header src="joker">
+          <Header>
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
                     <Header.Group>
                       <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"/>
-                      
-                     
-      
-                      <Header.TextLink to={ROUTES.HOME}
-                      
+                      <Header.TextLink 
+                        value={value}
+                        onChange={(event,newValue) => {
+                          setValue(newValue);
+                        }} 
+                        showLabels
+                        onClick={() => history.push("/browse")}
                       >   
                        홈
                       </Header.TextLink>
                          <Header.TextLink
-                         style={
-                          history.location.pathname === "/browse/tv"
-                            ? { color: "white" }
-                            : {}
-                        }
-                        onClick={() => history.push("/browse/tv")}
+                          onClick={() => history.push("/browse/tv")}
                          >
                           TV프로그램       
                         </Header.TextLink>
@@ -163,7 +172,11 @@ export function BrowseContainer({ slides }) {
                     </Header.Group>
                 </Header.Frame>
           </Header>       
-      
+       
+        <Browse>
+        
+        </Browse>
+         
         <FooterContainer />      
         </>
     ) : (
