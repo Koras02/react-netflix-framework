@@ -21,7 +21,8 @@ import {
   ButtonGroup,
   TextLink,
   TextLinks,
-  SearchComponent
+  SearchComponent,
+  SubBackground
 } from './styles/header';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -33,6 +34,10 @@ export default function Header({ bg = true, children, ...restProps }) {
     children
   );
 }
+
+Header.SubBackground = function SubBackground({ children, ...restProps }) {
+  return <SubBackground {...restProps}>{children}</SubBackground>;
+};
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;

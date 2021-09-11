@@ -44,6 +44,7 @@ export default function Browse({ children,slides, ...restProps }) {
                 ))}
                 </Card.Entities>
                 </Card>
+                
          ))}
          </Card.Group>
          </>

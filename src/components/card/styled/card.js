@@ -1,13 +1,12 @@
 import styled from 'styled-components/macro';
 
 export const Title = styled.p`
-  font-size: 30px;
+  font-size: 24px;
   color: #e5e5e5;
   font-weight: bold;
   margin-left: 56px;
   margin-right: 56px;
   margin-top: 0;
-  padding-top:90px;
 `;
 
 export const Container = styled.div`
@@ -22,7 +21,7 @@ export const Container = styled.div`
   }
 
   &:last-of-type {
-    margin-bottom: 75px;
+    margin-bottom: 0;
   }
 `;
 
@@ -31,11 +30,10 @@ export const Group = styled.div`
   flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
   ${({ margin }) => margin && `margin: ${margin}`};
-  border-bottom: ${({ border }) => (border === '0' ? 0 : '8px solid #222')};
 
   > ${Container}:first-of-type {
     @media (min-width: 1100px) {
-      margin-top: -45px;
+      margin-top: -100px;
     }
   }
 `;
@@ -47,6 +45,7 @@ export const SubTitle = styled.p`
   margin-top: 0;
   margin-bottom: 0;
   user-select: none;
+  display: none;
 `;
 
 export const Text = styled.p`
@@ -55,6 +54,7 @@ export const Text = styled.p`
   color: #fff;
   margin-bottom: 0;
   user-select: none;
+  display: none;
   line-height: normal;
 `;
 
@@ -64,20 +64,11 @@ export const Entities = styled.div`
 `;
 
 export const Meta = styled.div`
-  user-select: none;
+  display: none;
   position: absolute;
+  bottom: 0;
   padding: 10px;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transform: translateY(50%);
-  transition: all 0.2s;
+  background-color: #0000008f;
 `;
 
 export const Image = styled.img`
@@ -97,7 +88,6 @@ export const Item = styled.div`
   position: relative;
   cursor: pointer;
   transition: transform 0.2s;
-  overflow: hidden;
 
   &:hover {
     transform: scale(1.3);
@@ -105,9 +95,9 @@ export const Item = styled.div`
   }
 
   @media (min-width: 1200px) {
-    &:hover ${Meta} {
-      transform: translateY(0);
-      opacity: 1;
+    &:hover ${Meta}, &:hover ${Text}, &:hover ${SubTitle} {
+      display: block;
+      z-index: 100;
     }
   }
 
@@ -167,7 +157,6 @@ export const Feature = styled.div`
 
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
-  color:#fff;
 `;
 
 export const FeatureClose = styled.button`
@@ -179,12 +168,8 @@ export const FeatureClose = styled.button`
   background-color: transparent;
   border: 0;
 
-  &:hover img {
-    filter: brightness(0) invert(1);
-  }
-
   img {
-    filter: brightness(0) invert(0.9);
+    filter: brightness(0) invert(1);
     width: 24px;
   }
 `;

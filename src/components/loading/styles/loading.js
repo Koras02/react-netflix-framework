@@ -7,9 +7,7 @@ export const LockBody = createGlobalStyle`
 `;
 
 export const ReleaseBody = createGlobalStyle`
- body {
-     overflow: hidden
- }
+ 
 `;
 
 export const Body = styled.div`

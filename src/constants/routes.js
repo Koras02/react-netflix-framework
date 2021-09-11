@@ -4,7 +4,7 @@ export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
 export const LOGIN_HELP = '/LoginHelp';
 export const MOVIES = "/movies";
-export const BROWSETV  = '/browse/tv';
+ 
 export const PLAN = "/plan";
 
 // 영화 

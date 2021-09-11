@@ -3,13 +3,14 @@ import React, {useState, useContext, useEffect} from 'react'
 import Fuse from "fuse.js";
 import {FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
-import { Header, Loading, Intro} from '../components';
+import { Header, Loading, Card,Player} from '../components';
 import logo from '../logo.svg';
 import * as ROUTES from '../constants/routes';
 import { useHistory } from 'react-router-dom';
 import { FooterContainer } from '../containers/footer';
 import {makeStyles} from '@material-ui/core/styles';
 import Browse from '../components/Browse';
+import axios from 'axios';
  
  
 export function BrowseContainer({ slides }) {
@@ -32,6 +33,7 @@ export function BrowseContainer({ slides }) {
   const history = useHistory();
   const [value, setValue] = React.useState(0);
  
+
   
   useEffect(() => {
     if (value === 0) history.push('/browse');
@@ -42,6 +44,15 @@ export function BrowseContainer({ slides }) {
 
   const [show,handleShow] = useState(false);
  
+ // 카테코리 영화목록 가져오기
+  function getCategory() {
+     axios ({
+        method: "GET",
+        url: `https://api.themoviedb.org/3/${category}/all/day?api_key=api_key=7db8b1ffbba88aaa67068565d84fe99`
+     }).then(response =>{
+        setCategory(response.data.results ?? [])
+     })
+  }
 
   useEffect(() => {
 
@@ -99,43 +110,27 @@ export function BrowseContainer({ slides }) {
     return profile.displayName ? (
       <>
 
-     <div>
+  
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
-      {opening ? <Intro src={user.photoURL} /> : <Intro.ReleaseBody/>}
-      </div>  
+ 
             
           <Header>
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
+                {/*  selection -filter에서 가져온 장르 메뉴들 */}
                     <Header.Group>
                       <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"/>
-                      <Header.TextLink 
-                        value={value}
-                        onChange={(event,newValue) => {
-                          setValue(newValue);
-                        }} 
-                        showLabels
-                        onClick={() => history.push("/browse")}
-                      >   
-                       홈
+                      <Header.TextLink active={category === 'trending' ? 'true' : 'false'} onClick={() => setCategory('trending')}>
+                        홈
                       </Header.TextLink>
-                         <Header.TextLink
-                          onClick={() => history.push("/browse/tv")}
-                         >
-                          TV프로그램       
-                        </Header.TextLink>
-                        <Header.TextLink 
-                           style={
-                            history.location.pathname === "/browse/movies"
-                              ? { color: "white" }
-                              : {}
-                          }
-                          onClick={() => history.push("/browse/movies")}
-                        >
-                          영화 
+                      <Header.TextLink active={category === 'tv' ? 'true' : 'false'} onClick={() => setCategory('tv')}>
+                        tv프로그램
+                      </Header.TextLink>
+                      <Header.TextLink active={category === 'movie' ? 'true' : 'false'} onClick={() => setCategory('movie')}>
+                        영화
                         </Header.TextLink>
                         <Header.TextLink
-                          onClick={() => history.push(ROUTES.BROWSELATEST)}
+                          active={category === 'movie' ? 'true' : 'false'} onClick={() => setCategory('new')}
                         >
                           최신 콘텐츠       
                         </Header.TextLink>
@@ -178,9 +173,40 @@ export function BrowseContainer({ slides }) {
                 </Header.Frame>
           </Header>       
        
-        <Browse>
-        
-        </Browse>
+          <Card.Group>
+        {slideRows.map((slideItem) => (
+          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+            <Card.Title>{slideItem.title}</Card.Title>
+            <Card.Entities>
+              {/* {slideItem.data.map((item) => (
+                <Card.Item key={item.docId} item={item}>
+                  <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
+              
+                  <Card.Meta>
+                    <Card.SubTitle>{item.title}</Card.SubTitle>
+                    <Card.Text>{item.description}</Card.Text>
+                  </Card.Meta>
+                </Card.Item>
+              ))} */}
+              
+              {slideItem.data.map((item) => (
+                 <Card.Item key={item.docId} item={item}>
+                     {category.length > 0 && category.map((category,index) => {
+                       <Card.Category key={category.key} id={category.id} media_type={category.media_type} category={category} {...category} />
+                        
+                     })}
+                  </Card.Item>
+              ))}
+            </Card.Entities>
+            <Card.Feature category={category}>
+              <Player>
+                <Player.Button />
+                <Player.Video src="/videos/bunny.mp4" />
+              </Player>
+            </Card.Feature>
+          </Card>
+        ))}
+      </Card.Group>
          
         <FooterContainer />      
         </>
