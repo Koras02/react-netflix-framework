@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Home,Browse ,SignIn, SignUp} from './pages';
 import * as ROUTES  from "./constants/routes";
@@ -14,6 +14,8 @@ export default function App() {
   // 처음엔 useAuth로 연습 
    const { user } = useAuthListener();
 
+   const [email,setEmail] = useState('')
+
   return (
    <Router>
         <Switch>
@@ -24,7 +26,7 @@ export default function App() {
          path={ROUTES.HOME}
          exact
          >
-          <Home />
+          <Home email={email} setEmail={setEmail} />
         </IsUserRedirect>
 
         <IsUserRedirect

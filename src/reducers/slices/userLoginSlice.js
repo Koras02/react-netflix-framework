@@ -21,10 +21,12 @@ export const userLoginSlice = createSlice({
             state.user = action.payload;
         },
 
+        
+
         // 로그인 실패
         signinFail: (state, action) => {
             state.loading = false;
-            state.error = action.payload;
+            state.error = 'auth/user-disabled'
         },
         signinPasswordError: (state,action) => {
             state.loading = false;
@@ -36,6 +38,8 @@ export const userLoginSlice = createSlice({
             state.user = '';
             state.error = '';
         },
+
+        
     },
 });
 

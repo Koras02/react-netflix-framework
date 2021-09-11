@@ -1,3 +1,4 @@
+
 import { createSlice } from "@reduxjs/toolkit";
 
 export const userLoginHelpSlice =  createSlice ({
@@ -8,6 +9,7 @@ export const userLoginHelpSlice =  createSlice ({
         password: '',
         error: '',
         emailAddress: '',
+        code: ''
     },
     reducers: {
         resetRequest: (state) =>{

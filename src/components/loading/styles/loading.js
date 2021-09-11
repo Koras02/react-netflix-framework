@@ -8,17 +8,20 @@ export const LockBody = createGlobalStyle`
 
 export const ReleaseBody = createGlobalStyle`
  body {
-     overflow: visible
+     overflow: hidden
  }
 `;
 
-export const Body = styled.div``;
+export const Body = styled.div`
+   width: 100%;
+   height:100vh;
+`;
 
 
 export const Spinner = styled.div`
    position: fixed;
    width: 100%;
-   height: 100%;
+   height: 100vh;
    background-color: black;
    z-index: 999;
    :after {

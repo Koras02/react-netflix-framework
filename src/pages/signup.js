@@ -108,6 +108,8 @@ export default function  SignUp() {
                            placeholder='비밀번호'
                     />
                     {errors.password && <span>{errors.password.message}</span>}
+                
+                
                 {loading ? ( 
                    <Form.Submit>
                         <ImSpinner/>
@@ -119,7 +121,7 @@ export default function  SignUp() {
                    회원가입
                 </Form.Submit>
             )}
-      
+        
 
                
               </Form.Base>

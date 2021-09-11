@@ -3,7 +3,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import Fuse from "fuse.js";
 import {FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
-import { Header, Loading } from '../components';
+import { Header, Loading, Intro} from '../components';
 import logo from '../logo.svg';
 import * as ROUTES from '../constants/routes';
 import { useHistory } from 'react-router-dom';
@@ -66,13 +66,13 @@ export function BrowseContainer({ slides }) {
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 3000)
+        }, 2000)
     }, [profile.displayName]);
 
     useEffect(() => {
       setTimeout(() => {
         setOpning(false)
-      }, 6000)
+      }, 9000)
     }, [profile.displayName])
   
      useEffect(() => {
@@ -97,8 +97,13 @@ export function BrowseContainer({ slides }) {
 
 
     return profile.displayName ? (
-        <>
-            {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
+      <>
+
+     <div>
+      {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
+      {opening ? <Intro src={user.photoURL} /> : <Intro.ReleaseBody/>}
+      </div>  
+            
           <Header>
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}

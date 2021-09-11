@@ -27,13 +27,14 @@ export const Container = styled.div`
    }
 `;
 
-export const Error = styled.div`
-   background: #e87c03;
-   border-radius: 4px;
-   font-size: 14px;
-   margin: 0 0 16px;
-   color: white;
-   padding: 15px 20px;
+export const Error = styled.p`
+   margin-bottom: 1.25rem;
+   padding: 0.625rem 1.25rem;
+   border-radius: 0.25rem;
+   color: var(--white);
+   background-color: orange;
+   font-size: 0.875rem;
+   font-weight: bold;
 `;
 
 export const Success = styled.div`
@@ -203,4 +204,18 @@ color: var(--gray);
 &:focus:not(:focus-visible) {
   outline: 0;
 }
+`;
+
+export const InputBox = styled.div`
+background: #333;
+// broder-radius: 100%;
+// border-spacing: 10%;
+border: 0;
+color: #fff;
+border-radius: 10px 10px 10px 10px;
+height: 50px;
+line-height: 50px;
+padding: 5px 20px;
+margin-bottom: 20px;
+outline:none;
 `;

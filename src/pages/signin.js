@@ -1,6 +1,7 @@
-import React from 'react';
+import React , {useState}from 'react';
 import { useHistory,useParams } from 'react-router-dom';
 import { Form } from "../components";
+import {Error} from './css/SubmitButton'
 import { FooterContainer } from '../containers/footer';
 import * as ROUTES from '../constants/routes';
 import { useForm } from "react-hook-form";
@@ -25,7 +26,10 @@ export default function  SignIn() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.userLogin);
   const { email } = useParams();
+  const [errorMessage, setErrorMessage] = useState('')
+  const [setEmail] =useState('');
 
+  
   // 경고창에대한 Form 컴포넌트
   const {register,handleSubmit,formState: {errors},} = useForm();
 
@@ -47,8 +51,16 @@ export default function  SignIn() {
       } catch(error) {
           
         // 로그인 실패시에 에러메시지
-            dispatch(signinFail(error.message));
-    
+        dispatch(signinFail(error.message));       
+        if (error.code == 'auth/invalid-email') {
+          setErrorMessage('올바른 이메일 주소를 입력해 주세요.');
+        } else if (error.code == 'auth/user-disabled') {
+          setErrorMessage('정지ㅅㄱ');
+        } else if (error.code == 'auth/user-not-found') {
+          setErrorMessage('존재하지 않는 이메일 주소입니다.');
+        } else if (error.code == 'auth/wrong-password') {
+          setErrorMessage('비밀번호를 잘못 입력하셨습니다.');
+        }
       }
   }; 
 
@@ -59,9 +71,9 @@ export default function  SignIn() {
        <>
          <SignInHeaderContainer>
             <Form login>
-              <Form.Title>로그인</Form.Title>
               <Form.Base onSubmit={handleSubmit(handleSubmitonClick)}>  
-               {error && <Form.Error>죄송합니다. 이 이메일 주소를 사용하는 계정을 찾을 수 없습니다. 다시 시도하시거나 새로운 계정을 등록하세요.</Form.Error>}
+              <Form.Title>로그인</Form.Title>
+               {errorMessage && <Error>{errorMessage}</Error>}
                  <Input 
                     type="text"
                     {...register('email', {
@@ -76,6 +88,7 @@ export default function  SignIn() {
                     id='email'
                     defaultValue={email ? email: ''}
                     placeholder='이메일 주소'
+                    value={email}
                 />
                 {/* 이메일 입력 사항을 위반했을때 */}
                 {errors.email && <span>{errors.email.message}</span>}
