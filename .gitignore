@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+README.md
 
 # testing
 /coverage
@@ -24,5 +25,4 @@ yarn-debug.log*
 # API_KEY 
 .env
 
-# READ_ME
-README.md
+ 
