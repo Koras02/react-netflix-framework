@@ -44,16 +44,7 @@ export function BrowseContainer({ slides }) {
 
   const [show,handleShow] = useState(false);
  
- // 카테코리 영화목록 가져오기
-  function getCategory() {
-     axios ({
-        method: "GET",
-        url: `https://api.themoviedb.org/3/${category}/all/day?api_key=api_key=7db8b1ffbba88aaa67068565d84fe99`
-     }).then(response =>{
-        setCategory(response.data.results ?? [])
-     })
-  }
-
+ 
   useEffect(() => {
 
 
@@ -90,7 +81,11 @@ export function BrowseContainer({ slides }) {
          setSlideRows(slides[category]);
      }, [slides, category]);
 
-     
+
+  // 이동 마치고 clen up 함수
+     useEffect(() => {
+       return () => setLoading(false);
+     }, [loading]);
     
  
    
@@ -181,7 +176,7 @@ export function BrowseContainer({ slides }) {
             <Card.Entities>
               {slideItem.data.map((item) => (
                 <Card.Item key={item.docId} item={item}>
-                  <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
+                  {/* <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} /> */}
               
                   <Card.Meta>
                     <Card.SubTitle>{item.title}</Card.SubTitle>
@@ -189,14 +184,14 @@ export function BrowseContainer({ slides }) {
                   </Card.Meta>
                 </Card.Item>
               ))}
-              {slideItem.data.map((item) => (
+              {/* {slideItem.data.map((item) => (
                  <Card.Item key={item.docId} item={item}>
                      {category.length > 0 && category.map((category,index) => {
                        <Card.Category key={category.key} id={category.id} media_type={category.media_type} category={category} {...category} /> 
                      })}
                   </Card.Item>
               ))}
-              
+               */}
             </Card.Entities>
             <Card.Feature category={category}>
               <Player>

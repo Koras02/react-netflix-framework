@@ -13,13 +13,13 @@ import 'firebase/compat/auth';
 // import { seedDatabase } from '../seed';
 
 const config = {
-  apiKey: "AIzaSyDiF_ypOknM6m1sniLiAgeBcgB1FdtUcXk",
-  authDomain: "netflix-react-api.firebaseapp.com",
-  projectId: "netflix-react-api",
-  storageBucket: "netflix-react-api.appspot.com",
-  messagingSenderId: "587294626140",
-  appId: "1:587294626140:web:0eee8e1846770fce707199",
-  measurementId: "G-9V2GVHCBHS"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain:process.env.REACT_APP_AUTHDOMAIN_API_KEY,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID
 };
 
 const firebase = Firebase.initializeApp(config);

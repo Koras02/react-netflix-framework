@@ -20,3 +20,6 @@
 
 npm-debug.log*
 yarn-debug.log*
+
+# API_KEY 
+.env

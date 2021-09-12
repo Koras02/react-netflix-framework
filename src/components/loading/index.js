@@ -16,6 +16,11 @@ export default function Loading({ src, ...restProps }) {
         }, 2000)
       }, [profile.displayName])
 
+      // 로딩 끝난뒤에 는 필수로 cleanup 해주어야한다.
+      // 그래야 메모리 누수를 방지할 수있다.
+      useEffect(() => {
+          return () => setLoading(false);
+      }, [loading])
 
     return (
         <Spinner {...restProps}>

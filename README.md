@@ -24,6 +24,10 @@
 
 - https://github.com/jinkycho/netflix-clone
 
+- AbanoubTalaatHalim / Netflix 
+
+-https://github.com/AbanoubTalaatHalim/NETFLIX
+
 ## 사용 라이브러리
 
 - React \* Redux
@@ -44,3 +48,6 @@
 ## 구현할 구조
 
 ![넷플릭스 클론 구성 drawio](https://user-images.githubusercontent.com/67436032/132532908-acd42c39-dde5-4600-9c64-57f09e46896c.png)
+
+
+s
