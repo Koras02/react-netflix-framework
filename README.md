@@ -109,11 +109,7 @@
 
      ![스크린샷, 2021-09-12 17-52-08](https://user-images.githubusercontent.com/67436032/132981449-de171096-d419-46c7-b4b5-dc4b5eac28c3.png)
      ![스크린샷, 2021-09-12 17-52-32](https://user-images.githubusercontent.com/67436032/132981453-35762cfd-2b63-4f6e-a711-d85478e32e50.png)
-     ![스크린샷, 2021-09-12 17-53-47](https://user-images.githubusercontent.com/67436032/132981454-617f273d-125f-4bf4-960a-aaabcecc5ba9.png)
-
-  
- 
-
+   
 
 
    

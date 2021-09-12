@@ -50,6 +50,7 @@ export default function Home({ email, setEmail }) {
                     
                     {hasError && <div>정확한 이메일 주소를 입력하세요</div>}
                     <OptForm.Button>시작하기</OptForm.Button>
+                
                  </OptForm>
                 </Feature>
             </HeaderContainer>

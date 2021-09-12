@@ -60,12 +60,7 @@ export default function App() {
         path={ROUTES.BROWSE}
         >
           <Browse />
-        </ProtectedRoute>     
-
-  
-
-
-         
+        </ProtectedRoute>           
          
        </Switch>
     </Router>
