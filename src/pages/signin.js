@@ -55,7 +55,7 @@ export default function  SignIn() {
         if (error.code == 'auth/invalid-email') {
           setErrorMessage('올바른 이메일 주소를 입력해 주세요.');
         } else if (error.code == 'auth/user-disabled') {
-          setErrorMessage('정지ㅅㄱ');
+          setErrorMessage('해당 계정은 비활성화된 계정입니다.');
         } else if (error.code == 'auth/user-not-found') {
           setErrorMessage('존재하지 않는 이메일 주소입니다.');
         } else if (error.code == 'auth/wrong-password') {

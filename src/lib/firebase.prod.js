@@ -9,9 +9,8 @@ import 'firebase/compat/auth';
 
 
 
-// 1) when seeding the database you'll have to uncomment this!
-// import { seedDatabase } from '../seed';
 
+// config firebase 데이터 정보 id 는 본인 프로젝트의 api_key들을 복사해서 사용하시길 바랍니다.
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain:process.env.REACT_APP_AUTHDOMAIN_API_KEY,
@@ -26,14 +25,7 @@ const firebase = Firebase.initializeApp(config);
 
 const auth = firebase.auth();
 
-// 2) when seeding the database you'll have to uncomment this!
-// seedDatabase(firebase);
-// 3) once you have populated the database (only run once!), re-comment this so you don't get duplicate data
-
-
-// firebase 로 영화 DataBase 
-// seedDatabase(firebase);
-
+ 
 export { firebase, auth };
 
 

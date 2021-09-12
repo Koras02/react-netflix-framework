@@ -23,3 +23,6 @@ yarn-debug.log*
 
 # API_KEY 
 .env
+
+# READ_ME
+README.md
