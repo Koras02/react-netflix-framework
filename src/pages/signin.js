@@ -24,10 +24,10 @@ export default function  SignIn() {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.userLogin);
+  const { loading } = useSelector((state) => state.userLogin);
   const { email } = useParams();
   const [errorMessage, setErrorMessage] = useState('')
-  const [setEmail] =useState('');
+  // const [setEmail] =useState('');
 
   
   // 경고창에대한 Form 컴포넌트

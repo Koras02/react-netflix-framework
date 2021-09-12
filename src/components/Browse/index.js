@@ -1,14 +1,14 @@
-import axios from "axios";
-import React, { Profiler } from "react";
+/* eslint-disable no-unused-vars */
+ 
+import React from "react";
 import { useEffect, useState} from "react";
-import requests from "../../utils/requests";
 import Fuse from "fuse.js";
 import { Card } from "react-bootstrap";
  
  
 export default function Browse({ children,slides, ...restProps }) {
-    const [movies, seMovies] = useState([]);
     const [slidesRows, setSlideRows] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [searchTerm, setSearchTerm] = useState('');
     const [profile, setProfile] = useState({});
  

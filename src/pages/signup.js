@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form } from "../components";
-import { HeaderContainer } from '../containers/header';
+// import { HeaderContainer } from '../containers/header';
 import { FooterContainer } from '../containers/footer';
 import * as ROUTES from '../constants/routes';
 import {useForm} from 'react-hook-form'
+import {Error} from './css/SubmitButton'
  import {
      registerRequest,
      registerSuccess,
@@ -23,18 +24,13 @@ export default function  SignUp() {
    const history = useHistory();
  
    const dispatch = useDispatch();
-   const { loading, error } = useSelector((state) => state.userRegister);
-   const { user } = useSelector((state) => state.userLogin);
-
-   const {
-      register,
-      handleSubmit,
-      formState: {errors},
-     
-   } = useForm();
+   const { loading } = useSelector((state) => state.userRegister);
+//    const { user } = useSelector((state) => state.userLogin);
+  const [errorMessage, setErrorMessage] = useState('');
+  
 
 
- 
+   const {register,handleSubmit,formState: {errors}} = useForm();
 
     const handleSubmitonClick = async(data) => {
       dispatch(registerRequest());
@@ -49,9 +45,17 @@ export default function  SignUp() {
          });
          dispatch(registerSuccess(JSON.stringify(response.user)));
          history.push(ROUTES.BROWSE);
+         
          } catch (error) { 
             dispatch(registerFail(error.message));     
-          }
+            if (error.code == 'auth/email-already-in-use') {
+                setErrorMessage('이미 사용중인 이메일 주소입니다.');
+            } else if (error.code == 'auth/user-disabled') {
+                setErrorMessage('해당 계정은 비활성화된 계정입니다.');
+            } else if (error.code == 'auth/user-not-found') {
+                setErrorMessage('존재하지 않는 이메일 주소입니다.');
+            }  
+          }  
       };
     
     
@@ -65,7 +69,7 @@ export default function  SignUp() {
               {/* 로그인 실패시 에러 */}
               <Form.Base onSubmit={handleSubmit(handleSubmitonClick)}>
                  {/* 현재 계정이 사용중이라면 에러 발생 */}
-              {error && <Form.Error>죄송합니다. 현재 이 이메일 주소는 넷플릭스에서 사용중인 이메일 주소입니다.</Form.Error>}
+              {errorMessage && <Error>{errorMessage}</Error>}
                  <Input
                            type='text'
                            {...register('email', {
