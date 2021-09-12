@@ -8,12 +8,11 @@ import logo from '../logo.svg';
 import * as ROUTES from '../constants/routes';
 import { useHistory } from 'react-router-dom';
 import { FooterContainer } from '../containers/footer';
-import {makeStyles} from '@material-ui/core/styles';
-import Browse from '../components/Browse';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
  
  
-export function BrowseContainer({ slides }) {
+// 배열로 영화 이름 title mediaType을 받아온다.
+export function BrowseContainer({ slides, mediaType, title, movies }) {
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
   
@@ -173,11 +172,12 @@ export function BrowseContainer({ slides }) {
         {slideRows.map((slideItem) => (
           <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
+      
             <Card.Entities>
               {slideItem.data.map((item) => (
                 <Card.Item key={item.docId} item={item}>
                   {/* <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} /> */}
-              
+                 
                   <Card.Meta>
                     <Card.SubTitle>{item.title}</Card.SubTitle>
                     <Card.Text>{item.description}</Card.Text>
@@ -192,6 +192,7 @@ export function BrowseContainer({ slides }) {
                   </Card.Item>
               ))}
                */}
+            
             </Card.Entities>
             <Card.Feature category={category}>
               <Player>
