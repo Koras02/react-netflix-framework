@@ -17,7 +17,11 @@ import * as Sentry from "@sentry/react";
 
 // setry 에러 모니터링 적용 
 Sentry.init({
-  dsn: process.env.REACT_APP_SENTRY_DSN,
+  // dsn: process.env.REACT_APP_SENTRY_DSN,
+
+   // 프로덕션일 때만 
+  dsn: process.env.NODE_ENV === "production" ? process.env.REACT_APP_SENTRY_DSN : false,
+
   integrations: [new Integrations.BrowserTracing()],
 
   // tracesSampleRate를 1.0으로 설정해서 프로젝트 오류 사항을 100% 캡쳐할수있게 구현
