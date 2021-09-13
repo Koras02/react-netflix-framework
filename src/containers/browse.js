@@ -15,7 +15,7 @@ import Fuse from "fuse.js";
  
  
 // 배열로 영화 이름 title mediaType을 받아온다.
-export function BrowseContainer({ slides, src }) {
+export function BrowseContainer({ slides }) {
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
   
@@ -34,7 +34,7 @@ export function BrowseContainer({ slides, src }) {
   
   // 메인홈
   const history = useHistory();
-  const [value, setValue] = React.useState(0);
+  const [value] = React.useState(0);
  
 
   
@@ -45,7 +45,7 @@ export function BrowseContainer({ slides, src }) {
 
   }, [value,history])
 
-  const [show,handleShow] = useState(false);
+  const [handleShow] = useState(false);
  
  
   useEffect(() => {
@@ -56,7 +56,7 @@ export function BrowseContainer({ slides, src }) {
         handleShow(true);
       } else {
         handleShow(false);
-      };
+      }
     };
 
       window.addEventListener("scroll", navHandler);
@@ -112,7 +112,7 @@ export function BrowseContainer({ slides, src }) {
         } else {
             setSlideRows(slides[category]);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+ 
     }, [searchTerm]);
 
 
@@ -189,14 +189,12 @@ export function BrowseContainer({ slides, src }) {
              {slideRows.map((slideItem) => (
           <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
-      
             <Card.Entities>
               {slideItem.data.map((item) => (
-                <Card.Item key={item.docId} item={item}>
+                <Card.Item key={item.docId || item.id} item={item}>
                   <Card.Image src={`${SOURCE.BASE_IMG_URL}${item.poster_path}` || `images/${category}/${item.genre}/${item.slug}/smail.jpg`} />
                   <Card.Meta>
-                    {/* <Card.SubTitle>{item.title || item.name}</Card.SubTitle>
-                    <Card.Text>{item.description || item.overview}</Card.Text> */}
+                     <Card.SubTitle>{item.title || item.name}</Card.SubTitle>
                   </Card.Meta>
                 </Card.Item>
               ))}

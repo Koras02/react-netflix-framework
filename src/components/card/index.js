@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+ 
 import React, { useState, useContext, createContext } from 'react';
 
 import {
@@ -23,6 +23,7 @@ import {
 import * as SOURCE  from '../../constants/source';
 import { tvGenres, movieGenres } from '../../constants/genre';
 import { useFetchRating } from '../../hooks';
+import { FaRegWindowClose } from 'react-icons/fa';
 
 
 export const FeatureContext = createContext();
@@ -71,6 +72,7 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
         setItemFeature(item);
         setShowFeature(true);
       }
+     
     }
       {...restProps}
     >
@@ -96,16 +98,16 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
         <FeatureTitle>{itemFeature.title || itemFeature.name} </FeatureTitle>
         <FeatureText>{itemFeature.description || itemFeature.overview}</FeatureText>
         <FeatureClose onClick={() => setShowFeature(false)}>
-          <img src="/images/icons/close.png" alt="Close" />
+          <FaRegWindowClose />
         </FeatureClose>
         <Group margin="30px 0" flexDirection="row" alignItems="center">
           <Rating vote_average={itemFeature.vote_average}>
                {itemFeature.vote_average}
-            </Rating>
+            </Rating> 
           <Maturity rating={itemFeature.rating}>
             {itemFeature.rating!==undefined? itemFeature.rating : "NR"}
             
-          </Maturity>
+          </Maturity> 
           {itemFeature.genre_ids.map((id) => (
             <FeatureCategory key={id} fontWeight="bold">
                {mediaType === "tv" ?

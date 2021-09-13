@@ -12,7 +12,7 @@ import {
 
 } from "./styles/jumbotron";
 
-export default function Jumbotron({ children, direction = 'row', ...restPRops}) {
+export default function Jumbotron({ children, direction = 'row'}) {
     return (
         <Item>
             <Inner direction={direction}>
@@ -20,7 +20,7 @@ export default function Jumbotron({ children, direction = 'row', ...restPRops}) 
             </Inner>
         </Item>
     );
-};
+}
 
 Jumbotron.Container = function JumbotronContainer({ children, ...restProps}) {
     return <Container {...restProps}>{children}</Container>
@@ -38,17 +38,17 @@ Jumbotron.SubTitle = function JumbotronSubTitle({ children, ...restProps }) {
     return <SubTitle {...restProps}>{children}</SubTitle>
 }
 
-Jumbotron.Image = function JumbotronImage ({children , ...restProps }) {
+Jumbotron.Image = function JumbotronImage ({ ...restProps }) {
     return <Image {...restProps}></Image>
 }
 
-Jumbotron.Video = function JumboVideo ({ tpye, children, ...restProps }) {
+Jumbotron.Video = function JumboVideo () {
     return (
     <Video></Video>
     )
 }
 
-Jumbotron.Videos = function JumboVideos ({ type, children, ...restProps}) {
+Jumbotron.Videos = function JumboVideos ({ ...restProps}) {
     return (
         <Video
         {...restProps}
@@ -63,6 +63,6 @@ Jumbotron.Videos = function JumboVideos ({ type, children, ...restProps}) {
     )
 }
 
-Jumbotron.Show = function JumboShow ({ type, children, ...restProps}) {
+Jumbotron.Show = function JumboShow ({  ...restProps}) {
     return <Show {...restProps}></Show>
 }

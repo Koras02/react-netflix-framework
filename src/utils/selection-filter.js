@@ -91,7 +91,6 @@ export default function selectionFilter({
   newsSeries,
   realitySeries,
   scifiSeries,
-  soapSeries,
   talkSeries,
   warAndPoliticsSeries,
   westernSeries,

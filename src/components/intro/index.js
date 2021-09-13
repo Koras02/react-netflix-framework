@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { LockBody, ReleaseBody, Spinner, Picture,VideoWrapper,VideoPlayer} from './styles/Intro'
+import { ReleaseBody, Spinner,VideoWrapper,VideoPlayer} from './styles/Intro'
 import JumboVideo from '../../fixtures/video.json';
 import Videio from './styles/Netflix logo intro (2021).mp4'
 
 
-export default function Intro ({ src, ...restProps })  {
+export default function Intro ()  {
     return (
         <Spinner>
         {JumboVideo.map(item => (

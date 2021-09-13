@@ -24,7 +24,7 @@ export const userLoginSlice = createSlice({
         
 
         // 로그인 실패
-        signinFail: (state, action) => {
+        signinFail: (state) => {
             state.loading = false;
             state.error = 'auth/user-disabled'
         },

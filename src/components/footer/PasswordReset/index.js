@@ -3,7 +3,7 @@ import { Container,Row, Column, Link, Title, Text, Break } from './styles/PassWo
 
 export default function PassWordFooter({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>
-};
+}
 
 PassWordFooter.Row = function PassWordFooterRow({ children, ...restProps }) {
     return <Row {...restProps}>{children}</Row>

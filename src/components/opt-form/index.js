@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Container
     ,Text,
      Input,
@@ -40,6 +40,6 @@ OptForm.Button = function OptFormButton({ children, ...restProps}) {
     )
 }
 
-OptForm.Break = function OptFormBreak ({ children, ...restProps}) {
+OptForm.Break = function OptFormBreak ({ ...restProps}) {
     return <Break {...restProps} />
 }

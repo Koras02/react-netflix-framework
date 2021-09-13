@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Link as ReachRouterLink } from 'react-router-dom';
@@ -69,7 +70,7 @@ PasswordHeader.Profile = function HeaderProfile({ children, ...restProps }) {
   return <Profile {...restProps}>{children}</Profile>;
 };
 
-PasswordHeader.Feature = function HeaderFeature({ children, ...restProps }) {
+PasswordHeader.Feature = function HeaderFeature({ children,  }) {
   return <Feature>{children}</Feature>;
 };
 

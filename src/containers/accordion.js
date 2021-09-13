@@ -1,25 +1,16 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router'
+// import { useHistory } from 'react-router'
 import { Accordion, OptForm } from '../components'
 import faqsData from '../fixtures/faqs.json'
-import * as ROUTES from '../constants/routes';
+// import * as ROUTES from '../constants/routes';
 import { Error } from '../components/form/styles/form';
 
-export function FaqsContainer({email, setEmail}) {
+export function FaqsContainer({ setEmail}) {
 
-    const history = useHistory();
+ 
     const [hasError, setHasError] = useState(false);
 
-   const handleSignUp = (event) => {
-        event.preventDefault();
-
-        if (email == '') {
-            setHasError(true);
-            return;
-        }
-        
-        history.push(ROUTES.PLAN);
-   };
+  
 
    const handleChange = (event) => {
        setHasError(false);

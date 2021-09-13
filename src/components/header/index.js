@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Link as ReachRouterLink } from 'react-router-dom';
@@ -22,7 +23,7 @@ import {
   TextLink,
   TextLinks,
   SearchComponent,
-  SubBackground
+ 
 } from './styles/header';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -83,7 +84,7 @@ Header.Profile = function HeaderProfile({ children, ...restProps }) {
   return <Profile {...restProps}>{children}</Profile>;
 };
 
-Header.Feature = function HeaderFeature({ children, ...restProps }) {
+Header.Feature = function HeaderFeature({ children }) {
   return <Feature>{children}</Feature>;
 };
 

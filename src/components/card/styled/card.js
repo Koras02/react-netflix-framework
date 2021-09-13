@@ -136,7 +136,7 @@ export const Feature = styled.div`
   background: url(${({ src }) => src});
   background-size: contain;
   position: relative;
-  height: 360px;
+  height: 500px;
   background-position-x: right;
   background-repeat: no-repeat;
   background-color: black;
@@ -161,7 +161,7 @@ export const FeatureTitle = styled(Title)`
 `;
 
 export const FeatureClose = styled.button`
-  color: white;
+  color: red;
   position: absolute;
   right: 20px;
   top: 20px;
@@ -175,6 +175,7 @@ export const FeatureClose = styled.button`
   }
 `;
 
+
 export const Content = styled.div`
   margin: 56px;
   max-width: 500px;
@@ -187,22 +188,12 @@ export const Content = styled.div`
 `;
 
 export const Maturity = styled.div`
-  background-color: ${({ rating }) => (rating >= 15 ? '#f44336' : '#2f9600')};
-  border-radius: 15px;
-  width: 28px;
-  line-height: 28px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  margin-right: 10px;
-  font-size: 12px;
-`;
-
-
-export const Rating = styled.div`
-background-color: ${({ vote_average }) => vote_average >= 8 && '#2f9600' || vote_average >= 4 && '#ffa500' || vote_average < 4 && '#f44336'};
-  width: 40px;
+background-color: ${({ rating }) => rating === 'R' && '#f44336' || rating === 'NC-17' && '#f44336' ||
+rating === 'PG-13' && '#2f9600' || rating === 'PG' && '#2f9600' || rating === 'G' && '#2f9600' ||
+rating === 'TV-MA' && '#f44336' || rating === 'TV-14' && '#f44336' || rating === 'TV-PG' && '#f44336' ||
+rating === 'TV-Y7' && '#2f9600' || rating === 'TV-G' && '#2f9600' || rating === 'TV-Y' && '#2f9600'
+};
+  width: 70px;
   line-height: 28px;
   text-align: center;
   color: white;
@@ -223,4 +214,46 @@ background-color: ${({ vote_average }) => vote_average >= 8 && '#2f9600' || vote
 `;
 
 
-export const FeatureCategory = styled.div``;
+
+
+
+
+export const FeatureCategory = styled.div`
+
+font-size:18px;
+   color:white;
+   font-weight: ${({ fontWeight }) => (fontWeight === 'bold' ? 'bold' : 'normal')}
+   margin: 0;
+   margint-right: 5px;
+   border-color: rgba(51,51,51,0.5);
+   border-radius: 5px;
+   padding: 1px 2px;
+   text-overflow: ellipsis;
+
+   @media (max-width:600px) {
+     line-height: 22px;
+    }
+     
+`;
+
+    export const Rating = styled.div`
+    background-color: ${({ vote_average }) => vote_average >= 8 && '#2f9600' || vote_average >= 4 && '#ffa500' || vote_average < 4 && '#f44336'};
+      width: 40px;
+      line-height: 28px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+      margin: 0;
+      margin-right: 5px;
+      border-color: rgba(51, 51, 51, 0.5);
+      border : 1px solid rgba(51, 51, 51, 0.8);
+      border-radius: 5px;
+      padding: 1px 2px;
+      text-overflow: ellipsis;
+    
+      @media (max-width: 600px) {
+        line-height: 22px;
+      }
+    `;
