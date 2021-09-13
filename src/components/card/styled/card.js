@@ -198,3 +198,29 @@ export const Maturity = styled.div`
   margin-right: 10px;
   font-size: 12px;
 `;
+
+
+export const Rating = styled.div`
+background-color: ${({ vote_average }) => vote_average >= 8 && '#2f9600' || vote_average >= 4 && '#ffa500' || vote_average < 4 && '#f44336'};
+  width: 40px;
+  line-height: 28px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  margin: 0;
+  margin-right: 5px;
+  border-color: rgba(51, 51, 51, 0.5);
+  border : 1px solid rgba(51, 51, 51, 0.8);
+  border-radius: 5px;
+  padding: 1px 2px;
+  text-overflow: ellipsis;
+
+  @media (max-width: 600px) {
+    line-height: 22px;
+  }
+`;
+
+
+export const FeatureCategory = styled.div``;

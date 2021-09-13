@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useContext, createContext } from 'react';
 
 import {
@@ -16,7 +17,13 @@ import {
   Entities,
   Item,
   Image,
+  Rating,
+  FeatureCategory,
 } from './styled/card';
+import * as SOURCE  from '../../constants/source';
+import { tvGenres, movieGenres } from '../../constants/genre';
+import { useFetchRating } from '../../hooks';
+
 
 export const FeatureContext = createContext();
 
@@ -63,7 +70,8 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
       onClick={() => {
         setItemFeature(item);
         setShowFeature(true);
-      }}
+      }
+    }
       {...restProps}
     >
       {children}
@@ -77,23 +85,39 @@ Card.Image = function CardImage({ ...restProps }) {
 
 Card.Feature = function CardFeature({ children, category, ...restProps }) {
   const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
+  const is_MediaType_Undedfined = itemFeature.media_type === undefined;
+  const mediaType=is_MediaType_Undedfined ? category === 'series' ? 'tv' : 'movie' : itemFeature.media_type
+   // eslint-disable-next-line no-unused-expressions
+   showFeature ? itemFeature.rating = useFetchRating(itemFeature.id, mediaType) : null
 
   return showFeature ? (
-    <Feature {...restProps} src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
+    <Feature {...restProps} src={`${SOURCE.BASE_IMG_URL}${itemFeature.backdrop_path}`}>
       <Content>
-        <FeatureTitle>{itemFeature.title}</FeatureTitle>
-        <FeatureText>{itemFeature.description}</FeatureText>
+        <FeatureTitle>{itemFeature.title || itemFeature.name} </FeatureTitle>
+        <FeatureText>{itemFeature.description || itemFeature.overview}</FeatureText>
         <FeatureClose onClick={() => setShowFeature(false)}>
           <img src="/images/icons/close.png" alt="Close" />
         </FeatureClose>
-
         <Group margin="30px 0" flexDirection="row" alignItems="center">
-          <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
-          <FeatureText fontWeight="bold">
-            {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
-          </FeatureText>
+          <Rating vote_average={itemFeature.vote_average}>
+               {itemFeature.vote_average}
+            </Rating>
+          <Maturity rating={itemFeature.rating}>
+            {itemFeature.rating!==undefined? itemFeature.rating : "NR"}
+            
+          </Maturity>
+          {itemFeature.genre_ids.map((id) => (
+            <FeatureCategory key={id} fontWeight="bold">
+               {mediaType === "tv" ?
+                 tvGenres.filter((genre) => genre.id === id).map((item) => (
+                   item.name
+                 )) 
+                 : movieGenres.filter((genre) => genre.id === id).map((item) => (
+                   item.name
+                 ))}  
+            </FeatureCategory>
+          ))}
         </Group>
-
         {children}
       </Content>
     </Feature>

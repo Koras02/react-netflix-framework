@@ -44,6 +44,9 @@
 
 -https://github.com/AbanoubTalaatHalim/NETFLIX
 
+- DanielJan99 / Netflix Clone
+
+https://github.com/DanielJang99/Netflix_Clone
 ## 사용 라이브러리
 
 - React \* Redux
@@ -60,6 +63,8 @@
 
 - React firbase
   - Login - Register Tool
+
+  
 
 ## 구현할 구조
 

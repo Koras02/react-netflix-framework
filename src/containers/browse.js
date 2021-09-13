@@ -1,34 +1,38 @@
 /* eslint-disable no-restricted-globals */
 import React, {useState, useContext, useEffect} from 'react'
-import Fuse from "fuse.js";
-import {FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
-import { Header, Loading, Card,Player} from '../components';
-import logo from '../logo.svg';
-import * as ROUTES from '../constants/routes';
-import { useHistory } from 'react-router-dom';
 import { FooterContainer } from '../containers/footer';
-import { Link } from 'react-router-dom';
+import {FirebaseContext } from '../context/firebase';
+import { Header, Loading, Card,Player} from '../components';
+import requests from '../utils/requests';
+import axios from '../utils/axios';
+import * as ROUTES from '../constants/routes';
+import logo from '../logo.svg';
+import { useHistory } from 'react-router-dom';
+import * as SOURCE from '../constants/source';
+
+import Fuse from "fuse.js";
  
  
 // 배열로 영화 이름 title mediaType을 받아온다.
-export function BrowseContainer({ slides, mediaType, title, movies }) {
+export function BrowseContainer({ slides, src }) {
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
   
+  // 검색 부분 
+  const [category,setCategory] = useState('series');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [slideRows, setSlideRows] = useState([]);
+
   // 프로필 == 메인 이동시 로딩구현 
   const [profile, setProfile] = useState([]);
   const [loading,setLoading] = useState(true);
-  const [opening, setOpning ] = useState(true);
+ 
   
-  // 검색 부분 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [category,setCategory] = useState('series');
-  const [slideRows, setSlideRows] = useState([]);
+  const [background, setBackGround] = useState([])
 
   
   // 메인홈
- 
   const history = useHistory();
   const [value, setValue] = React.useState(0);
  
@@ -70,11 +74,7 @@ export function BrowseContainer({ slides, mediaType, title, movies }) {
         }, 2000)
     }, [profile.displayName]);
 
-    useEffect(() => {
-      setTimeout(() => {
-        setOpning(false)
-      }, 9000)
-    }, [profile.displayName])
+ 
   
      useEffect(() => {
          setSlideRows(slides[category]);
@@ -85,12 +85,27 @@ export function BrowseContainer({ slides, mediaType, title, movies }) {
      useEffect(() => {
        return () => setLoading(false);
      }, [loading]);
-    
+
+     useEffect(() => {
+      async function fetchData() {
+          const request = await axios.get(requests.fetchNetflixOriginals);
+          setBackGround(
+              request.data.results[
+              Math.floor(Math.random() * request.data.results.length - 1)
+              ]
+          );
+          return request;
+      }
+      fetchData();
+  }, []);
  
    
      useEffect(() => {
-         const fuse = new Fuse(slideRows, { keys: ['data.description','data.title', 'data.genre'] });
-        const results = fuse.search(searchTerm).map(({ item }) => item);
+         const fuse = new Fuse(slideRows,
+          { keys: ['data.description','data.title', 'data.genre'] });
+        
+        
+          const results = fuse.search(searchTerm).map(({ item }) => item);
 
         if(slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
             setSlideRows(results);
@@ -108,26 +123,28 @@ export function BrowseContainer({ slides, mediaType, title, movies }) {
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
  
             
-          <Header>
+          <Header src={background.backdrop_path !== undefined ? `${SOURCE.BASE_IMG_URL}${background.backdrop_path}` : '/images/misc/home-bg.jpg'}>
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
                 {/*  selection -filter에서 가져온 장르 메뉴들 */}
                     <Header.Group>
                       <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"/>
-                      <Header.TextLink active={category === 'trending' ? 'true' : 'false'} onClick={() => setCategory('trending')}>
+                      <Header.TextLink active={category === 'trending' ? 'true' : 'false'} 
+                        onClick={() => setCategory('series')}
+                      >
                         홈
                       </Header.TextLink>
-                      <Header.TextLink active={category === 'tv' ? 'true' : 'false'} onClick={() => setCategory('tv')}>
+                      <Header.TextLink 
+                          active={category === 'tv' ? 'true' : 'false'} 
+                          onClick={() => setCategory('films')}>
                         tv프로그램
                       </Header.TextLink>
-                      <Header.TextLink active={category === 'movie' ? 'true' : 'false'} onClick={() => setCategory('movie')}>
+                      <Header.TextLink 
+                          active={category === 'tv' ? 'true' : 'false'} 
+                          onClick={() => setCategory('films')}>
                         영화
-                        </Header.TextLink>
-                        <Header.TextLink
-                          active={category === 'movie' ? 'true' : 'false'} onClick={() => setCategory('new')}
-                        >
-                          최신 콘텐츠       
-                        </Header.TextLink>
+                      </Header.TextLink>
+                     
                         <Header.TextLink>
               
                           내가찜한 콘텐츠       
@@ -150,8 +167,8 @@ export function BrowseContainer({ slides, mediaType, title, movies }) {
                             <Header.Picture src={user.photoURL} />
                             <Header.Dropdown>
                                 <Header.Group>
-                                    {/* <Header.Picture src={user.photoURL} /> */}
-                                    
+                                    <Header.Picture src={user.photoURL} />
+                                    <Header.TextLink>{user.dispalyName}</Header.TextLink>
                                 </Header.Group>
                                 <Header.ButtonGroup>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>프로필 관리</Header.TextLinks>
@@ -169,35 +186,26 @@ export function BrowseContainer({ slides, mediaType, title, movies }) {
           </Header>       
       
           <Card.Group>
-        {slideRows.map((slideItem) => (
+             {slideRows.map((slideItem) => (
           <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
       
             <Card.Entities>
               {slideItem.data.map((item) => (
                 <Card.Item key={item.docId} item={item}>
-                  {/* <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} /> */}
-                 
+                  <Card.Image src={`${SOURCE.BASE_IMG_URL}${item.poster_path}` || `images/${category}/${item.genre}/${item.slug}/smail.jpg`} />
                   <Card.Meta>
-                    <Card.SubTitle>{item.title}</Card.SubTitle>
-                    <Card.Text>{item.description}</Card.Text>
+                    {/* <Card.SubTitle>{item.title || item.name}</Card.SubTitle>
+                    <Card.Text>{item.description || item.overview}</Card.Text> */}
                   </Card.Meta>
                 </Card.Item>
               ))}
-              {/* {slideItem.data.map((item) => (
-                 <Card.Item key={item.docId} item={item}>
-                     {category.length > 0 && category.map((category,index) => {
-                       <Card.Category key={category.key} id={category.id} media_type={category.media_type} category={category} {...category} /> 
-                     })}
-                  </Card.Item>
-              ))}
-               */}
-            
+        
             </Card.Entities>
             <Card.Feature category={category}>
               <Player>
                 <Player.Button />
-                <Player.Video src="/videos/bunny.mp4" />
+                <Player.Video />
               </Player>
             </Card.Feature>
           </Card>
