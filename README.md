@@ -121,9 +121,7 @@ https://github.com/Prem3997/Netflix-Web-App-Clone
      ![스크린샷, 2021-09-12 17-52-08](https://user-images.githubusercontent.com/67436032/132981449-de171096-d419-46c7-b4b5-dc4b5eac28c3.png)
      ![스크린샷, 2021-09-12 17-52-32](https://user-images.githubusercontent.com/67436032/132981453-35762cfd-2b63-4f6e-a711-d85478e32e50.png)
    
-<<<<<<< HEAD
-https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-bb4d-b296ce67fcbb.mp4
-=======
+ 
    
   - 로그인 후 메인 페이지
     - 프로필 페이지 
@@ -133,8 +131,7 @@ https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-
 
 https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-bb4d-b296ce67fcbb.mp4
 
->>>>>>> 5a9b909fbea72280c72a33b25f31a9a6cfe76097
-
+ 
    
    ```
      trending: [
