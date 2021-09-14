@@ -116,11 +116,81 @@ export default function selectionFilter({
   westernMovies
 }) {
   return {
+    trending: [
+        {
+            title: '넷플릭시 인기 콘텐츠 TOP20',
+            data: trending.slice(3,20)
+        },
+        {
+            title: '님이 좋아하실만한 컨텐츠',
+            data: netflixOriginals.slice(1, 10)
+        },
+        {
+          title: '오직 넷플릭스에서',
+          data: netflixOriginals.slice(1, 10)
+        },
+        {
+            title: '액션 & 어드벤쳐',
+            data: actionAndAdventureSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '애니메이션',
+            data: animationSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '코미디',
+            data: comedySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '범죄 & 심리학',
+            data: crimeSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '다큐멘터리',
+            data: documentarySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '드라마',
+            data: dramaSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '가족',
+            data: familySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '키즈 & 어린이',
+            data: kidsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '미스테리',
+            data: mysterySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '뉴스',
+            data: newsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '리얼리티 & 쇼',
+            data: realitySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: 'SF & 과학',
+            data: scifiSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '토크 쇼 & 예능',
+            data: talkSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '전쟁 & 시사',
+            data: warAndPoliticsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '서부 영화',
+            data: westernSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+    ],
       series: [
-          {
-              title: '넷플릭시 인기 콘텐츠 TOP20',
-              data: trending.slice(3,10)
-          },
           {
               title: '님이 좋아하실만한 컨텐츠',
               data: netflixOriginals.slice(1, 10)

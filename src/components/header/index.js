@@ -36,8 +36,17 @@ export default function Header({ bg = true, children, ...restProps }) {
   );
 }
 
-Header.SubBackground = function SubBackground({ children, ...restProps }) {
-  return <SubBackground {...restProps}>{children}</SubBackground>;
+
+ 
+
+Header.SubBackground = function SubBackground({ bg = false, children, ...restProps }) {
+  return bg ? 
+    (<SubBackground {...restProps}>
+    {children}
+    </SubBackground>
+    ) : (
+      children
+    );
 };
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {

@@ -13,9 +13,9 @@ import * as SOURCE from '../constants/source';
 
 import Fuse from "fuse.js";
  
- 
+
 // 배열로 영화 이름 title mediaType을 받아온다.
-export function BrowseContainer({ slides }) {
+export function BrowseContainer({ slides  }) {
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
   
@@ -36,7 +36,7 @@ export function BrowseContainer({ slides }) {
   const history = useHistory();
   const [value] = React.useState(0);
  
-
+ 
   
   useEffect(() => {
     if (value === 0) history.push('/browse');
@@ -46,6 +46,7 @@ export function BrowseContainer({ slides }) {
   }, [value,history])
 
   const [handleShow] = useState(false);
+ 
  
  
   useEffect(() => {
@@ -115,7 +116,8 @@ export function BrowseContainer({ slides }) {
  
     }, [searchTerm]);
 
-
+   
+     
     return profile.displayName ? (
       <>
 
@@ -123,24 +125,24 @@ export function BrowseContainer({ slides }) {
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
  
             
-          <Header src={background.backdrop_path !== undefined ? `${SOURCE.BASE_IMG_URL}${background.backdrop_path}` : '/images/misc/home-bg.jpg'}>
+          <Header.SubBackground src={background.backdrop_path !== undefined ? `${SOURCE.BASE_IMG_URL}${background.backdrop_path}` : '/images/misc/home-bg.jpg'}>
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
                 {/*  selection -filter에서 가져온 장르 메뉴들 */}
                     <Header.Group>
                       <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"/>
                       <Header.TextLink active={category === 'trending' ? 'true' : 'false'} 
-                        onClick={() => setCategory('series')}
+                        onClick={() => setCategory('trending')}
                       >
                         홈
                       </Header.TextLink>
                       <Header.TextLink 
                           active={category === 'tv' ? 'true' : 'false'} 
-                          onClick={() => setCategory('films')}>
+                          onClick={() => setCategory('series')}>
                         tv프로그램
                       </Header.TextLink>
                       <Header.TextLink 
-                          active={category === 'tv' ? 'true' : 'false'} 
+                          active={category === 'movie' ? 'true' : 'false'} 
                           onClick={() => setCategory('films')}>
                         영화
                       </Header.TextLink>
@@ -183,7 +185,7 @@ export function BrowseContainer({ slides }) {
                     </Header.Group>
                 </Header.Frame>
               
-          </Header>       
+          </Header.SubBackground>       
       
           <Card.Group>
              {slideRows.map((slideItem) => (
@@ -206,6 +208,7 @@ export function BrowseContainer({ slides }) {
                 <Player.Video />
               </Player>
             </Card.Feature>
+            
           </Card>
         ))}
       </Card.Group>

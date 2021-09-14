@@ -16,6 +16,9 @@ export const PlayerContext = createContext();
 export default function Player({ children, ...restProps }) {
     const [showPlayer, setShowPlayer] = useState(false);
     const [trailerUrl, setTrailerUrl] = useState("");
+
+  
+    // useEffect(()
     
 
     return (
@@ -42,6 +45,7 @@ Player.Video = function PlayerVideo({ ...restProps }) {
           playerVars:{
               autoPlay:1,
           }
+   
       }
 
     return showPlayer ? ReactDOM.createPortal(

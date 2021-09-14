@@ -6,7 +6,7 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)),
-  // url(${({src}) => (src ? `${process.env.PUBLIC_URL}/images/misc/home-bg.jpg` : `${Images}`)}) top left / cover no-repeat;
+  url(${({src}) => (src ? `${process.env.PUBLIC_URL}/images/misc/home-bg.jpg` : `${Images}`)}) top left / cover no-repeat;
     // url(${({ src }) => (src ? process.env.PUBLIC_URL + `../images/misc/${src}.jpg` : `../images/misc/home-bg.jpg`)}) top left / cover no-repeat;
 
   @media (max-width: 1100px) {
@@ -57,6 +57,7 @@ export const Link = styled.p`
 export const Group = styled.div`
   display: flex;
   align-items: center;
+  z-index:1;
 `;
 
 export const SearchInput = styled.input`
@@ -81,7 +82,7 @@ export const SearchInput = styled.input`
 
 export const SearchComponent = styled.div`
  color:#fff;
- position:absolute;
+  
  right:150px;
 
 `;
