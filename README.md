@@ -121,7 +121,94 @@ https://github.com/Prem3997/Netflix-Web-App-Clone
      ![스크린샷, 2021-09-12 17-52-08](https://user-images.githubusercontent.com/67436032/132981449-de171096-d419-46c7-b4b5-dc4b5eac28c3.png)
      ![스크린샷, 2021-09-12 17-52-32](https://user-images.githubusercontent.com/67436032/132981453-35762cfd-2b63-4f6e-a711-d85478e32e50.png)
    
+   
+  - 로그인 후 메인 페이지
+    - 프로필 페이지 
+    
+    - 구현 -> 유저 로그인 완료 프로필에서 프로필선택후 메인페이지 이동 
+    - Naviation 전환 구현  
 
+https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-bb4d-b296ce67fcbb.mp4
+
+
+   
+   ```
+     trending: [
+        {
+            title: '넷플릭시 인기 콘텐츠 TOP20',
+            data: trending.slice(3,20)
+        },
+        {
+            title: '님이 좋아하실만한 컨텐츠',
+            data: netflixOriginals.slice(1, 10)
+        },
+        {
+          title: '오직 넷플릭스에서',
+          data: netflixOriginals.slice(1, 10)
+        },
+        {
+            title: '액션 & 어드벤쳐',
+            data: actionAndAdventureSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '애니메이션',
+            data: animationSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '코미디',
+            data: comedySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '범죄 & 심리학',
+            data: crimeSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '다큐멘터리',
+            data: documentarySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '드라마',
+            data: dramaSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '가족',
+            data: familySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '키즈 & 어린이',
+            data: kidsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '미스테리',
+            data: mysterySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '뉴스',
+            data: newsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '리얼리티 & 쇼',
+            data: realitySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: 'SF & 과학',
+            data: scifiSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '토크 쇼 & 예능',
+            data: talkSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '전쟁 & 시사',
+            data: warAndPoliticsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+        {
+            title: '서부 영화',
+            data: westernSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+        },
+    ],
+   ```
+   
 
    
  
