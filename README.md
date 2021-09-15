@@ -119,11 +119,6 @@ https://github.com/Prem3997/Netflix-Web-App-Clone
    https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-bb4d-b296ce67fcbb.mp4
 
  
-<<<<<<< HEAD
-
-=======
->>>>>>> 3ad6f286fc048f7a83621c7e8ec7b3e29bbbc805
-   
    ```
      trending: [
         {
