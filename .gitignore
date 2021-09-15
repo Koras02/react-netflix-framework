@@ -25,4 +25,6 @@ yarn-debug.log*
 # API_KEY 
 .env
 
+*.md
+
  
