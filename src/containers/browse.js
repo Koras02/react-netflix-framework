@@ -12,12 +12,13 @@ import { useHistory } from 'react-router-dom';
 import * as SOURCE from '../constants/source';
 
 import Fuse from "fuse.js";
+
  
 
 const baseURL = 'https://image.tmdb.org/t/p/original/';
 
 // 배열로 영화 이름 title mediaType을 받아온다.
-export function BrowseContainer({ slides  }) {
+export function BrowseContainer({ slides ,id }) {
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
   
@@ -50,7 +51,9 @@ export function BrowseContainer({ slides  }) {
   const [handleShow] = useState(false);
  
  
- 
+  
+
+
   useEffect(() => {
 
 
@@ -102,6 +105,8 @@ export function BrowseContainer({ slides  }) {
       fetchData();
   }, []);
  
+
+  
    
      useEffect(() => {
          const fuse = new Fuse(slideRows,
@@ -126,7 +131,7 @@ export function BrowseContainer({ slides  }) {
   
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody /> }
  
-            
+        
           <Header.SubBackground src={background.backdrop_path !== undefined ? `${SOURCE.BASE_IMG_URL}${background.backdrop_path}` : '/images/misc/home-bg.jpg'}>
                 <Header.Banner src={`${baseURL}${background?.backdrop_path}`}>
                 <Header.Frame>
@@ -191,22 +196,32 @@ export function BrowseContainer({ slides  }) {
                 </Header.Feature>
               </Header.Banner>
           </Header.SubBackground>       
-      
+ 
+
           <Card.Group>
+
              {slideRows.map((slideItem) => (
-          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+               <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
-            <Card.Entities>
+
+            
+            <Card.Left>
+
+            </Card.Left>
+            <Card.Slider>
+            <Card.Entities id={id}>
               {slideItem.data.map((item) => (
-                <Card.Item key={item.docId || item.id} item={item}>
+               <Card.Item key={item.docId || item.id} item={item}>
                   <Card.Image src={`${SOURCE.BASE_IMG_URL}${item.poster_path}` || `images/${category}/${item.genre}/${item.slug}/smail.jpg`} />
-                  <Card.Meta>
-                     <Card.SubTitle>{item.title || item.name}</Card.SubTitle>
-                  </Card.Meta>
                 </Card.Item>
               ))}
-        
             </Card.Entities>
+            </Card.Slider>
+            <Card.Right>
+
+            </Card.Right>
+            
+
             <Card.Feature category={category}>
               <Player>
                 <Player.Button />
@@ -216,6 +231,7 @@ export function BrowseContainer({ slides  }) {
             
           </Card>
         ))}
+   
       </Card.Group>
          
         <FooterContainer />      

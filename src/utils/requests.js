@@ -19,7 +19,7 @@ export const Language = "ko"
 
 
 const requests = {
-    fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=${Language}`,
+    fetchTrending: `/trending/all/day?api_key=${API_KEY}&language=${Language}`,
     fetchNetflixOriginals:`/discover/tv?api_key=${API_KEY}&with_networks=213&language=${Language}`,
     fetchActionAndAdventureSeries: `/discover/tv?api_key=${API_KEY}&with_genres=10759&language=${Language}`,
     fetchAnimationSeries: `/discover/tv?api_key=${API_KEY}&with_genres=16&language=${Language}`,

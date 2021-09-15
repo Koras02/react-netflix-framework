@@ -47,75 +47,72 @@ export default function selectionFilter({
     trending: [
         {
             title: '넷플릭시 인기 콘텐츠 TOP20',
-            data: trending.slice(10,50)
+            data: trending.sort(() => Math.random() + Math.random()).slice(0,100)
         },
-        {
-            title: '님이 좋아하실만한 컨텐츠',
-            data: netflixOriginals.slice(10, 30)
-        },
+   
         {
           title: '오직 넷플릭스에서',
-          data: netflixOriginals.slice(1, 10)
+          data: netflixOriginals.sort(() => Math.random() - Math.random()).slice(0,40),
         },
         {
             title: '액션 & 어드벤쳐',
-            data: actionAndAdventureSeries.sort(() => Math.random() - Math.random()).slice(2, 100)
+            data: actionAndAdventureSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '애니메이션',
-            data: animationSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: animationSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '코미디',
-            data: comedySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: comedySeries.sort(() => Math.random() - Math.random()).slice(0, 40)
         },
         {
             title: '범죄 & 심리학',
-            data: crimeSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: crimeSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '다큐멘터리',
-            data: documentarySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: documentarySeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '드라마',
-            data: dramaSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: dramaSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '가족',
-            data: familySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: familySeries.sort(() => Math.random() - Math.random()).slice(0, 40)
         },
         {
             title: '키즈 & 어린이',
-            data: kidsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: kidsSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '미스테리',
-            data: mysterySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: mysterySeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '뉴스',
-            data: newsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: newsSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '리얼리티 & 쇼',
-            data: realitySeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: realitySeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: 'SF & 과학',
-            data: scifiSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: scifiSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '토크 쇼 & 예능',
-            data: talkSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: talkSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '전쟁 & 시사',
-            data: warAndPoliticsSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: warAndPoliticsSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
         {
             title: '서부 영화',
-            data: westernSeries.sort(() => Math.random() - Math.random()).slice(1, 10)
+            data: westernSeries.sort(() => Math.random() - Math.random()).slice(0,40)
         },
     ],
       series: [

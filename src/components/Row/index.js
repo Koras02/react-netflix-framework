@@ -9,12 +9,7 @@ export default function Row({ children, ...restProps }) {
     const [movies, setMovies] = useState([])    
     // const [page, setPage] 
     
-    function getTrending() {
-        axios({
-            method:"GET",
-            
-        })
-    }
+ 
     
     return (
     

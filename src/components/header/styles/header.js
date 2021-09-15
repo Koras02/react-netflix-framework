@@ -212,11 +212,11 @@ button {
 `;
 
 export const Feature = styled(Container)`
-  padding: 150px 0 500px 0;
+  padding: 50px 0 500px 0;
   flex-direction: column;
   align-items: normal;
   width: 50%;
-  @media (max-width: 1100px) {
+  @media (max-width: 860px) {
     display: none;
   }
 `;
@@ -248,8 +248,8 @@ export const Logo = styled.img`
   }
 
   @media (max-width: 640px) {
-    height: 40px;
-    width: 80px;
+    height: 50px;
+    width: 40px;
   }
 `;
 

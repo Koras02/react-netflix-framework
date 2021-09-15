@@ -13,7 +13,12 @@ export const Title = styled.p`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+  margin-top:-20px;
+ 
+ 
+
+
   > ${Title} {
     @media (max-width: 1000px) {
       margin-left: 30px;
@@ -26,15 +31,23 @@ export const Container = styled.div`
 
 export const Group = styled.div`
   display: flex;
+  // overflow-x:scroll;
   margin-top:140px;
   flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
   ${({ margin }) => margin && `margin: ${margin}`};
   > ${Container}:first-of-type {
     @media (min-width: 1100px) {
-      margin-top: -100px;
+      margin-top: -80px;
     }
   }
+
+  @media (max-width: 860px) {
+    margin-top: 50px;
+  }
+
+
+  
 `;
 
 export const SubTitle = styled.p`
@@ -72,23 +85,30 @@ export const Meta = styled.div`
 
 export const Image = styled.img`
   border: 0;
-  width: 100%;
-  max-width: 305px;
+  // width: 100%;
+  max-width: 500px;
+  max-height:450px;
+ 
+    
+  // height:
   cursor: pointer;
   height: auto;
   padding: 0;
   margin: 0;
+
+  // @media screen and (max-width:)
 `;
 
 export const Item = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 5px;
+  margin-right: 20px;
   position: relative;
   cursor: pointer;
+ 
   transition: transform 0.2s;
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
     z-index: 99;
   }
   @media (min-width: 1200px) {
@@ -124,6 +144,7 @@ export const FeatureText = styled.p`
 export const Feature = styled.div`
   display: flex;
   flex-direction: row;
+  margin-top:20px;
   background: url(${({ src }) => src});
   background-size: contain;
   position: relative;
@@ -131,6 +152,8 @@ export const Feature = styled.div`
   background-position-x: right;
   background-repeat: no-repeat;
   background-color: black;
+
+  
   @media (max-width: 1000px) {
     height: auto;
     background-size: auto;
@@ -167,6 +190,7 @@ export const FeatureClose = styled.button`
 export const Content = styled.div`
   margin: 56px;
   max-width: 500px;
+  
   line-height: normal;
   @media (max-width: 1000px) {
     margin: 30px;
@@ -240,4 +264,74 @@ font-size:18px;
       @media (max-width: 600px) {
         line-height: 22px;
       }
+    `;
+
+
+export const Slider = styled.div`
+    display: flex;
+   
+    padding: 20px 0 20px 10px;
+    scroll-behavior: smooth;
+ 
+
+    overflow-x:scroll;
+    overflow-y:hidden;
+    
+    &::-webkit-scrollbar {
+      width: 10px;
+      background: padding-box rgba(255, 0, 0, 0.5);
+      // background:;
+      border-radius: 10px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: transparent;
+      border-image: initial;
+    }
+    
+`;
+
+    export const Left = styled.div`
+    background-clip: content-box;
+    padding: 20px 0;
+    box-sizing: border-box;
+    transition: 400ms all ease-in-out;
+    cursor: pointer;
+    width: 80px;
+    z-index: 1000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+  
+    &:hover {
+      background: rgba(20, 20, 20, 0.5);
+      transition: 400ms all ease-in-out;
+    }
+    `;
+
+
+    export const Right = styled.div`
+    padding: 20px 0;
+    background-clip: content-box;
+    box-sizing: border-box;
+    transition: 400ms all ease-in-out;
+    cursor: pointer;
+    width: 80px;
+    z-index: 1000;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    &:hover {
+      background: rgba(20, 20, 20, 0.5);
+      transition: 400ms all ease-in-out;
+    }
     `;

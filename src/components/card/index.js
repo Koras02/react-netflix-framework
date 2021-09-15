@@ -1,6 +1,6 @@
  
 import React, { useState, useContext, createContext } from 'react';
-
+ 
 import {
   Container,
   Group,
@@ -19,28 +19,45 @@ import {
   Image,
   Rating,
   FeatureCategory,
+  Slider,
+  Left,
+  Right
 } from './styled/card';
 import * as SOURCE  from '../../constants/source';
 import { tvGenres, movieGenres } from '../../constants/genre';
 import { useFetchRating } from '../../hooks';
 import { FaRegWindowClose } from 'react-icons/fa';
-
+ 
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 export const FeatureContext = createContext();
 
 export default function Card({ children, ...restProps }) {
   const [showFeature, setShowFeature] = useState(false);
   const [itemFeature, setItemFeature] = useState({});
-
+ 
+  
   return (
     <FeatureContext.Provider value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}>
+ 
       <Container {...restProps}>{children}</Container>
+ 
     </FeatureContext.Provider>
   );
 }
 
-Card.Group = function CardGroup({ children, ...restProps }) {
-  return <Group {...restProps}>{children}</Group>;
+Card.Group = function CardGroup({ children,...restProps }) {
+ 
+
+  return (
+    <>
+    <Group {...restProps}>
+    {children}
+    </Group>
+ 
+   </>
+  );
 };
 
 Card.Title = function CardTitle({ children, ...restProps }) {
@@ -65,8 +82,9 @@ Card.Meta = function CardMeta({ children, ...restProps }) {
 
 Card.Item = function CardItem({ item, children, ...restProps }) {
   const { setShowFeature, setItemFeature } = useContext(FeatureContext);
-
+ 
   return (
+ 
     <Item
       onClick={() => {
         setItemFeature(item);
@@ -78,6 +96,7 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
     >
       {children}
     </Item>
+     
   );
 };
 
@@ -124,4 +143,35 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
       </Content>
     </Feature>
   ) : null;
+};
+
+
+Card.Slider = function CardSlider({ ...restProps }) {
+  return <Slider {...restProps} />;
+};
+
+
+
+Card.Left = function CardLeft({ id, ...restProps }) {
+  return (
+  <Left {...restProps}
+    onClick={() => {
+      document.getElementById(id).scrollLeft -= window.innerWidth - 80;
+    }}
+  >
+      <ArrowBackIosIcon/>          
+  </Left>
+  );
+};
+
+Card.Right = function CardRight({ id ,...restProps }) {
+  return (
+  <Right {...restProps}
+  onClick={() => {
+    document.getElementById(id).scrollLeft += window.innerWidth - 80;
+  }}
+  >
+      <ArrowForwardIosIcon />
+  </Right>
+  );
 };
