@@ -23,13 +23,12 @@ import {
   TextLink,
   TextLinks,
   SearchComponent,
-  Banner
  
-} from './styles/header';
+} from './styles/SubHeader';
 
-export default function Header({ bg = true, children, ...restProps }) {
+export default function SubHeader({ bg = false, children, ...restProps }) {
   return bg ? (
-    <Background data-testid="header-bg" {...restProps}>
+    <Background data-testid="SubHeader-bg" {...restProps}>
       {children}
     </Background>
   ) : (
@@ -42,7 +41,7 @@ export default function Header({ bg = true, children, ...restProps }) {
  
  
 
-Header.SubBackground = function SubBackground({ bg = false, children, ...restProps }) {
+SubHeader.SubBackground = function SubBackground({ bg = false, children, ...restProps }) {
   return bg ? 
     (<SubBackground {...restProps}>
     {children}
@@ -52,16 +51,15 @@ Header.SubBackground = function SubBackground({ bg = false, children, ...restPro
     );
 };
 
-
-Header.Frame = function HeaderFrame({ children, ...restProps }) {
+SubHeader.Frame = function SubHeaderFrame({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 };
 
-Header.Group = function HeaderGroup({ children, ...restProps }) {
+SubHeader.Group = function SubHeaderGroup({ children, ...restProps }) {
   return <Group {...restProps}>{children}</Group>;
 };
 
-Header.Logo = function HeaderLogo({ to, ...restProps }) {
+SubHeader.Logo = function SubHeaderLogo({ to, ...restProps }) {
   return (
     <ReachRouterLink to={to}>
       <Logo {...restProps} />
@@ -69,7 +67,7 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
   );
 };
 
-Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps }) {
+SubHeader.Search = function SubHeaderSearch({ searchTerm, setSearchTerm, ...restProps }) {
   const [searchActive, setSearchActive] = useState(false);
 
   return (
@@ -92,59 +90,55 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
   );
 };
 
-Header.SearchComponent = function HeaderSearchComponent({ children, ...restProps }) {
+SubHeader.SearchComponent = function SubHeaderSearchComponent({ children, ...restProps }) {
     return <SearchComponent {...restProps}>{children}</SearchComponent>
 };
 
-Header.Profile = function HeaderProfile({ children, ...restProps }) {
+SubHeader.Profile = function SubHeaderProfile({ children, ...restProps }) {
   return <Profile {...restProps}>{children}</Profile>;
 };
 
-Header.Feature = function HeaderFeature({ children }) {
+SubHeader.Feature = function SubHeaderFeature({ children }) {
   return <Feature>{children}</Feature>;
 };
 
-Header.Banner = function HeaderBanner ({ children ,...restProps}) {
-  return <Banner {...restProps}>{children}</Banner>
-}
-
-Header.Picture = function HeaderPicture({ src, ...restProps }) {
+SubHeader.Picture = function SubHeaderPicture({ src, ...restProps }) {
   return <Picture {...restProps} src={src ? process.env.PUBLIC_URL + `/images/users/${src}.png` : ``} />;
 };
 
-Header.Dropdown = function HeaderDropdown({ children, ...restProps }) {
+SubHeader.Dropdown = function SubHeaderDropdown({ children, ...restProps }) {
   return <Dropdown {...restProps}>{children}</Dropdown>;
 };
 
-Header.TextLink = function HeaderTextLink({ children, ...restProps }) {
+SubHeader.TextLink = function SubHeaderTextLink({ children, ...restProps }) {
   return <Link {...restProps}>{children}</Link>;
 };
 
-Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
+SubHeader.PlayButton = function SubHeaderPlayButton({ children, ...restProps }) {
   return <PlayButton {...restProps}>{children}</PlayButton>;
 };
 
-Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {
+SubHeader.FeatureCallOut = function SubHeaderFeatureCallOut({ children, ...restProps }) {
   return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
 };
 
-Header.Text = function HeaderText({ children, ...restProps }) {
+SubHeader.Text = function SubHeaderText({ children, ...restProps }) {
   return <Text {...restProps}>{children}</Text>;
 };
 
-Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
+SubHeader.ButtonLink = function SubHeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>;
 };
 
  
-Header.ButtonGroup = function HeaderButtonGroup({ children, ...restProps }) {
+SubHeader.ButtonGroup = function SubHeaderButtonGroup({ children, ...restProps }) {
   return <ButtonGroup {...restProps}>{children}</ButtonGroup>;
 };
 
-Header.TextLink = function HeaderTextLink({ children, ...restProps }) {
+SubHeader.TextLink = function SubHeaderTextLink({ children, ...restProps }) {
   return <TextLink {...restProps}>{children}</TextLink>
 }
-Header.TextLinks = function HeaderTextLinks({ children, ...restProps }) {
+SubHeader.TextLinks = function SubHeaderTextLinks({ children, ...restProps }) {
   return <TextLinks {...restProps}>{children}</TextLinks>
 }
 

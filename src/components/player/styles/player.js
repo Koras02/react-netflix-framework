@@ -97,3 +97,5 @@ export const Button = styled.button`
     background-color: #ff0a16;
   }
 `;
+
+export const ModalButton = styled.div``;

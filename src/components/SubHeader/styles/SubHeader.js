@@ -145,28 +145,6 @@ export const Picture = styled.button`
   cursor: pointer;
 `;
 
-
-export const Banner = styled.div`
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center center;
-color: #fff;
-height: 600px;
-max-height: 600px;
-color: white;
-/* height: 448px; */
-object-fit: contain;
-/* display: flex;
-flex-direction: row; */
-/* justify-content: center; */
-background: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111),
-  url(${({ src }) => `${src}`}) top left / cover no-repeat;
-
-@media (max-width: 768px) {
-  height: 300px;
-}
-`;
-
 export const Dropdown = styled.div`
   display: none;
   position: absolute;
@@ -315,6 +293,3 @@ export const TextLink = styled.p`
    color:#fcfcfc;
  }
 `;
-
-
-export const Slider = styled.div``;

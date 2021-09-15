@@ -20,37 +20,24 @@
 
 ## 참고
 
-- karlhadwen / netflix
+- karlhadwen / netflix -- 처음 참고한 netflix 샘플
 
 - https://github.com/karlhadwen/netflix
 
-- Azazel5 / react-netflix-clone
 
-- https://github.com/Azazel5/NetflixClone
-
-- woochul2 / netflix-clone
-
-- https://github.com/woochul2/netflix-clone
-
-- ranjafunc/ netflix_clone
-
-- https://github.com/ranjafunc/netflix_clone
-
-- jinkycho / netflix-clone
-
-- https://github.com/jinkycho/netflix-clone
-
-- AbanoubTalaatHalim / Netflix 
-
--https://github.com/AbanoubTalaatHalim/NETFLIX
-
-- DanielJan99 / Netflix Clone
+- DanielJan99 / Netflix Clone -- 영화 슬라이더 참고
 
 https://github.com/DanielJang99/Netflix_Clone
 
-- Prem3997 / Netflix-Web-App-Clone
+
+- Prem3997 / Netflix-Web-App-Clone - 영화 모달 참고 - filter 영화 드라마 장르 세팅 참고 
 
 https://github.com/Prem3997/Netflix-Web-App-Clone
+
+
+ - MunavvarSinan / netflix-clone - 슬라이더 참고  - 실패
+
+ https://github.com/MunavvarSinan/netflix-clone
 
 
 ## 사용 라이브러리
@@ -121,9 +108,7 @@ https://github.com/Prem3997/Netflix-Web-App-Clone
      ![스크린샷, 2021-09-12 17-52-08](https://user-images.githubusercontent.com/67436032/132981449-de171096-d419-46c7-b4b5-dc4b5eac28c3.png)
      ![스크린샷, 2021-09-12 17-52-32](https://user-images.githubusercontent.com/67436032/132981453-35762cfd-2b63-4f6e-a711-d85478e32e50.png)
    
-<<<<<<< HEAD
-https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-bb4d-b296ce67fcbb.mp4
-=======
+ 
    
   - 로그인 후 메인 페이지
     - 프로필 페이지 
@@ -131,9 +116,9 @@ https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-
     - 구현 -> 유저 로그인 완료 프로필에서 프로필선택후 메인페이지 이동 
     - Naviation 전환 구현  
 
-https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-bb4d-b296ce67fcbb.mp4
+   https://user-images.githubusercontent.com/67436032/133197611-cd4407c9-9e88-4ca4-bb4d-b296ce67fcbb.mp4
 
->>>>>>> 5a9b909fbea72280c72a33b25f31a9a6cfe76097
+ 
 
    
    ```

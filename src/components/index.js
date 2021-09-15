@@ -18,3 +18,4 @@ export { default as PassWordHeader } from './passwordHeader';
  
 export { default as Browse } from "./Browse";
 export { default as EmailForm } from './EmailForm'
+export { default as SubHeader } from './SubHeader'

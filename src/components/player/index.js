@@ -10,15 +10,12 @@ import {
  import { FeatureContext } from '../card';
 import YouTube from 'react-youtube'
 import movieTrailer from 'movie-trailer'
-
+ 
 export const PlayerContext = createContext();
 
 export default function Player({ children, ...restProps }) {
     const [showPlayer, setShowPlayer] = useState(false);
     const [trailerUrl, setTrailerUrl] = useState("");
-
-  
-    // useEffect(()
     
 
     return (
@@ -32,6 +29,9 @@ export default function Player({ children, ...restProps }) {
 Player.Video = function PlayerVideo({ ...restProps }) {
     const { showPlayer, setShowPlayer, trailerUrl, setTrailerUrl } = useContext(PlayerContext);
     const { itemFeature } = useContext(FeatureContext);
+ 
+ 
+
     movieTrailer(itemFeature.title || itemFeature.name || "")
       .then((url) => {
           const urlParams = new URLSearchParams(new URL(url).search);
@@ -45,7 +45,6 @@ Player.Video = function PlayerVideo({ ...restProps }) {
           playerVars:{
               autoPlay:1,
           }
-   
       }
 
     return showPlayer ? ReactDOM.createPortal(
@@ -54,6 +53,7 @@ Player.Video = function PlayerVideo({ ...restProps }) {
               <Inner>
                    <YouTube videoId={trailerUrl} opts={opts} />
                   <Close onClick={() => setShowPlayer(false)} data-testid="player-close" />
+                 
               </Inner>
           </Outer>,document.body
       ) 
@@ -70,3 +70,5 @@ Player.Button = function PlayerButton({ ...restProps }) {
         </Button>
     )
 }
+
+ 

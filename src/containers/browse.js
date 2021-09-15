@@ -14,6 +14,8 @@ import * as SOURCE from '../constants/source';
 import Fuse from "fuse.js";
  
 
+const baseURL = 'https://image.tmdb.org/t/p/original/';
+
 // 배열로 영화 이름 title mediaType을 받아온다.
 export function BrowseContainer({ slides  }) {
   const { firebase } = useContext(FirebaseContext);
@@ -126,6 +128,7 @@ export function BrowseContainer({ slides  }) {
  
             
           <Header.SubBackground src={background.backdrop_path !== undefined ? `${SOURCE.BASE_IMG_URL}${background.backdrop_path}` : '/images/misc/home-bg.jpg'}>
+                <Header.Banner src={`${baseURL}${background?.backdrop_path}`}>
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
                 {/*  selection -filter에서 가져온 장르 메뉴들 */}
@@ -159,10 +162,7 @@ export function BrowseContainer({ slides  }) {
                      {/* 프로필 창 */}
                     <Header.Group>
                       <Header.SearchComponent>
-                            <Header.Search
-                              searchTerm={searchTerm}
-                              setSearchTerm={setSearchTerm}
-                            />
+                            <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
                           
                         </Header.SearchComponent>
                         <Header.Profile>
@@ -184,7 +184,12 @@ export function BrowseContainer({ slides  }) {
                         </Header.Profile>
                     </Header.Group>
                 </Header.Frame>
-              
+                <Header.Feature>
+                   <Header.FeatureCallOut>{background?.title || background?.original_name}</Header.FeatureCallOut>
+                   <Header.Text>{background.overview}</Header.Text>
+                   <Header.PlayButton>플레이</Header.PlayButton>
+                </Header.Feature>
+              </Header.Banner>
           </Header.SubBackground>       
       
           <Card.Group>
