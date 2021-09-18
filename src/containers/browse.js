@@ -10,7 +10,7 @@ import * as ROUTES from '../constants/routes';
 import logo from '../logo.svg';
 import { useHistory } from 'react-router-dom';
 import * as SOURCE from '../constants/source';
-import { FaInfo, FaPlay } from 'react-icons/fa';
+import {  FaInfoCircle, FaPlay } from 'react-icons/fa';
 
 import Fuse from "fuse.js";
 
@@ -193,16 +193,21 @@ export function BrowseContainer({ slides ,id }) {
                     </Header.Group>
                 </Header.Frame>
                 <Header.Feature>
-                   <Header.FeatureCallOut>{background?.title || background?.original_name}</Header.FeatureCallOut>
+                   <Header.FeatureCallOut>{background?.title || background?.name}</Header.FeatureCallOut>
+                   <Header.Text>시즌 1, 지금 시청하세요</Header.Text>
+                   <Header.Text>{background.overview}</Header.Text>
                    <Header.PlayButton>
+                   <Header.InfoH1>
+                         재생
+                    </Header.InfoH1>
                     <FaPlay />
-                       플레이
                    </Header.PlayButton>
                    <Header.InfoButton>
-                    <FaInfo />
-                       More Info
+                    <Header.InfoH1>
+                         More Info
+                    </Header.InfoH1>
+                    <FaInfoCircle />
                    </Header.InfoButton>
-                   <Header.Text>{background.overview}</Header.Text>
                 </Header.Feature>
               </Header.Banner>
           </Header.SubBackground>       

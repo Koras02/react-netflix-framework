@@ -16,7 +16,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin-bottom: 100px;
   margin-top:-20px;
-  margin-left:35px;
+  margin-left:10px;
   margin-right:60px;
  
 //  border:1px solid red;
@@ -112,7 +112,7 @@ export const Image = styled.img`
 export const Item = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
+  margin-right: 5px;
   position: relative;
   cursor: pointer;
  
@@ -144,6 +144,7 @@ export const Item = styled.div`
 export const FeatureText = styled.p`
   font-size: 18px;
   color: white;
+
   font-weight: ${({ fontWeight }) => (fontWeight === 'bold' ? 'bold' : 'normal')};
   margin: 0;
   @media (max-width: 600px) {
@@ -158,8 +159,9 @@ export const Feature = styled.div`
   background: url(${({ src }) => src});
   background-size: contain;
   position: relative;
+  left:70px;
   height: 500px;
-  background-position-x: right;
+  background-position-x: left;
   background-repeat: no-repeat;
   background-color: black;
 
@@ -180,6 +182,8 @@ export const Feature = styled.div`
 
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
+  font-size:60px;
+  margin-bottom:10px;
 `;
 
 export const FeatureClose = styled.button`
@@ -200,7 +204,9 @@ export const FeatureClose = styled.button`
 export const Content = styled.div`
   margin: 56px;
   max-width: 500px;
-  
+  position:relative;
+  left:1000px;
+
   line-height: normal;
   @media (max-width: 1000px) {
     margin: 30px;

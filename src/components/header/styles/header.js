@@ -232,10 +232,16 @@ export const FeatureCallOut = styled.h2`
 
 export const Text = styled.p`
   color: white;
-  font-size: 22px;
-  margin-top:-20px;
-  line-height: normal;
+  font-size: 18px;
+  margin-top:10px;
+  margin-bottom:1px;
+  line-height: 26px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+
+  &:nth-child(2) {
+    font-size: 20px;
+    font-weight: bold;
+  }
 `;
 
 export const Logo = styled.img`
@@ -262,9 +268,9 @@ export const PlayButton = styled.button`
   border-width: 0;
   padding: 10px 20px 10px 20px;
   border-radius: 5px;
-  max-width: 130px;
+  max-width: 100px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 19px;
   margin-top: 10px;
   // display:inline-block;
   // float:left;
@@ -281,23 +287,25 @@ export const InfoButton = styled.button`
   box-shadow: 0 0.6vw 2vw -0.1vw rgba(0, 0, 0, 0.35);
   background-color:gray ;
   // float:left;
-  color: #000;
+  color: #fff;
   border-width: 0;
-  padding: 10px 30px 10px 10px;
+  padding: 10px 20px 10px 10px;
   border-radius: 5px;
   max-width: 150px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 19px;
+  
   margin-top: 10px;
+  // line-height: 24px;
   // float:left;
   position:relative;
-  left:150px;
-  bottom: 55px;
+  left:120px;
+  bottom: 54px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   &:hover {
     background-color:gray ;
-    color: white;
+    color: #000;
     transition: 0.5s;
   }
 `;
@@ -348,3 +356,8 @@ export const TextLink = styled.p`
 
 
 export const Slider = styled.div``;
+
+
+export const InfoH1 = styled.div`
+  float:right;
+`;

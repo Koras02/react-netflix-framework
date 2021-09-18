@@ -11,20 +11,20 @@ import {
   FeatureTitle,
   FeatureText,
   FeatureClose,
-  Maturity,
+  // Maturity,
   Content,
   Meta,
   Entities,
   Item,
   Image,
-  Rating,
-  FeatureCategory,
+  // Rating,
+  // FeatureCategory,
   Slider,
   Left,
   Right
 } from './styled/card';
 import * as SOURCE  from '../../constants/source';
-import { tvGenres, movieGenres } from '../../constants/genre';
+// import { tvGenres, movieGenres } from '../../constants/genre';
 import { useFetchRating } from '../../hooks';
 import { FaRegWindowClose } from 'react-icons/fa';
  
@@ -114,20 +114,15 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
   return showFeature ? (
     <Feature {...restProps} src={`${SOURCE.BASE_IMG_URL}${itemFeature.backdrop_path}`}>
       <Content>
-        <FeatureTitle>{itemFeature.title || itemFeature.name} </FeatureTitle>
-        <FeatureText>{itemFeature.description || itemFeature.overview}</FeatureText>
-        <FeatureClose onClick={() => setShowFeature(false)}>
-          <FaRegWindowClose />
-        </FeatureClose>
-        <Group margin="30px 0" flexDirection="row" alignItems="center">
-          <Rating vote_average={itemFeature.vote_average}>
+        {/* <Group margin="30px 0" flexDirection="row-reverse" alignItems="center"> */}
+          {/* <Rating vote_average={itemFeature.vote_average}>
                {itemFeature.vote_average}
-            </Rating> 
-          <Maturity rating={itemFeature.rating}>
+            </Rating>  */}
+          {/* <Maturity rating={itemFeature.rating}>
             {itemFeature.rating!==undefined? itemFeature.rating : "NR"}
             
-          </Maturity> 
-          {itemFeature.genre_ids.map((id) => (
+          </Maturity>  */}
+          {/* {itemFeature.genre_ids.map((id) => (
             <FeatureCategory key={id} fontWeight="bold">
                {mediaType === "tv" ?
                  tvGenres.filter((genre) => genre.id === id).map((item) => (
@@ -137,9 +132,14 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
                    item.name
                  ))}  
             </FeatureCategory>
-          ))}
-        </Group>
+          ))} */}
+        {/* </Group> */}
+        <FeatureClose onClick={() => setShowFeature(false)}>
+          <FaRegWindowClose />
+        </FeatureClose>
+        <FeatureTitle>{itemFeature.title || itemFeature.name} </FeatureTitle>
         {children}
+        <FeatureText>{itemFeature.description || itemFeature.overview}</FeatureText>
       </Content>
     </Feature>
   ) : null;

@@ -10,6 +10,7 @@ import {
  import { FeatureContext } from '../card';
 import YouTube from 'react-youtube'
 import movieTrailer from 'movie-trailer'
+import { FaPlay } from "react-icons/fa";
  
 export const PlayerContext = createContext();
 
@@ -66,7 +67,7 @@ Player.Button = function PlayerButton({ ...restProps }) {
 
     return (
         <Button {...restProps} onClick={() => setShowPlayer((showPlayer) => !showPlayer)}>
-            플레이
+           <FaPlay/> 재생
         </Button>
     )
 }

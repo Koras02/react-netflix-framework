@@ -24,7 +24,8 @@ import {
   TextLinks,
   SearchComponent,
   Banner,
-  InfoButton
+  InfoButton,
+  InfoH1
  
 } from './styles/header';
 
@@ -128,6 +129,10 @@ Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
 Header.InfoButton = function HeaderInfoButton({ children, ...restProps }) {
   return <InfoButton {...restProps}>{children}</InfoButton>;
 };
+Header.InfoH1 = function HeaderInfoH1({ children, ...restProps }) {
+  return <InfoH1 {...restProps}>{children}</InfoH1>;
+};
+
 
 Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {
   return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
