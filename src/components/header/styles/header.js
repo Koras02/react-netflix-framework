@@ -233,6 +233,7 @@ export const FeatureCallOut = styled.h2`
 export const Text = styled.p`
   color: white;
   font-size: 22px;
+  margin-top:-20px;
   line-height: normal;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
 `;
@@ -255,20 +256,49 @@ export const Logo = styled.img`
 
 export const PlayButton = styled.button`
   box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
-  background-color: #e6e6e6;
-  color: #000;
+  background-color: red;
+  // float:left;
+  color: #fff;
   border-width: 0;
-  padding: 10px 20px;
+  padding: 10px 20px 10px 20px;
   border-radius: 5px;
   max-width: 130px;
   font-weight: bold;
   font-size: 20px;
   margin-top: 10px;
+  // display:inline-block;
+  // float:left;
   cursor: pointer;
   transition: background-color 0.5s ease;
   &:hover {
     background-color: #ff1e1e;
+    color: #000;
+    transition: 0.5s;
+  }
+`;
+
+export const InfoButton = styled.button`
+  box-shadow: 0 0.6vw 2vw -0.1vw rgba(0, 0, 0, 0.35);
+  background-color:gray ;
+  // float:left;
+  color: #000;
+  border-width: 0;
+  padding: 10px 30px 10px 10px;
+  border-radius: 5px;
+  max-width: 150px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  // float:left;
+  position:relative;
+  left:150px;
+  bottom: 55px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  &:hover {
+    background-color:gray ;
     color: white;
+    transition: 0.5s;
   }
 `;
 

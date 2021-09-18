@@ -46,8 +46,10 @@ export default function selectionFilter({
   return {
     trending: [
         {
-            title: '넷플릭시 인기 콘텐츠 TOP20',
-            data: trending.sort(() => Math.random() + Math.random()).slice(0,100)
+            title: '넷플릭스 인기 콘텐츠 TOP20',
+            data: trending.sort(() => Math.random() + Math.random()).slice(0,100),
+        
+            
         },
    
         {
@@ -122,7 +124,8 @@ export default function selectionFilter({
           },
           {
             title: '오직 넷플릭스에서',
-            data: netflixOriginals.slice(1, 10)
+            data: netflixOriginals.slice(1, 10),
+            // language=ko,
           },
           {
               title: '액션 & 어드벤쳐',

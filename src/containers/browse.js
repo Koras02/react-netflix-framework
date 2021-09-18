@@ -10,6 +10,7 @@ import * as ROUTES from '../constants/routes';
 import logo from '../logo.svg';
 import { useHistory } from 'react-router-dom';
 import * as SOURCE from '../constants/source';
+import { FaInfo, FaPlay } from 'react-icons/fa';
 
 import Fuse from "fuse.js";
 
@@ -133,7 +134,9 @@ export function BrowseContainer({ slides ,id }) {
  
         
           <Header.SubBackground src={background.backdrop_path !== undefined ? `${SOURCE.BASE_IMG_URL}${background.backdrop_path}` : '/images/misc/home-bg.jpg'}>
+            
                 <Header.Banner src={`${baseURL}${background?.backdrop_path}`}>
+               
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
                 {/*  selection -filter에서 가져온 장르 메뉴들 */}
@@ -191,8 +194,15 @@ export function BrowseContainer({ slides ,id }) {
                 </Header.Frame>
                 <Header.Feature>
                    <Header.FeatureCallOut>{background?.title || background?.original_name}</Header.FeatureCallOut>
+                   <Header.PlayButton>
+                    <FaPlay />
+                       플레이
+                   </Header.PlayButton>
+                   <Header.InfoButton>
+                    <FaInfo />
+                       More Info
+                   </Header.InfoButton>
                    <Header.Text>{background.overview}</Header.Text>
-                   <Header.PlayButton>플레이</Header.PlayButton>
                 </Header.Feature>
               </Header.Banner>
           </Header.SubBackground>       

@@ -6,7 +6,7 @@ export const API_KEY = "7db8b1ffbba88aaa67068565d84fe99f"
 // // 이미지 BASE주소 
 // export const BASE_URL = "https://image.tmdb.org/t/p/original/";
 // // 언어 기본 설정
-export const Language = "ko"
+export const Language = "ko-KR"
 
 // export const URL = "https://api.themoviedb.org/3";
 

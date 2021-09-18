@@ -7,6 +7,7 @@ export const Title = styled.p`
   font-weight: bold;
   margin-left: 56px;
   margin-right: 56px;
+
   margin-top: 0;
 `;
 
@@ -15,8 +16,10 @@ export const Container = styled.div`
   flex-direction: column;
   margin-bottom: 100px;
   margin-top:-20px;
+  margin-left:35px;
+  margin-right:60px;
  
- 
+//  border:1px solid red;
 
 
   > ${Title} {
@@ -86,9 +89,10 @@ export const Meta = styled.div`
 export const Image = styled.img`
   border: 0;
   // width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   max-height:450px;
- 
+  
+   
     
   // height:
   cursor: pointer;
@@ -96,7 +100,13 @@ export const Image = styled.img`
   padding: 0;
   margin: 0;
 
-  // @media screen and (max-width:)
+  @media screen and (max-width: 1600px) {
+    max-height: 300px;
+  }
+
+  @media screen and (max-width: 860px) {
+    max-height: 200px;
+  }
 `;
 
 export const Item = styled.div`
@@ -279,10 +289,10 @@ export const Slider = styled.div`
     
     &::-webkit-scrollbar {
       width: 10px;
-      background: padding-box rgba(255, 0, 0, 0.5);
+      // background: padding-box rgba(255, 0, 0, 0.5);
       // background:;
       border-radius: 10px;
-      border-width: 3px;
+      border-width: 5px;
       border-style: solid;
       border-color: transparent;
       border-image: initial;
