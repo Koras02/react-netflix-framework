@@ -139,7 +139,11 @@ Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }
 };
 
 Header.Text = function HeaderText({ children, ...restProps }) {
-  return <Text {...restProps}>{children}</Text>;
+  return (
+    <Text {...restProps}>
+    {children}
+    </Text>
+    )
 };
 
 Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {

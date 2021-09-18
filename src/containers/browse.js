@@ -171,8 +171,12 @@ export function BrowseContainer({ slides ,id }) {
                     <Header.Group>
                       <Header.SearchComponent>
                             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-                          
                         </Header.SearchComponent>
+                               <Header.TextLink 
+                          active={category === 'tv' ? 'true' : 'false'} 
+                          onClick={() => setCategory('series')}>
+                        키즈
+                      </Header.TextLink>
                         <Header.Profile>
                             <Header.Picture src={user.photoURL} />
                             <Header.Dropdown>
@@ -194,7 +198,7 @@ export function BrowseContainer({ slides ,id }) {
                 </Header.Frame>
                 <Header.Feature>
                    <Header.FeatureCallOut>{background?.title || background?.name}</Header.FeatureCallOut>
-                   <Header.Text>시즌 1, 지금 시청하세요</Header.Text>
+                   <Header.Text>{background.original_name}</Header.Text>
                    <Header.Text>{background.overview}</Header.Text>
                    <Header.PlayButton>
                    <Header.InfoH1>
@@ -218,8 +222,6 @@ export function BrowseContainer({ slides ,id }) {
              {slideRows.map((slideItem) => (
                <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
-
-            
             <Card.Left>
 
             </Card.Left>
