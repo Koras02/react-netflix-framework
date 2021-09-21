@@ -21,23 +21,20 @@
 ## 참고
 
 - karlhadwen / netflix -- 처음 참고한 netflix 샘플
-
 - https://github.com/karlhadwen/netflix
 
 
-- DanielJan99 / Netflix Clone -- 영화 슬라이더 참고
 
-https://github.com/DanielJang99/Netflix_Clone
+- DanielJan99 / Netflix Clone -- 영화 슬라이더 참고 
+- https://github.com/DanielJang99/Netflix_Clone
 
 
 - Prem3997 / Netflix-Web-App-Clone - 영화 모달 참고 - filter 영화 드라마 장르 세팅 참고 
-
-https://github.com/Prem3997/Netflix-Web-App-Clone
+- https://github.com/Prem3997/Netflix-Web-App-Clone
 
 
  - MunavvarSinan / netflix-clone - 슬라이더 참고  - 실패
-
- https://github.com/MunavvarSinan/netflix-clone
+ - https://github.com/MunavvarSinan/netflix-clone
 
 
 ## 사용 라이브러리
