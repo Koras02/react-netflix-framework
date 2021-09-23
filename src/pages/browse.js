@@ -28,9 +28,9 @@
 
 
 import { useFetchContent } from "../hooks"
-import selectionFilter from "../utils/selection-filter"
+import selectionFilter from "../utils/selection-filter.backup"
 import { BrowseContainer } from "../containers/browse"
-import requests from "../utils/requests"
+import requests from "../utils/requests.backup"
 export default function Browse() {
     // const { series } = useContent('series')
     // const { films } = useContent('films')
@@ -75,6 +75,7 @@ export default function Browse() {
     const thrillerMovies = useFetchContent(requests.fetchThrillerMovies)
     const warMovies = useFetchContent(requests.fetchWarMovies)
     const westernMovies = useFetchContent(requests.fetchWesternMovies)
+    const animeMovie = useFetchContent(requests.fetchAnimeMovies)
 
     const slides = selectionFilter({
         trending,
@@ -114,7 +115,8 @@ export default function Browse() {
         tvmovieMovies,
         thrillerMovies,
         warMovies,
-        westernMovies
+        westernMovies,
+        animeMovie
     })
     return <BrowseContainer slides={slides} />
 }

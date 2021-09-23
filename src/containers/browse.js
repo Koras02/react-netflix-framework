@@ -4,7 +4,7 @@ import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from '../containers/footer';
 import {FirebaseContext } from '../context/firebase';
 import { Header, Loading, Card,Player} from '../components';
-import requests from '../utils/requests';
+import requests from '../utils/requests.backup';
 import axios from '../utils/axios';
 import * as ROUTES from '../constants/routes';
 import logo from '../logo.svg';
@@ -46,6 +46,7 @@ export function BrowseContainer({ slides ,id }) {
     if (value === 0) history.push('/browse');
     if (value === 1) history.push('tv');
     if (value === 2) history.push('movies');
+    if (value === 3) history.push('kids');
 
   }, [value,history])
 
@@ -104,7 +105,7 @@ export function BrowseContainer({ slides ,id }) {
           return request;
       }
       fetchData();
-  }, []);
+  }, [requests.fetchNetflixOriginals]);
  
 
   
@@ -162,19 +163,19 @@ export function BrowseContainer({ slides ,id }) {
               
                           내가찜한 콘텐츠       
                         </Header.TextLink>
-  
-                    </Header.Group>
-                    
 
+                    </Header.Group>
                     {/* 메인 Nav메뉴 부분 */}
                      {/* 프로필 창 */}
                     <Header.Group>
                       <Header.SearchComponent>
-                            <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+                            <Header.Search 
+                            searchTerm={searchTerm} 
+                            setSearchTerm={setSearchTerm}/>
                         </Header.SearchComponent>
-                               <Header.TextLink 
-                          active={category === 'tv' ? 'true' : 'false'} 
-                          onClick={() => setCategory('series')}>
+                          <Header.TextLink 
+                          active={category === 'kids' ? 'true' : 'false'} 
+                          onClick={() => setCategory('kids')}>
                         키즈
                       </Header.TextLink>
                         <Header.Profile>

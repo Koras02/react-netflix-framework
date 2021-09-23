@@ -114,26 +114,7 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
   return showFeature ? (
     <Feature {...restProps} src={`${SOURCE.BASE_IMG_URL}${itemFeature.backdrop_path}`}>
       <Content>
-        {/* <Group margin="30px 0" flexDirection="row-reverse" alignItems="center"> */}
-          {/* <Rating vote_average={itemFeature.vote_average}>
-               {itemFeature.vote_average}
-            </Rating>  */}
-          {/* <Maturity rating={itemFeature.rating}>
-            {itemFeature.rating!==undefined? itemFeature.rating : "NR"}
-            
-          </Maturity>  */}
-          {/* {itemFeature.genre_ids.map((id) => (
-            <FeatureCategory key={id} fontWeight="bold">
-               {mediaType === "tv" ?
-                 tvGenres.filter((genre) => genre.id === id).map((item) => (
-                   item.name
-                 )) 
-                 : movieGenres.filter((genre) => genre.id === id).map((item) => (
-                   item.name
-                 ))}  
-            </FeatureCategory>
-          ))} */}
-        {/* </Group> */}
+     
         <FeatureClose onClick={() => setShowFeature(false)}>
           <FaRegWindowClose />
         </FeatureClose>

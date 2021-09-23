@@ -182,7 +182,7 @@ export const Feature = styled.div`
 
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
-  font-size:60px;
+  font-size:35px;
   margin-bottom:10px;
 `;
 

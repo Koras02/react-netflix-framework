@@ -77,8 +77,9 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
   return (
     <Search {...restProps}>
       <SearchIcon 
-      onClick={() => 
-      setSearchActive(!searchActive)} 
+      onClick={() => { 
+      setSearchActive(!searchActive)
+    }}
       data-testid="search-click"
     >
         <FaSearch />

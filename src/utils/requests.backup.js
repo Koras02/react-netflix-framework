@@ -20,10 +20,10 @@ export const Language = "ko"
 
 const requests = {
     // TV 시리즈
-    fetchTrending: `/trending/all/day?api_key=${API_KEY}&language=${Language}&region=ko`,
-    fetchNetflixOriginals:`/discover/tv?api_key=${API_KEY}&with_networks=213&language=${Language}&region=ko`,
-    fetchActionAndAdventureSeries: `/discover/tv?api_key=${API_KEY}&with_genres=10759&language=${Language}&region=ko`,
-    fetchAnimationSeries: `/discover/tv?api_key=${API_KEY}&with_genres=16&language=${Language}&region=ko`,
+    fetchTrending: `/trending/all/day?api_key=${API_KEY}&language=${Language}`,
+    fetchNetflixOriginals:`/discover/tv?api_key=${API_KEY}&with_networks=213&language=${Language}`,
+    fetchActionAndAdventureSeries: `/discover/tv?api_key=${API_KEY}&with_genres=10759&language=${Language}`,
+    fetchAnimationSeries: `/discover/tv?api_key=${API_KEY}&with_genres=16&language=${Language}`,
     fetchComedySeries: `/discover/tv?api_key=${API_KEY}&with_genres=35&language=${Language}`,
     fetchCrimeSeries: `/discover/tv?api_key=${API_KEY}&with_genres=80&language=${Language}`,
     fetchDocumentarySeries: `/discover/tv?api_key=${API_KEY}&with_genres=99&language=${Language}`,
@@ -62,7 +62,7 @@ const requests = {
     fetchWesternMovies: `/discover/movie?api_key=${API_KEY}&with_genres=37&language=${Language}`,
     
     // 애니메이션
-    fetchAnimeMovies: `/trending/all/week?api_key=${API_KEY}&language=${Language}&region=ko`,
+    fetchAnimeMovies: `/trending/tv/week?api_key=${API_KEY}&language=${Language}&region=ko`,
 
 }
 
