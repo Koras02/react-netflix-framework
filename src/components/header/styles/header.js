@@ -138,7 +138,7 @@ export const ButtonLink = styled(ReachRouterLink)`
 
 export const Picture = styled.button`
   background: url(${({ src }) => src});
-  background-size: contain;
+  background-size: cover;
   border: 0;
   width: 32px;
   height: 32px;

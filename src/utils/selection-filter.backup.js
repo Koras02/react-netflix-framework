@@ -126,7 +126,7 @@ export default function selectionFilter({
           {
             title: '오직 넷플릭스에서',
             data: netflixOriginals.slice(1, 10),
-            // language=ko,
+ 
           },
           {
               title: '액션 & 어드벤쳐',

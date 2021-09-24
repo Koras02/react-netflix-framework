@@ -4,11 +4,11 @@ import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from '../containers/footer';
 import {FirebaseContext } from '../context/firebase';
 import { Header, Loading, Card,Player} from '../components';
-import requests from '../utils/requests.backup';
+import requests from '../utils/requests';
 import axios from '../utils/axios';
 import * as ROUTES from '../constants/routes';
 import logo from '../logo.svg';
-import { useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import * as SOURCE from '../constants/source';
 import {  FaInfoCircle, FaPlay } from 'react-icons/fa';
 
@@ -20,6 +20,7 @@ const baseURL = 'https://image.tmdb.org/t/p/original/';
 
 // 배열로 영화 이름 title mediaType을 받아온다.
 export function BrowseContainer({ slides ,id }) {
+ 
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
   
@@ -53,9 +54,6 @@ export function BrowseContainer({ slides ,id }) {
   const [handleShow] = useState(false);
  
  
-  
-
-
   useEffect(() => {
 
 
@@ -105,7 +103,7 @@ export function BrowseContainer({ slides ,id }) {
           return request;
       }
       fetchData();
-  }, [requests.fetchNetflixOriginals]);
+  }, []);
  
 
   
@@ -159,8 +157,10 @@ export function BrowseContainer({ slides ,id }) {
                         영화
                       </Header.TextLink>
                      
-                        <Header.TextLink>
-              
+                        <Header.TextLink
+                          active={category === 'mylist' ? 'true' : 'false'}
+                          onClick={() => setCategory('mylist')}
+                        >
                           내가찜한 콘텐츠       
                         </Header.TextLink>
 
@@ -175,7 +175,8 @@ export function BrowseContainer({ slides ,id }) {
                         </Header.SearchComponent>
                           <Header.TextLink 
                           active={category === 'kids' ? 'true' : 'false'} 
-                          onClick={() => setCategory('kids')}>
+                          onClick={() => setCategory('kids')}
+                        >
                         키즈
                       </Header.TextLink>
                         <Header.Profile>
@@ -183,15 +184,27 @@ export function BrowseContainer({ slides ,id }) {
                             <Header.Dropdown>
                                 <Header.Group>
                                     <Header.Picture src={user.photoURL} />
-                                    <Header.TextLink>{user.dispalyName}</Header.TextLink>
                                 </Header.Group>
-                                <Header.ButtonGroup>
+                                <Header.Group>
+                                  <Header.TextLink 
+                                    to={ROUTES.HOME}
+                                  >
+                                    프로필 관리
+                                 
+                                  </Header.TextLink>
+                                </Header.Group>
+                                <Header.Group>
+                                  <Header.TextLink onClick={() =>  firebase.auth().signOut()}>
+                                    로그 아웃
+                                  </Header.TextLink>
+                                </Header.Group>
+                                {/* <Header.ButtonGroup>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>프로필 관리</Header.TextLinks>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>설정</Header.TextLinks>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>계정</Header.TextLinks>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>고객센터</Header.TextLinks>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>로그 아웃</Header.TextLinks>
-                              </Header.ButtonGroup>
+                              </Header.ButtonGroup> */}
                                 
                             </Header.Dropdown>
                         </Header.Profile>

@@ -41,9 +41,8 @@ export default function selectionFilter({
   warMovies,
   westernMovies,
   searchTerm,
-  animeMovie
+  animeMovie,
  
-
 
 }) {
   return {
@@ -323,11 +322,10 @@ export default function selectionFilter({
           
         ],
         search: [
-
             {
                title: "검색",
-               fetchUrl: `search/movie?api_key=${API_KEY}&query=${searchTerm}&region=ko&language=ko`
-                
+               fetchUrl: `search/movie?api_key=${API_KEY}&query=${searchTerm}&region=ko&language=ko`,
+               isLargeRow: true
             }
         ],
   }

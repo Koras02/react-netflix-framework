@@ -6,7 +6,7 @@ export const API_KEY = "7db8b1ffbba88aaa67068565d84fe99f"
 // // 이미지 BASE주소 
 // export const BASE_URL = "https://image.tmdb.org/t/p/original/";
 // // 언어 기본 설정
-export const Language = "ko"
+export const Language = "ko-KR"
 
 // export const URL = "https://api.themoviedb.org/3";
 
@@ -19,11 +19,10 @@ export const Language = "ko"
 
 
 const requests = {
-    // TV 시리즈
-    fetchTrending: `/trending/all/day?api_key=${API_KEY}&language=${Language}&region=ko`,
-    fetchNetflixOriginals:`/discover/tv?api_key=${API_KEY}&with_networks=213&language=${Language}&region=ko`,
-    fetchActionAndAdventureSeries: `/discover/tv?api_key=${API_KEY}&with_genres=10759&language=${Language}&region=ko`,
-    fetchAnimationSeries: `/discover/tv?api_key=${API_KEY}&with_genres=16&language=${Language}&region=ko`,
+    fetchTrending: `/trending/all/day?api_key=${API_KEY}&language=${Language}`,
+    fetchNetflixOriginals:`/discover/tv?api_key=${API_KEY}&with_networks=213&language=${Language}`,
+    fetchActionAndAdventureSeries: `/discover/tv?api_key=${API_KEY}&with_genres=10759&language=${Language}`,
+    fetchAnimationSeries: `/discover/tv?api_key=${API_KEY}&with_genres=16&language=${Language}`,
     fetchComedySeries: `/discover/tv?api_key=${API_KEY}&with_genres=35&language=${Language}`,
     fetchCrimeSeries: `/discover/tv?api_key=${API_KEY}&with_genres=80&language=${Language}`,
     fetchDocumentarySeries: `/discover/tv?api_key=${API_KEY}&with_genres=99&language=${Language}`,
@@ -46,7 +45,7 @@ const requests = {
     fetchAnimationMovies: `/discover/movie?api_key=${API_KEY}&with_genres=16&language=${Language}`,
     fetchComedyMovies: `/discover/movie?api_key=${API_KEY}&with_genres=35&language=${Language}`,
     fetchCrimeMovies: `/discover/movie?api_key=${API_KEY}&with_genres=80&language=${Language}`,
-    fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99&language=${Language}&include_adult=false`,
+    fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99&language=${Language}`,
     fetchDramaMovies: `/discover/movie?api_key=${API_KEY}&with_genres=18&language=${Language}`,
     fetchFamilyMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10751&language=${Language}`,
     fetchFantasyMovies: `/discover/movie?api_key=${API_KEY}&with_genres=14&language=${Language}`,
@@ -62,7 +61,7 @@ const requests = {
     fetchWesternMovies: `/discover/movie?api_key=${API_KEY}&with_genres=37&language=${Language}`,
     
     // 애니메이션
-    fetchAnimeMovies: `/trending/all/week?api_key=${API_KEY}&language=${Language}&region=ko`,
+    fetchAnimeMovies: `/trending/all/week?api_key=${API_KEY}&language=${Language}`,
 
 }
 
