@@ -60,6 +60,8 @@ export const Group = styled.div`
   display: flex;
   align-items: center;
   z-index:1;
+
+
 `;
 
 export const SearchInput = styled.input`
@@ -101,6 +103,17 @@ svg {
 }
 `;
 
+export const Picture = styled.button`
+  width: 32px;
+  height: 32px;
+  background: url(${({ src }) => src});
+  background-size: cover;
+  background-color:transparent;
+  border: 0;
+  overflow:hidden;
+  cursor: pointer;
+`;
+
 export const SearchIcon = styled.button`
 cursor: pointer;
 background-color: transparent;
@@ -136,14 +149,6 @@ export const ButtonLink = styled(ReachRouterLink)`
   }
 `;
 
-export const Picture = styled.button`
-  background: url(${({ src }) => src});
-  background-size: cover;
-  border: 0;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-`;
 
 
 export const Banner = styled.div`
@@ -172,7 +177,7 @@ export const Dropdown = styled.div`
   position: absolute;
   background-color: black;
   padding: 10px;
-  width: 100px;
+  min-width:160px;
   top: 32px;
   right: 10px;
   ${Group}:last-of-type ${Link} {
@@ -330,10 +335,7 @@ export const TextLink = styled.p`
 
  padding:10px;
   
- &:hover {
-   color:#fcfcfc;
-  }
-
+ 
   @media screen and (max-width: 860px) {
     font-size: 16px;
   }
@@ -343,15 +345,32 @@ export const TextLink = styled.p`
   }
   `;
   
-  export const TextLinks = styled.p`
-  color:#fff;
-  padding:10px 10px;
-  font:bold 18px/24px arial;
  
-  
- &:hover {
-   color:#fcfcfc;
- }
+export const TextLinks = styled.p`
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    cursor: pointer;
+    display:flex;
+    // flex:2;
+    justify-content: space-between;
+    align-items:center;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:first-child {
+      font-weight: normal;
+      padding: 0.5rem;
+    }
+    &:nth-child(1) {
+      width:100%;
+      font-weight: normal;
+      padding: 0 0.5rem 0.5rem 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+
+   
+
 `;
 
 

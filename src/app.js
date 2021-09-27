@@ -5,6 +5,7 @@ import * as ROUTES  from "./constants/routes";
 import { useAuthListener } from './hooks';
 import { IsUserRedirect, ProtectedRoute } from './helpers/routes';
 import LoginHelp from './pages/LoginHelp';
+import Search from './pages/search';
  
  
  
@@ -54,13 +55,24 @@ export default function App() {
           </IsUserRedirect> 
 
       {/* -------------  넷플릭스 부분 ----------------------------  */}
-     
         <ProtectedRoute 
         user={user} 
         path={ROUTES.BROWSE}
         >
           <Browse />
-        </ProtectedRoute>           
+        </ProtectedRoute>     
+
+         <ProtectedRoute
+          user={user}
+          loggedInPath={ROUTES.BROWSE}
+          patch={ROUTES.SEARCH}
+        >
+           <Search />
+        </ProtectedRoute>
+     
+
+
+ 
        </Switch>
     </Router>
   );

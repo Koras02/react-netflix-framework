@@ -4,17 +4,19 @@ import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from '../containers/footer';
 import {FirebaseContext } from '../context/firebase';
 import { Header, Loading, Card,Player} from '../components';
-import requests from '../utils/requests';
+import requests, { API_KEY } from '../utils/requests';
 import axios from '../utils/axios';
 import * as ROUTES from '../constants/routes';
 import logo from '../logo.svg';
 import {  useHistory } from 'react-router-dom';
 import * as SOURCE from '../constants/source';
-import {  FaInfoCircle, FaPlay } from 'react-icons/fa';
+import { AiOutlineSearch } from 'react-icons/ai'
+import {  FaInfoCircle, FaPlay} from 'react-icons/fa';
+import { searchVideosFail, searchVideosRequest, searchVideosSuccess } from '../reducers/slices/searchVideoSlice';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { Form } from './styles/browserHeader';
 
-import Fuse from "fuse.js";
-
- 
 
 const baseURL = 'https://image.tmdb.org/t/p/original/';
 
@@ -26,7 +28,7 @@ export function BrowseContainer({ slides ,id }) {
   
   // 검색 부분 
   const [category,setCategory] = useState('series');
-  const [searchTerm, setSearchTerm] = useState('');
+  // const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
 
   // 프로필 == 메인 이동시 로딩구현 
@@ -37,11 +39,13 @@ export function BrowseContainer({ slides ,id }) {
   const [background, setBackGround] = useState([])
 
   
+  
   // 메인홈
   const history = useHistory();
   const [value] = React.useState(0);
  
- 
+   const dispatch = useDispatch();
+
   
   useEffect(() => {
     if (value === 0) history.push('/browse');
@@ -53,6 +57,7 @@ export function BrowseContainer({ slides ,id }) {
 
   const [handleShow] = useState(false);
  
+  const { register, handleSubmit } = useForm();
  
   useEffect(() => {
 
@@ -104,27 +109,27 @@ export function BrowseContainer({ slides ,id }) {
       }
       fetchData();
   }, []);
+
  
-
-  
-   
-     useEffect(() => {
-         const fuse = new Fuse(slideRows,
-          { keys: ['data.description','data.title', 'data.genre'] });
-        
-        
-          const results = fuse.search(searchTerm).map(({ item }) => item);
-
-        if(slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
-            setSlideRows(results);
-        } else {
-            setSlideRows(slides[category]);
-        }
+   const handleSubmitOnClick = async ({ search }) => {
+       dispatch(searchVideosRequest());
+       try {
+         const {
+           data: {results},
+         } = await axios.get(
+           `search/multi?api_key=${API_KEY}&language=ko&query=${search}&page=1&include_adult=false`
+         );
+         const movies = results.filter(
+           (movie) => movie.media_type === 'tv'
+         );
+         dispatch(searchVideosSuccess(movies));
+         history.path(`/search?q=${search}`);
+       }  catch(error) {
+         dispatch(searchVideosFail(error.message));
+       }
+     }
  
-    }, [searchTerm]);
-
-   
-     
+       
     return profile.displayName ? (
       <>
 
@@ -167,37 +172,51 @@ export function BrowseContainer({ slides ,id }) {
                     </Header.Group>
                     {/* 메인 Nav메뉴 부분 */}
                      {/* 프로필 창 */}
+                        <Form onSubmit={handleSubmit(handleSubmitOnClick)}>
+                          <button type="submit">
+                               <AiOutlineSearch />
+                          </button>
+                          <input 
+                            type="text"
+                            placeholder="검색할 제목을 입력해주세요"
+                            {...register('search', {
+                                required: true,
+                            })}
+                          />
+                        </Form>
+
+
                     <Header.Group>
-                      <Header.SearchComponent>
-                            <Header.Search 
-                            searchTerm={searchTerm} 
-                            setSearchTerm={setSearchTerm}/>
-                        </Header.SearchComponent>
                           <Header.TextLink 
                           active={category === 'kids' ? 'true' : 'false'} 
                           onClick={() => setCategory('kids')}
                         >
                         키즈
                       </Header.TextLink>
+                      
                         <Header.Profile>
                             <Header.Picture src={user.photoURL} />
+
                             <Header.Dropdown>
                                 <Header.Group>
                                     <Header.Picture src={user.photoURL} />
-                                </Header.Group>
-                                <Header.Group>
-                                  <Header.TextLink 
-                                    to={ROUTES.HOME}
-                                  >
+                                    <span>{user.displayName}</span>
+                               </Header.Group>
+                               <Header.Group>
+                                  <Header.TextLinks to={ROUTES.HOME}>
                                     프로필 관리
-                                 
-                                  </Header.TextLink>
+                                  </Header.TextLinks>
                                 </Header.Group>
+                                 <Header.Group>
+                                  <Header.TextLinks to={ROUTES.HOME}>
+                                    고객 센터
+                                  </Header.TextLinks>
+                                  </Header.Group>
                                 <Header.Group>
-                                  <Header.TextLink onClick={() =>  firebase.auth().signOut()}>
+                                  <Header.TextLinks onClick={() =>  firebase.auth().signOut()}>
                                     로그 아웃
-                                  </Header.TextLink>
-                                </Header.Group>
+                                  </Header.TextLinks>
+                                 </Header.Group>
                                 {/* <Header.ButtonGroup>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>프로필 관리</Header.TextLinks>
                                     <Header.TextLinks onClick={() => firebase.auth().signOut()}>설정</Header.TextLinks>

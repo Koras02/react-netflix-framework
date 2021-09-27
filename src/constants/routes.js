@@ -12,3 +12,5 @@ export const BRWSEHOME = "/browse"
 export const BROWSEMOVIES = '/movies';
 export const BROWSELATEST = '/latest';
 export const MYLIST = '/mylist';
+
+export const SEARCH = '/search';
