@@ -57,18 +57,18 @@ export default function App() {
       {/* -------------  넷플릭스 부분 ----------------------------  */}
         <ProtectedRoute 
         user={user} 
+        loggedInPath={ROUTES.SEARCH}
         path={ROUTES.BROWSE}
         >
           <Browse />
         </ProtectedRoute>     
-
          <ProtectedRoute
           user={user}
-          loggedInPath={ROUTES.BROWSE}
-          patch={ROUTES.SEARCH}
+          path={ROUTES.SEARCH}
         >
            <Search />
         </ProtectedRoute>
+
      
 
 

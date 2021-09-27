@@ -111,24 +111,24 @@ export function BrowseContainer({ slides ,id }) {
   }, []);
 
  
-   const handleSubmitOnClick = async ({ search }) => {
-       dispatch(searchVideosRequest());
-       try {
-         const {
-           data: {results},
-         } = await axios.get(
-           `search/multi?api_key=${API_KEY}&language=ko&query=${search}&page=1&include_adult=false`
-         );
-         const movies = results.filter(
-           (movie) => movie.media_type === 'tv'
-         );
-         dispatch(searchVideosSuccess(movies));
-         history.path(`/search?q=${search}`);
-       }  catch(error) {
-         dispatch(searchVideosFail(error.message));
-       }
-     }
- 
+  const handleSubmitOnClick = async ({ search }) => {
+    dispatch(searchVideosRequest());
+    try {
+        const {
+            data: { results },
+        } = await axios.get(
+            `/search/multi?api_key=${API_KEY}&language=ko&query=${search}&page=1&include_adult=false`
+        );
+        const movies = results.filter(
+            (movie) => movie.media_type === 'tv'
+        );
+        dispatch(searchVideosSuccess(movies));
+        history.push(`/search?q=${search}`);
+    } catch (error) {
+        dispatch(searchVideosFail(error.message));
+    }
+};
+
        
     return profile.displayName ? (
       <>
@@ -172,18 +172,18 @@ export function BrowseContainer({ slides ,id }) {
                     </Header.Group>
                     {/* 메인 Nav메뉴 부분 */}
                      {/* 프로필 창 */}
-                        <Form onSubmit={handleSubmit(handleSubmitOnClick)}>
-                          <button type="submit">
-                               <AiOutlineSearch />
-                          </button>
-                          <input 
-                            type="text"
-                            placeholder="검색할 제목을 입력해주세요"
+                     <Form onSubmit={handleSubmit(handleSubmitOnClick)}>
+                        <button type='submit'>
+                            <AiOutlineSearch />
+                        </button>
+                        <input
+                            type='text'
+                            placeholder='검색할 제목을 입력해주세요'
                             {...register('search', {
                                 required: true,
                             })}
-                          />
-                        </Form>
+                        />
+                    </Form>
 
 
                     <Header.Group>

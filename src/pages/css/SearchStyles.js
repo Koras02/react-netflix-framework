@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 export const SearchSection = styled.section`
     min-height: 100vh;
-    padding: 41px 1rem 0 1rem;
+    padding: 0px 1rem 0 1rem;
     background-color: #141414;
 
     @media (min-width: 600px) {
         padding: 41px 2rem 0 2rem;
     }
     @media (min-width: 900px) {
-        padding: 68px 4rem 0 4rem;
+        padding: 28px 4rem 0 4rem;
     }
 `;
 

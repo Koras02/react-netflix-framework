@@ -34,6 +34,9 @@
 - https://github.com/Prem3997/Netflix-Web-App-Clone
 
 
+ - ianbrdeguzman / react-netflix-clone - 검색 
+ 
+ 
  - MunavvarSinan / netflix-clone - 슬라이더 참고  - 실패
  
  - https://github.com/MunavvarSinan/netflix-clone

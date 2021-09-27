@@ -6,14 +6,8 @@ import { CardStyle } from '../css/Card';
 
 export default function Card( video,id, poster_path, backdrop_path, isLarge ) {
     const history = useHistory();
-    // const dispatch = useDisptach();
-
-    // const { loading: loadingAdd } = useSelector((state) => state.myList);
-
-    // const [ show, setShow ] = useState(false);
-
-    // const isAdded = myList && myList.find((item) => item.id === video?.id);
-
+   
+ 
 
     const handleOnClick = () => {
         if (video.media_type === 'movie') {
@@ -22,29 +16,23 @@ export default function Card( video,id, poster_path, backdrop_path, isLarge ) {
             history.push(`/title/${id}/tv`);
         }
     }
-
-    // const handleRemoveOnClick = async() => {
-    //     // dispatch(removeFromMyListReque)
-    // }
-
+ 
     
 
     return (
         <CardStyle 
-           isLarget
+           isLarge
         //    onMouseOver={() => setShow(true)}
         //    onMouseLeave={() => setShow(false)}
            >
-               <img 
-                  onClick={handleOnClick}
-                  key={id}
-                  src={`http://image.tmdb.org/t/p/w300${
-                      isLarge ? poster_path : backdrop_path
-                  }`}
-                  alt="poster"
-                >
-            
-                </img>
+            <img
+                onClick={handleOnClick}
+                key={id}
+                src={`http://image.tmdb.org/t/p/w300${
+                    isLarge ? poster_path : backdrop_path
+                }`}
+                alt='포스터'
+            ></img>
            </CardStyle>
     )
 

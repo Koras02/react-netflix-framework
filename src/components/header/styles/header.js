@@ -354,9 +354,13 @@ export const TextLinks = styled.p`
     justify-content: space-between;
     align-items:center;
     font-weight: bold;
+    line-height:24px;
+    font-size:18px;
+    color:#fff;
     &:hover {
       text-decoration: underline;
     }
+
 
     &:first-child {
       font-weight: normal;
