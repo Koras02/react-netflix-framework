@@ -5,23 +5,38 @@ import { FooterContainer } from '../containers/footer';
 import {FirebaseContext } from '../context/firebase';
 import { Header, Loading, Card,Player} from '../components';
 import requests, { API_KEY } from '../utils/requests';
-import axios from '../utils/axios';
 import * as ROUTES from '../constants/routes';
+import * as SOURCE from '../constants/source';
+import axios from '../utils/axios';
 import logo from '../logo.svg';
 import {  useHistory } from 'react-router-dom';
-import * as SOURCE from '../constants/source';
 import { AiOutlineSearch } from 'react-icons/ai'
-import {  FaInfoCircle, FaPlay} from 'react-icons/fa';
+// import {  FaInfoCircle, FaPlay} from 'react-icons/fa';
 import { searchVideosFail, searchVideosRequest, searchVideosSuccess } from '../reducers/slices/searchVideoSlice';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Form } from './styles/browserHeader';
+// import Slider from 'react-slick';
 
+import {ArrowLeft, ArrowRight} from '../components/card/styled/card'
+import Slider from 'react-slick';
 
-const baseURL = 'https://image.tmdb.org/t/p/original/';
+// 슬라이더 양쪽 구현 
+function NextArrow(props) {
+  const { onClick } = props;
+  return <ArrowRight onClick={onClick} />
+  
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return <ArrowLeft onClick={onClick} />
+}
+
+// const baseURL = 'https://image.tmdb.org/t/p/original/';
 
 // 배열로 영화 이름 title mediaType을 받아온다.
-export function BrowseContainer({ slides ,id }) {
+export function BrowseContainer({ slides  }) {
  
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
@@ -35,17 +50,49 @@ export function BrowseContainer({ slides ,id }) {
   const [profile, setProfile] = useState([]);
   const [loading,setLoading] = useState(true);
  
-  
   const [background, setBackGround] = useState([])
-
-  
-  
+   
   // 메인홈
   const history = useHistory();
   const [value] = React.useState(0);
  
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    // slidesToShow: 
+    initialSlide:0,
+    nextArrow: <NextArrow/>,
+    prevArrow: <PrevArrow/>,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+        }
+    },
+    {
+        breakpoint: 600,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+        }
+    },
+    {
+        breakpoint: 480,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+        }
+    }
+    ]
+  }
   
   useEffect(() => {
     if (value === 0) history.push('/browse');
@@ -139,7 +186,7 @@ export function BrowseContainer({ slides ,id }) {
         
           <Header.SubBackground src={background.backdrop_path !== undefined ? `${SOURCE.BASE_IMG_URL}${background.backdrop_path}` : '/images/misc/home-bg.jpg'}>
             
-                <Header.Banner src={`${baseURL}${background?.backdrop_path}`}>
+                {/* <Header.Banner src={`${baseURL}${background?.backdrop_path}`}> */}
                
                 <Header.Frame>
                 {/* 메인 Nav메뉴 부분 */}
@@ -229,47 +276,28 @@ export function BrowseContainer({ slides ,id }) {
                         </Header.Profile>
                     </Header.Group>
                 </Header.Frame>
-                <Header.Feature>
-                   <Header.FeatureCallOut>{background?.title || background?.name}</Header.FeatureCallOut>
-                   <Header.Text>{background.original_name}</Header.Text>
-                   <Header.Text>{background.overview}</Header.Text>
-                   <Header.PlayButton>
-                   <Header.InfoH1>
-                         재생
-                    </Header.InfoH1>
-                    <FaPlay />
-                   </Header.PlayButton>
-                   <Header.InfoButton>
-                    <Header.InfoH1>
-                         More Info
-                    </Header.InfoH1>
-                    <FaInfoCircle />
-                   </Header.InfoButton>
-                </Header.Feature>
-              </Header.Banner>
           </Header.SubBackground>       
  
 
           <Card.Group>
-
-             {slideRows.map((slideItem) => (
-               <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+         {slideRows.map((slideItem) => (
+          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
-            <Card.Left>
-
-            </Card.Left>
-            <Card.Slider>
-            <Card.Entities id={id}>
-              {slideItem.data.map((item) => (
-               <Card.Item key={item.docId || item.id} item={item}>
-                  <Card.Image src={`${SOURCE.BASE_IMG_URL}${item.poster_path}` || `images/${category}/${item.genre}/${item.slug}/smail.jpg`} />
-                </Card.Item>
+            <Slider {...settings}>
+            {/* <Card.Entities id={id}> */}
+              {
+               slideItem.data.map((item) => (
+                <Card.Item key={item.id || item.docid} item={item}>
+                  <Card.Image 
+                    src={`${SOURCE.BASE_IMG_URL}${item.poster_path}` || `images/${category}/${item.genre}/${item.slug}/smail.jpg`} />
+                  <Card.Meta>
+                      <Card.SubTitle>{item.title}</Card.SubTitle>
+                      <Card.Text>{item.description}</Card.Text>
+                  </Card.Meta>
+                 </Card.Item>
               ))}
-            </Card.Entities>
-            </Card.Slider>
-            <Card.Right>
-
-            </Card.Right>
+            {/* </Card.Entities> */}
+            </Slider>
             
 
             <Card.Feature category={category}>
