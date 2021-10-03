@@ -1,35 +1,7 @@
-// import React from 'react';
-// import { BrowseContainer } from '../containers/browse';
-// import selectionFilter from '../utils/selection-filter';
-// import requests from '../utils/requests';
-// import useFetchContent from '../hooks/use-fetch-content';
-// // import { useContent } from '../hooks';
 
-
-// export default function Browse() {
-//   // const { series } = useContent('series');
-//   // const { films } = useContent('films');
-
-//   // const slides = selectionFilter({ series, films });
-
-//   const trending = useFetchContent(requests.fetchTrendingTV);
-
-//   const slides = selectionFilter({
-//     trending
-//   })
-
-//   return (
-//     <>
-//      <BrowseContainer slides={slides} />
-     
-//     </>
-//     );
-// }
-
-
-import { useFetchContent } from "../hooks"
 import selectionFilter from "../utils/selection-filter"
 import { BrowseContainer } from "../containers/browse"
+import { useFetchContent } from "../hooks"
 import requests from "../utils/requests"
 export default function Browse() {
     // const { series } = useContent('series')

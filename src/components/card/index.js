@@ -1,4 +1,3 @@
- 
 import React, { useState, useContext, createContext } from 'react';
  
 import {
@@ -20,16 +19,16 @@ import {
   // Rating,
   // FeatureCategory,
   Slider,
-  // Left,
-  // Right
+  Left,
+  Right
 } from './styled/card';
 import * as SOURCE  from '../../constants/source';
 // import { tvGenres, movieGenres } from '../../constants/genre';
 import { useFetchRating } from '../../hooks';
 import { FaRegWindowClose } from 'react-icons/fa';
  
-// import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-// import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 export const FeatureContext = createContext();
 
@@ -49,6 +48,7 @@ export default function Card({ children, ...restProps }) {
 
 Card.Group = function CardGroup({ children,...restProps }) {
  
+
   return (
     <>
     <Group {...restProps}>
@@ -83,12 +83,15 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
   const { setShowFeature, setItemFeature } = useContext(FeatureContext);
  
   return (
+ 
     <Item
       onClick={() => {
         setItemFeature(item);
         setShowFeature(true);
-      }}
-    {...restProps}
+      }
+     
+    }
+      {...restProps}
     >
       {children}
     </Item>
@@ -110,14 +113,16 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
   return showFeature ? (
     <Feature {...restProps} src={`${SOURCE.BASE_IMG_URL}${itemFeature.backdrop_path}`}>
       <Content>
-        <FeatureTitle>{itemFeature.title || itemFeature.name} </FeatureTitle>
-        <FeatureText>{itemFeature.description || itemFeature.overview}</FeatureText>
-         <FeatureClose onClick={() => setShowFeature(false)}>
+     
+        <FeatureClose onClick={() => setShowFeature(false)}>
           <FaRegWindowClose />
-         </FeatureClose>
+        </FeatureClose>
+        <FeatureTitle>{itemFeature.title || itemFeature.name} </FeatureTitle>
         {children}
+        <FeatureText>{itemFeature.description || itemFeature.overview}</FeatureText>
       </Content>
-    </Feature>) : null;
+    </Feature>
+  ) : null;
 };
 
 
@@ -127,26 +132,26 @@ Card.Slider = function CardSlider({ ...restProps }) {
 
 
 
-// Card.Left = function CardLeft({ id, ...restProps }) {
-//   return (
-//   <Left {...restProps}
-//     onClick={() => {
-//       document.getElementById(id).scrollLeft -= window.innerWidth - 80;
-//     }}
-//   >
-//       <ArrowBackIosIcon/>          
-//   </Left>
-//   );
-// };
+Card.Left = function CardLeft({ id, ...restProps }) {
+  return (
+  <Left {...restProps}
+    onClick={() => {
+      document.getElementById(id).scrollLeft -= window.innerWidth - 80;
+    }}
+  >
+      <ArrowBackIosIcon/>          
+  </Left>
+  );
+};
 
-// Card.Right = function CardRight({ id ,...restProps }) {
-//   return (
-//   <Right {...restProps}
-//   onClick={() => {
-//     document.getElementById(id).scrollLeft += window.innerWidth - 80;
-//   }}
-//   >
-//       <ArrowForwardIosIcon />
-//   </Right>
-//   );
-// };
+Card.Right = function CardRight({ id ,...restProps }) {
+  return (
+  <Right {...restProps}
+  onClick={() => {
+    document.getElementById(id).scrollLeft += window.innerWidth - 80;
+  }}
+  >
+      <ArrowForwardIosIcon />
+  </Right>
+  );
+};

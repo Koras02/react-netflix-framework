@@ -35,12 +35,15 @@
 
 
  - ianbrdeguzman / react-netflix-clone - 검색 
+
+
  
  
- - MunavvarSinan / netflix-clone - 슬라이더 참고  - 실패
- 
- - https://github.com/MunavvarSinan/netflix-clone
- 
+ - iminb2b / netflix - 슬라이더 참고
+
+ - https://github.com/iminb2b/netflix
+
+
 
 ## 사용 라이브러리
 

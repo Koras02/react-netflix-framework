@@ -1,6 +1,4 @@
-
 import styled from 'styled-components/macro';
-import { MdKeyboardArrowLeft,MdKeyboardArrowRight } from 'react-icons/md'
 
 export const Title = styled.p`
   font-size: 24px;
@@ -18,11 +16,8 @@ export const Container = styled.div`
   margin-top:-20px;
   margin-left:10px;
   margin-right:60px;
-  box-sizing: border-box;
  
 //  border:1px solid red;
-
-
   > ${Title} {
     @media (max-width: 1000px) {
       margin-left: 30px;
@@ -33,18 +28,22 @@ export const Container = styled.div`
   }
 `;
 
-export const Group = styled.div`  
-  display:flex;
-  padding: 20px;
-  flex-direction: ${({ flexDirection }) => flexDirection === 'row' ? 'row' : 'column'};
-  ${({ alignItems }) => alignItems && `alignItems: ${alignItems};`}
-  ${({ margin }) => margin && `margin: ${margin};`}
-
-  >${Container}:first-of-type {
-     @media screen and (min-width: 1100px) {
-       margin-top: -10px;
-     }
+export const Group = styled.div`
+  display: flex;
+  // overflow-x:scroll;
+  margin-top:140px;
+  flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
+  ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
+  ${({ margin }) => margin && `margin: ${margin}`};
+  > ${Container}:first-of-type {
+    @media (min-width: 1100px) {
+      margin-top: -80px;
+    }
   }
+  @media (max-width: 860px) {
+    margin-top: 50px;
+  }
+  
 `;
 
 export const SubTitle = styled.p`
@@ -67,6 +66,11 @@ export const Text = styled.p`
   line-height: normal;
 `;
 
+export const Entities = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const Meta = styled.div`
   display: none;
   position: absolute;
@@ -74,12 +78,6 @@ export const Meta = styled.div`
   padding: 10px;
   background-color: #0000008f;
 `;
-
-export const Entities = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
 
 export const Image = styled.img`
   border: 0;
@@ -94,46 +92,49 @@ export const Image = styled.img`
   height: auto;
   padding: 0;
   margin: 0;
-
   @media screen and (max-width: 1600px) {
     max-height: 300px;
   }
-
   @media screen and (max-width: 860px) {
     max-height: 200px;
   }
 `;
 
 export const Item = styled.div`
-display: flex;
-
-flex-direction: column;
-margin-right: 5px;
-position: relative;
-cursor: pointer;
-transition: transform 0.2s;
-&:hover{
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+  position: relative;
+  cursor: pointer;
+ 
+  transition: transform 0.2s;
+  &:hover {
     transform: scale(1.1);
-    z-index: 999;
-    ${Meta},${Text}, ${SubTitle}{
-            display: block;
-            z-index: 100;
-        }
-}
-@media screen and (max-width: 1024px){
-    &:hover{
-        transform: scale(1);
-        
+    z-index: 99;
+  }
+  @media (min-width: 1200px) {
+    &:hover ${Meta}, &:hover ${Text}, &:hover ${SubTitle} {
+      display: block;
+      z-index: 100;
     }
-
-    
-}
+  }
+  &:first-of-type {
+    margin-left: 56px;
+    @media (max-width: 1000px) {
+      margin-left: 30px;
+    }
+  }
+  &:last-of-type {
+    margin-right: 56px;
+    @media (max-width: 1000px) {
+      margin-right: 30px;
+    }
+  }
 `;
 
 export const FeatureText = styled.p`
   font-size: 18px;
   color: white;
-
   font-weight: ${({ fontWeight }) => (fontWeight === 'bold' ? 'bold' : 'normal')};
   margin: 0;
   @media (max-width: 600px) {
@@ -153,7 +154,6 @@ export const Feature = styled.div`
   background-position-x: left;
   background-repeat: no-repeat;
   background-color: black;
-
   
   @media (max-width: 1000px) {
     height: auto;
@@ -195,7 +195,6 @@ export const Content = styled.div`
   max-width: 500px;
   position:relative;
   left:1000px;
-
   line-height: normal;
   @media (max-width: 1000px) {
     margin: 30px;
@@ -278,7 +277,6 @@ export const Slider = styled.div`
     padding: 20px 0 20px 10px;
     scroll-behavior: smooth;
  
-
     overflow-x:scroll;
     overflow-y:hidden;
     
@@ -295,33 +293,48 @@ export const Slider = styled.div`
     
 `;
 
- 
+    export const Left = styled.div`
+    background-clip: content-box;
+    padding: 20px 0;
+    box-sizing: border-box;
+    transition: 400ms all ease-in-out;
+    cursor: pointer;
+    width: 80px;
+    z-index: 1000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+  
+    &:hover {
+      background: rgba(20, 20, 20, 0.5);
+      transition: 400ms all ease-in-out;
+    }
+    `;
 
-export const ArrowRight = styled(MdKeyboardArrowRight)`
-position: absolute;
-cursor: pointer;
-right: 0;
-top: 0;
-height: 100%;
-width: 50px;
-color: white;
-background-color: #0000008f;
-z-index: 1000000;
-&:hover{
-    color: #111;
-}
-`;
 
-export const ArrowLeft = styled(MdKeyboardArrowLeft)`
-   position: absolute;
-   left: 0;
-   height: 100%;
-   width: 50px;
-   color: white;
-   background-color: #0000008f;
-   z-index: 1000000;
-   cursor: pointer;
-   &:hover{
-    color: #111;
-}
-`;
+    export const Right = styled.div`
+    padding: 20px 0;
+    background-clip: content-box;
+    box-sizing: border-box;
+    transition: 400ms all ease-in-out;
+    cursor: pointer;
+    width: 80px;
+    z-index: 1000;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    &:hover {
+      background: rgba(20, 20, 20, 0.5);
+      transition: 400ms all ease-in-out;
+    }
+    `;
