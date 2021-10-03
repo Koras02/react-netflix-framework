@@ -1,5 +1,10 @@
 ## Netflix Clone 포트폴리오
 
+## test 
+
+## id: wjdgh0727@gmail.com
+## password: Jungho888
+
 ## [Demo 버전 (github)](https://koras02.github.io/react-netflix-framework/)
   
   - 해당 버전을 이용하시려면 본인 firebase api key를 수정하세요
