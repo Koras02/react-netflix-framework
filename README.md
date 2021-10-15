@@ -2,8 +2,8 @@
 
 
 ## Test 
-   - id: wjdgh0727@gmail.com 
-   - password: Jungho888
+   - id: test123@test123.com
+   - password: test123
 
 ## [Demo 버전 (github)](https://koras02.github.io/react-netflix-framework/)
   
